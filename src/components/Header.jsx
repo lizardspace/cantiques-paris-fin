@@ -1,26 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Flex, Button } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate instead of useHistory
+import { useNavigate } from "react-router-dom";
+import { supabase } from './../../supabase'; // Import the Supabase client
 
 const Header = () => {
-  const navigate = useNavigate(); // useNavigate instead of useHistory
+  const navigate = useNavigate();
+  const [categories, setCategories] = useState([]);
 
-  const handleButtonClick = (route) => {
-    navigate(route); // use navigate instead of history.push
-  };
+  useEffect(() => {
+    const fetchCategories = async () => {
+      let { data: categories, error } = await supabase
+        .from('categories')
+        .select('*');
+
+      if (error) console.error('error', error);
+      else setCategories(categories);
+    };
+
+    fetchCategories();
+  }, []);
 
   return (
     <Flex as="header" width="100%" align="center" justify="center" p="4">
       <Flex gap="2" align="center">
-        <Button variant="ghost" colorScheme="pink" onClick={() => handleButtonClick("/art")}>
-          Art
-        </Button>
-        <Button variant="ghost" colorScheme="blue" onClick={() => handleButtonClick("/interieur")}>
-          Intérieur
-        </Button>
-        <Button variant="ghost" colorScheme="purple" onClick={() => handleButtonClick("/bijoux")}>
-          Bijoux
-        </Button>
+        {categories.map((category) => (
+          <Button
+            key={category.id}
+            variant="ghost"
+            colorScheme={category.color}
+            onClick={() => navigate(category.path)}>
+            {category.name}
+          </Button>
+        ))}
       </Flex>
     </Flex>
   );
