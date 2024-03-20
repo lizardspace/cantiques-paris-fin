@@ -1,20 +1,11 @@
+// App.jsx
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { ChakraProvider, Heading } from "@chakra-ui/react";
 import HeaderTop from "./components/HeaderTop";
 import Header from "./components/Header";
-import SubcategoriesDisplay from "./components/pages/SubcategoriesDisplay"; // Import the SubcategoriesDisplay component
+import SubcategoriesDisplay from "./components/pages/SubcategoriesDisplay";
 import { supabase } from './../supabase';
-import ArtChoices from "./components/pages/ArtChoices";
-import IntérieurPage from "./components/pages/IntérieurPage";
-import BijouxPage from "./components/pages/BijouxPage";
-import CarousselVentePopulaire from "./components/CarousselVentePopulaire";
-import ItemForSale from "./components/ItemForSale";
-import FooterComponent from "./components/FooterComponent";
-import FooterBottom from "./components/FooterBottom";
-import Caroussel from "./components/Caroussel";
-import HorizontalCarousel from "./components/HorizontalCaroussel";
-import HorizontalCarouselBis from "./components/HorizontalCarousselBis";
 
 const App = () => {
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
@@ -50,12 +41,6 @@ const App = () => {
     fetchSubcategories();
   }, []);
 
-  const generateRoutes = () => {
-    return categoriesWithSubs.map(category => (
-      <Route key={category.categoryId} path={`/${category.categoryName.toLowerCase()}`} element={<SubcategoriesDisplay category={category} />} />
-    ));
-  };
-
   return (
     <ChakraProvider>
       <Router>
@@ -63,7 +48,9 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Navigate to="/art" />} />
-          {generateRoutes()}
+          {categoriesWithSubs.map(category => (
+            <Route key={category.categoryId} path={`/${category.categoryName.toLowerCase()}`} element={<SubcategoriesDisplay category={category} />} />
+          ))}
         </Routes>
         <Heading>Collections populaires</Heading>
         {/* Your other components... */}

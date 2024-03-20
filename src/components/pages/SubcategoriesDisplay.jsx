@@ -1,3 +1,4 @@
+// SubcategoriesDisplay.jsx
 import React, { useEffect, useState } from "react";
 import { Flex, Box, Image, Text, Heading } from "@chakra-ui/react";
 import { supabase } from './../../../supabase';
@@ -13,52 +14,34 @@ const SubChoiceCard = ({ imageSrc, title }) => {
   );
 };
 
-const SubcategoriesDisplay = () => {
-  const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
+const SubcategoriesDisplay = ({ category }) => {
+  const [subcategories, setSubcategories] = useState([]);
 
   useEffect(() => {
     const fetchSubcategories = async () => {
       let { data: subcategories, error } = await supabase
         .from('subcategories')
-        .select('*, categories(*)') // Fetches all subcategories along with their parent category
+        .select('*')
+        .eq('category_id', category.categoryId)
         .order('created_at', { ascending: true });
 
       if (error) console.error('error', error);
       else {
-        // Group subcategories by their category_id
-        const grouped = subcategories.reduce((acc, subcategory) => {
-          const categoryId = subcategory.category_id;
-          if (!acc[categoryId]) {
-            acc[categoryId] = {
-              categoryId,
-              categoryName: subcategory.categories.name,
-              color: subcategory.categories.color,
-              subcategories: []
-            };
-          }
-          acc[categoryId].subcategories.push(subcategory);
-          return acc;
-        }, {});
-
-        setCategoriesWithSubs(Object.values(grouped));
+        setSubcategories(subcategories);
       }
     };
 
     fetchSubcategories();
-  }, []);
+  }, [category]);
 
   return (
     <Flex direction="column" align="center" p="4">
-      {categoriesWithSubs.map(category => (
-        <Flex key={category.categoryId} direction="column" align="center" mb="8">
-          <Heading mb="6" color={`${category.color}.500`}>{category.categoryName}</Heading>
-          <Flex wrap="wrap" justify="center" gap="4">
-            {category.subcategories.map(subcategory => (
-              <SubChoiceCard key={subcategory.id} imageSrc={subcategory.image_url} title={subcategory.name} />
-            ))}
-          </Flex>
-        </Flex>
-      ))}
+      <Heading mb="6" color={`${category.color}.500`}>{category.categoryName}</Heading>
+      <Flex wrap="wrap" justify="center" gap="4">
+        {subcategories.map(subcategory => (
+          <SubChoiceCard key={subcategory.id} imageSrc={subcategory.image_url} title={subcategory.name} />
+        ))}
+      </Flex>
     </Flex>
   );
 };
