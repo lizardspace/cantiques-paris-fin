@@ -1,4 +1,3 @@
-// App.jsx
 import React, { useEffect, useState } from "react";
 import {
   ChakraProvider,
@@ -22,11 +21,12 @@ import SubcategoriesDisplay from "./components/pages/SubcategoriesDisplay";
 import { supabase } from './../supabase';
 import ItemsForSaleSupabase from "./components/ItemForSaleSupabase";
 import GemstoneAccordion from "./components/GemstoneAccordion";
-import SearchAccordion from "./components/ SearchAccordion";
+import SearchAccordion from "./components/SearchAccordion";
 
 const App = () => {
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const sidebarWidth = "250px"; // Define the consistent sidebar width here
 
   useEffect(() => {
     const fetchSubcategories = async () => {
@@ -78,23 +78,22 @@ const App = () => {
               <DrawerCloseButton />
               <DrawerHeader>Gemstones</DrawerHeader>
               <DrawerBody>
-                <Box>
-                  <GemstoneAccordion />
-                  <SearchAccordion />
-                </Box>
+                <VStack spacing="24px" align="stretch">
+                  <GemstoneAccordion width={sidebarWidth} />
+                  <SearchAccordion width={sidebarWidth} />
+                </VStack>
               </DrawerBody>
             </DrawerContent>
           </Drawer>
-          {/* Sidebar */}
+          {/* Sidebar for non-mobile */}
           <Box
-            width={{ sm: '0', md: '250px' }} // Set a fixed width for medium screens and up
-            flexShrink={0}
+            width={{ sm: '0', md: sidebarWidth }}
             display={{ sm: 'none', md: 'block' }}
-            p={4}
-            >
-            <VStack>
-              <GemstoneAccordion />
-              <SearchAccordion />
+            flexShrink={0}
+            p={4}>
+            <VStack spacing="24px" align="stretch">
+              <GemstoneAccordion width={sidebarWidth} />
+              <SearchAccordion width={sidebarWidth} />
             </VStack>
           </Box>
           {/* Main Content */}
