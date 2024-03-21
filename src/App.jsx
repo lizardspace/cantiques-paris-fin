@@ -23,6 +23,7 @@ import { supabase } from './../supabase';
 import ItemsForSaleSupabase from "./components/ItemForSaleSupabase";
 import GemstoneAccordion from "./components/GemstoneAccordion";
 import SearchAccordion from "./components/SearchAccordion";
+import MetalAccordion from "./components/MetalAccordion";
 
 const App = () => {
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
@@ -85,6 +86,7 @@ const App = () => {
                   <Box width={sidebarWidth}>
                     <GemstoneAccordion />
                     <SearchAccordion />
+                    <MetalAccordion/>
                   </Box>
                 </VStack>
               </DrawerBody>
@@ -99,6 +101,7 @@ const App = () => {
             <VStack spacing={4}>
               <GemstoneAccordion />
               <SearchAccordion />
+              <MetalAccordion/>
             </VStack>
           </Box>
           {/* Main Content */}
