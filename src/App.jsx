@@ -6,6 +6,10 @@ import HeaderTop from "./components/HeaderTop";
 import Header from "./components/Header";
 import SubcategoriesDisplay from "./components/pages/SubcategoriesDisplay";
 import { supabase } from './../supabase';
+import CollectionCard from "./components/CollectionCard";
+import CollectionPreview from "./components/CollectionPreview";
+import ItemForSale from "./components/ItemForSale";
+import ItemsForSaleSupabase from "./components/ItemForSaleSupabase";
 
 const App = () => {
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
@@ -53,7 +57,9 @@ const App = () => {
           ))}
         </Routes>
         <Heading>Collections populaires</Heading>
-        {/* Your other components... */}
+        <CollectionPreview/>
+        <ItemForSale/>
+        <ItemsForSaleSupabase/>
       </Router>
     </ChakraProvider>
   );
