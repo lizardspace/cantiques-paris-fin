@@ -1,3 +1,4 @@
+// App.jsx
 import React, { useEffect, useState } from "react";
 import {
   ChakraProvider,
@@ -26,7 +27,8 @@ import SearchAccordion from "./components/SearchAccordion";
 const App = () => {
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const sidebarWidth = "250px"; // Define the consistent sidebar width here
+  const sidebarWidth = "250px"; 
+  const sidebarComponentWidth = "250px";
 
   useEffect(() => {
     const fetchSubcategories = async () => {
@@ -87,16 +89,15 @@ const App = () => {
           </Drawer>
           {/* Sidebar for non-mobile */}
           <Box
-            width={{ sm: '0', md: sidebarWidth }}
-            display={{ sm: 'none', md: 'block' }}
-            flexShrink={0}
+            display={{ base: 'none', md: 'block' }} // Hide on base, show on md and up
+            width={sidebarComponentWidth} // Use the fixed width for the sidebar
             p={4}>
-            <VStack spacing="24px" align="stretch">
-              <GemstoneAccordion width={sidebarWidth} />
-              <SearchAccordion width={sidebarWidth} />
+            <VStack spacing={4}>
+              <GemstoneAccordion style={{ minWidth: sidebarComponentWidth, maxWidth: sidebarComponentWidth }} />
+              <SearchAccordion style={{ minWidth: sidebarComponentWidth, maxWidth: sidebarComponentWidth }} />
             </VStack>
           </Box>
-          {/* Main Content */}
+{/* Main Content */}
           <Box flex="1" p={5}>
             <Routes>
               <Route path="/" element={<Navigate to="/art" />} />
