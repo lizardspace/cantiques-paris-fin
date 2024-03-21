@@ -24,6 +24,7 @@ import CollectionPreview from "./components/CollectionPreview";
 import ItemForSale from "./components/ItemForSale";
 import ItemsForSaleSupabase from "./components/ItemForSaleSupabase";
 import GemstoneAccordion from "./components/GemstoneAccordion";
+import SearchAccordion from "./components/ SearchAccordion";
 
 const App = () => {
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
@@ -80,6 +81,7 @@ const App = () => {
               <DrawerHeader>Gemstones</DrawerHeader>
               <DrawerBody>
                 <GemstoneAccordion />
+                <SearchAccordion/>
               </DrawerBody>
             </DrawerContent>
           </Drawer>
@@ -89,6 +91,7 @@ const App = () => {
             flexShrink={0}
             display={{ sm: 'none', md: 'block' }}>
             <GemstoneAccordion />
+            <SearchAccordion/>
           </Box>
           {/* Main Content */}
           <Box flex="1" p={5}>
