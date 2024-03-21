@@ -10,6 +10,7 @@ import CollectionCard from "./components/CollectionCard";
 import CollectionPreview from "./components/CollectionPreview";
 import ItemForSale from "./components/ItemForSale";
 import ItemsForSaleSupabase from "./components/ItemForSaleSupabase";
+import GemstoneAccordion from "./components/GemstoneAccordion";
 
 const App = () => {
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
@@ -56,10 +57,8 @@ const App = () => {
             <Route key={category.categoryId} path={`/${category.categoryName.toLowerCase()}`} element={<SubcategoriesDisplay category={category} />} />
           ))}
         </Routes>
-        <Heading>Collections populaires</Heading>
-        <CollectionPreview/>
-        <ItemForSale/>
         <ItemsForSaleSupabase/>
+        <GemstoneAccordion/>
       </Router>
     </ChakraProvider>
   );
