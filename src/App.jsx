@@ -1,7 +1,20 @@
 // App.jsx
 import React, { useEffect, useState } from "react";
+import {
+  ChakraProvider,
+  Flex,
+  Box,
+  useDisclosure,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
+  DrawerBody,
+  IconButton,
+} from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import { ChakraProvider, Heading } from "@chakra-ui/react";
 import HeaderTop from "./components/HeaderTop";
 import Header from "./components/Header";
 import SubcategoriesDisplay from "./components/pages/SubcategoriesDisplay";
@@ -14,6 +27,7 @@ import GemstoneAccordion from "./components/GemstoneAccordion";
 
 const App = () => {
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
     const fetchSubcategories = async () => {
@@ -51,14 +65,42 @@ const App = () => {
       <Router>
         <HeaderTop />
         <Header />
-        <Routes>
-          <Route path="/" element={<Navigate to="/art" />} />
-          {categoriesWithSubs.map(category => (
-            <Route key={category.categoryId} path={`/${category.categoryName.toLowerCase()}`} element={<SubcategoriesDisplay category={category} />} />
-          ))}
-        </Routes>
-        <ItemsForSaleSupabase/>
-        <GemstoneAccordion/>
+        <Flex>
+          {/* Mobile Nav Drawer */}
+          <IconButton
+            icon={<HamburgerIcon />}
+            onClick={onOpen}
+            display={{ sm: "inline-flex", md: "none" }}
+            aria-label="Open menu"
+          />
+          <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
+            <DrawerOverlay />
+            <DrawerContent>
+              <DrawerCloseButton />
+              <DrawerHeader>Gemstones</DrawerHeader>
+              <DrawerBody>
+                <GemstoneAccordion />
+              </DrawerBody>
+            </DrawerContent>
+          </Drawer>
+          {/* Sidebar */}
+          <Box
+            minW={{ sm: '0', md: '200px' }}
+            flexShrink={0}
+            display={{ sm: 'none', md: 'block' }}>
+            <GemstoneAccordion />
+          </Box>
+          {/* Main Content */}
+          <Box flex="1" p={5}>
+            <Routes>
+              <Route path="/" element={<Navigate to="/art" />} />
+              {categoriesWithSubs.map(category => (
+                <Route key={category.categoryId} path={`/${category.categoryName.toLowerCase()}`} element={<SubcategoriesDisplay category={category} />} />
+              ))}
+            </Routes>
+            <ItemsForSaleSupabase />
+          </Box>
+        </Flex>
       </Router>
     </ChakraProvider>
   );
