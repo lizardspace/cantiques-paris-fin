@@ -47,11 +47,11 @@ const PriceRangeSlider = () => {
         <RangeSliderThumb index={1} />
       </RangeSlider>
       <Flex justify="space-between" px={2}>
-        <Text>0</Text>
-        <Text>30 500</Text>
-        <Text>61 000</Text>
-        <Text>91 500</Text>
-        <Text>122 000</Text>
+        <Text fontSize="sm">0</Text>
+        <Text fontSize="sm">30 500</Text>
+        <Text fontSize="sm">61 000</Text>
+        <Text fontSize="sm">91 500</Text>
+        <Text fontSize="sm">122 000</Text>
       </Flex>
     </VStack>
   );
