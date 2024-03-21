@@ -24,6 +24,7 @@ import ItemsForSaleSupabase from "./components/ItemForSaleSupabase";
 import GemstoneAccordion from "./components/GemstoneAccordion";
 import SearchAccordion from "./components/SearchAccordion";
 import MetalAccordion from "./components/MetalAccordion";
+import PriceRangeSlider from "./components/PriceRangeSlider";
 
 const App = () => {
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
@@ -87,6 +88,7 @@ const App = () => {
                     <GemstoneAccordion />
                     <SearchAccordion />
                     <MetalAccordion/>
+                    <PriceRangeSlider/>
                   </Box>
                 </VStack>
               </DrawerBody>
@@ -102,6 +104,7 @@ const App = () => {
               <GemstoneAccordion />
               <SearchAccordion />
               <MetalAccordion/>
+              <PriceRangeSlider/>
             </VStack>
           </Box>
           {/* Main Content */}
