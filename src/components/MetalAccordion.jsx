@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Accordion,
   AccordionItem,
@@ -12,6 +12,11 @@ import {
 } from '@chakra-ui/react';
 
 const MetalAccordion = () => {
+  const [showMore, setShowMore] = useState(false);
+
+  // Additional options to be shown when 'Voir plus' is clicked
+  const additionalMetals = ['Platine', 'Palladium', 'Titanium'];
+
   return (
     <Box bg="white" w="250px" boxShadow="md" borderRadius="md">
       <Accordion allowToggle defaultIndex={[0]}>
@@ -30,7 +35,17 @@ const MetalAccordion = () => {
               <Checkbox>Argent</Checkbox>
               <Checkbox>Or Blanc</Checkbox>
               <Checkbox>Or Gris</Checkbox>
-              <Button variant="link" colorScheme="blue" size="sm" mt={2}>
+              {/* Render additional options based on showMore state */}
+              {showMore && additionalMetals.map((metal, index) => (
+                <Checkbox key={index}>{metal}</Checkbox>
+              ))}
+              <Button 
+                variant="link" 
+                colorScheme="blue" 
+                size="sm" 
+                mt={2}
+                onClick={() => setShowMore(!showMore)} // Toggle the showMore state
+              >
                 Voir plus
               </Button>
             </VStack>
