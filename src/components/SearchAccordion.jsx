@@ -9,17 +9,16 @@ import {
   ListItem,
   Input,
   Button,
-  VStack,
   Box
 } from '@chakra-ui/react';
 
 const SearchAccordion = () => {
   return (
-    <Box bg="white" w="250px" boxShadow="md" borderRadius="md" p={4}>
-      <Accordion defaultIndex={[0]} allowMultiple>
+    <Box bg="white" w="250px" boxShadow="md" borderRadius="md">
+      <Accordion allowToggle>
         <AccordionItem border="none">
           <h2>
-            <AccordionButton _expanded={{ bg: "gray.50" }}>
+            <AccordionButton _expanded={{ bg: "gray.100", color: "teal.800" }}>
               <Box flex="1" textAlign="left" fontWeight="semibold">
                 AUTRES MAISONS
               </Box>
@@ -27,21 +26,21 @@ const SearchAccordion = () => {
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
-            <VStack align="stretch" spacing={3}>
-              <Input placeholder="Options de recherche" />
-              <List spacing={2}>
-                <ListItem>Boivin</ListItem>
-                <ListItem>Chanteloup</ListItem>
-                <ListItem>Christofle</ListItem>
-                <ListItem>Clozeau</ListItem>
-                <ListItem>Fabergé</ListItem>
-                <ListItem>
-                  <Button variant="link" colorScheme="blue" size="sm">
-                    Voir plus
-                  </Button>
-                </ListItem>
-              </List>
-            </VStack>
+            <List spacing={3}>
+              <ListItem>
+                <Input placeholder="Options de recherche" variant="filled" size="sm" />
+              </ListItem>
+              <ListItem>Boivin</ListItem>
+              <ListItem>Chanteloup</ListItem>
+              <ListItem>Christofle</ListItem>
+              <ListItem>Clozeau</ListItem>
+              <ListItem>Fabergé</ListItem>
+              <ListItem>
+                <Button variant="link" colorScheme="blue" size="sm">
+                  Voir plus
+                </Button>
+              </ListItem>
+            </List>
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
