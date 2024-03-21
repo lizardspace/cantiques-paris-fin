@@ -12,6 +12,7 @@ import {
   DrawerHeader,
   DrawerBody,
   IconButton,
+  VStack,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
@@ -19,9 +20,6 @@ import HeaderTop from "./components/HeaderTop";
 import Header from "./components/Header";
 import SubcategoriesDisplay from "./components/pages/SubcategoriesDisplay";
 import { supabase } from './../supabase';
-import CollectionCard from "./components/CollectionCard";
-import CollectionPreview from "./components/CollectionPreview";
-import ItemForSale from "./components/ItemForSale";
 import ItemsForSaleSupabase from "./components/ItemForSaleSupabase";
 import GemstoneAccordion from "./components/GemstoneAccordion";
 import SearchAccordion from "./components/ SearchAccordion";
@@ -80,18 +78,24 @@ const App = () => {
               <DrawerCloseButton />
               <DrawerHeader>Gemstones</DrawerHeader>
               <DrawerBody>
-                <GemstoneAccordion />
-                <SearchAccordion/>
+                <Box>
+                  <GemstoneAccordion />
+                  <SearchAccordion />
+                </Box>
               </DrawerBody>
             </DrawerContent>
           </Drawer>
           {/* Sidebar */}
           <Box
-            minW={{ sm: '0', md: '200px' }}
+            width={{ sm: '0', md: '250px' }} // Set a fixed width for medium screens and up
             flexShrink={0}
-            display={{ sm: 'none', md: 'block' }}>
-            <GemstoneAccordion />
-            <SearchAccordion/>
+            display={{ sm: 'none', md: 'block' }}
+            p={4}
+            >
+            <VStack>
+              <GemstoneAccordion />
+              <SearchAccordion />
+            </VStack>
           </Box>
           {/* Main Content */}
           <Box flex="1" p={5}>
