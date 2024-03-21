@@ -9,15 +9,19 @@ import {
   NumberInput,
   NumberInputField,
   Text,
-  VStack
+  VStack,
+  RangeSlider,
+  RangeSliderTrack,
+  RangeSliderFilledTrack,
+  RangeSliderThumb
 } from '@chakra-ui/react';
 
 const PriceRangeSlider = () => {
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(122000);
+  const [range, setRange] = useState([0, 122000]);
 
-  const handleMinPriceChange = (value) => setMinPrice(value);
-  const handleMaxPriceChange = (value) => setMaxPrice(value);
+  const handleRangeChange = (newRange) => {
+    setRange(newRange);
+  };
 
   return (
     <VStack align="stretch" spacing={4}>
@@ -26,22 +30,22 @@ const PriceRangeSlider = () => {
           PRIX
         </Text>
         <Flex justify="space-between">
-          <NumberInput maxW="100px" value={minPrice} onChange={handleMinPriceChange} min={0} max={maxPrice}>
+          <NumberInput maxW="100px" value={range[0]} onChange={(value) => handleRangeChange([parseInt(value), range[1]])} min={0} max={range[1]}>
             <NumberInputField pl="2" />
           </NumberInput>
           <Text mx={2}>-</Text>
-          <NumberInput maxW="100px" value={maxPrice} onChange={handleMaxPriceChange} min={minPrice} max={122000}>
+          <NumberInput maxW="100px" value={range[1]} onChange={(value) => handleRangeChange([range[0], parseInt(value)])} min={range[0]} max={122000}>
             <NumberInputField pl="2" />
           </NumberInput>
         </Flex>
       </Box>
-      <Slider aria-label="slider-ex-4" min={0} max={122000} step={500} defaultValue={[minPrice, maxPrice]} onChangeStart={handleMinPriceChange} onChangeEnd={handleMaxPriceChange}>
-        <SliderTrack>
-          <SliderFilledTrack />
-        </SliderTrack>
-        <SliderThumb boxSize={6} index={0} />
-        <SliderThumb boxSize={6} index={1} />
-      </Slider>
+      <RangeSlider aria-label={['min', 'max']} defaultValue={[0, 122000]} value={range} onChange={handleRangeChange}>
+        <RangeSliderTrack>
+          <RangeSliderFilledTrack />
+        </RangeSliderTrack>
+        <RangeSliderThumb index={0} />
+        <RangeSliderThumb index={1} />
+      </RangeSlider>
       <Flex justify="space-between" px={2}>
         <Text>0</Text>
         <Text>30 500</Text>
