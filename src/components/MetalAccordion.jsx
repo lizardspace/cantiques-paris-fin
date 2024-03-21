@@ -14,8 +14,11 @@ import {
 const MetalAccordion = () => {
   const [showMore, setShowMore] = useState(false);
 
-  // Additional options to be shown when 'Voir plus' is clicked
   const additionalMetals = ['Platine', 'Palladium', 'Titanium'];
+
+  const handleToggle = () => {
+    setShowMore(!showMore);
+  };
 
   return (
     <Box bg="white" w="250px" boxShadow="md" borderRadius="md">
@@ -35,7 +38,7 @@ const MetalAccordion = () => {
               <Checkbox>Argent</Checkbox>
               <Checkbox>Or Blanc</Checkbox>
               <Checkbox>Or Gris</Checkbox>
-              {/* Render additional options based on showMore state */}
+              {/* Render additional options if showMore is true */}
               {showMore && additionalMetals.map((metal, index) => (
                 <Checkbox key={index}>{metal}</Checkbox>
               ))}
@@ -44,9 +47,9 @@ const MetalAccordion = () => {
                 colorScheme="blue" 
                 size="sm" 
                 mt={2}
-                onClick={() => setShowMore(!showMore)} // Toggle the showMore state
+                onClick={handleToggle}
               >
-                Voir plus
+                {showMore ? 'Voir moins' : 'Voir plus'}
               </Button>
             </VStack>
           </AccordionPanel>

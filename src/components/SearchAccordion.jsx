@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Accordion,
   AccordionItem,
@@ -13,9 +13,17 @@ import {
 } from '@chakra-ui/react';
 
 const SearchAccordion = () => {
+  const [showMore, setShowMore] = useState(false);
+
+  const handleToggle = () => {
+    setShowMore(!showMore);
+  };
+
+  const additionalHouses = ['Lalique', 'Baccarat', 'Van Cleef & Arpels'];
+
   return (
     <Box bg="white" w="250px" boxShadow="md" borderRadius="md">
-      <Accordion allowToggle>
+      <Accordion allowToggle defaultIndex={[0]}>
         <AccordionItem border="none">
           <h2>
             <AccordionButton _expanded={{ bg: "gray.100", color: "teal.800" }}>
@@ -35,9 +43,13 @@ const SearchAccordion = () => {
               <ListItem>Christofle</ListItem>
               <ListItem>Clozeau</ListItem>
               <ListItem>Fabergé</ListItem>
+              {/* Conditional rendering of additional items */}
+              {showMore && additionalHouses.map((house, index) => (
+                <ListItem key={index}>{house}</ListItem>
+              ))}
               <ListItem>
-                <Button variant="link" colorScheme="blue" size="sm">
-                  Voir plus
+                <Button variant="link" colorScheme="blue" size="sm" onClick={handleToggle}>
+                  {showMore ? 'Voir moins' : 'Voir plus'}
                 </Button>
               </ListItem>
             </List>
