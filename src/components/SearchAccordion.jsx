@@ -15,7 +15,7 @@ import {
 
 const SearchAccordion = () => {
   return (
-    <Box bg="white" w="300px" boxShadow="md" borderRadius="md" p={4}>
+    <Box bg="white" w="250px" boxShadow="md" borderRadius="md" p={4}>
       <Accordion defaultIndex={[0]} allowMultiple>
         <AccordionItem border="none">
           <h2>

@@ -27,8 +27,9 @@ import SearchAccordion from "./components/SearchAccordion";
 const App = () => {
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const sidebarWidth = "250px"; 
-  const sidebarComponentWidth = "250px";
+
+  // Define responsive sidebar widths
+  const sidebarWidth = { base: "100%", sm: "100%", md: "250px" };
 
   useEffect(() => {
     const fetchSubcategories = async () => {
@@ -81,8 +82,10 @@ const App = () => {
               <DrawerHeader>Gemstones</DrawerHeader>
               <DrawerBody>
                 <VStack spacing="24px" align="stretch">
-                  <GemstoneAccordion width={sidebarWidth} />
-                  <SearchAccordion width={sidebarWidth} />
+                  <Box width={sidebarWidth}>
+                    <GemstoneAccordion />
+                    <SearchAccordion />
+                  </Box>
                 </VStack>
               </DrawerBody>
             </DrawerContent>
@@ -90,14 +93,15 @@ const App = () => {
           {/* Sidebar for non-mobile */}
           <Box
             display={{ base: 'none', md: 'block' }} // Hide on base, show on md and up
-            width={sidebarComponentWidth} // Use the fixed width for the sidebar
-            p={4}>
+            width={sidebarWidth} // Responsive width
+            p={4}
+            >
             <VStack spacing={4}>
-              <GemstoneAccordion style={{ minWidth: sidebarComponentWidth, maxWidth: sidebarComponentWidth }} />
-              <SearchAccordion style={{ minWidth: sidebarComponentWidth, maxWidth: sidebarComponentWidth }} />
+              <GemstoneAccordion />
+              <SearchAccordion />
             </VStack>
           </Box>
-{/* Main Content */}
+          {/* Main Content */}
           <Box flex="1" p={5}>
             <Routes>
               <Route path="/" element={<Navigate to="/art" />} />

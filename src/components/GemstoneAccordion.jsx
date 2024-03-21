@@ -23,7 +23,7 @@ const GemstoneItem = ({ icon, children }) => (
 // The main component for the gemstone accordion
 const GemstoneAccordion = () => {
   return (
-    <Box bg="white" w="200px" boxShadow="md" borderRadius="md">
+    <Box bg="white" w="250px" boxShadow="md" borderRadius="md">
       <Accordion allowToggle>
         <AccordionItem border="none">
           <h2>
