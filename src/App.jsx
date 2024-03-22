@@ -29,6 +29,7 @@ import PriceRangeSlider from "./components/PriceRangeSlider";
 import FullWidthBanner from "./components/ FullWidthBanner";
 import Navbar from "./components/Navbar";
 import Headerb from "./components/Headerb";
+import HeaderTopb from "./components/HeaderTopb";
 
 const App = () => {
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
@@ -73,6 +74,7 @@ const App = () => {
       <Router>
         <HeaderTop />
         <Header />
+        <HeaderTopb/>
         <Headerb/>
         <Navbar/>
         <FullWidthBanner/>
