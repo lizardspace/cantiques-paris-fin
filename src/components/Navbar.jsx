@@ -6,7 +6,7 @@ import { supabase } from './../../supabase'; // Import the Supabase client
 
 const Navbar = () => {
     const [categories, setCategories] = useState([]);
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -35,11 +35,8 @@ const Navbar = () => {
     }, []);
 
     const handleCategoryClick = (categoryName) => {
-        history.push(`/${categoryName.toLowerCase()}`);
-    };
-
-    const handleSubcategoryClick = (subcategoryName) => {
-        // Handle subcategory click logic here, if needed
+        // Redirect to category page on click
+        navigate(`/${categoryName.toLowerCase()}`);
     };
 
     return (
@@ -69,7 +66,6 @@ const Navbar = () => {
             ))}
 
             {/* Other menu items */}
-
 
             {/* Spacer */}
             <Box flex="1"></Box>

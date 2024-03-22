@@ -24,7 +24,7 @@ const GemstoneItem = ({ icon, children }) => (
 const GemstoneAccordion = () => {
   return (
     <Box bg="white" w="250px" boxShadow="md" borderRadius="md">
-      <Accordion allowToggle>
+      <Accordion allowToggle defaultIndex={[0]}>
         <AccordionItem border="none">
           <h2>
             <AccordionButton _expanded={{ bg: "gray.100", color: "teal.800" }}>

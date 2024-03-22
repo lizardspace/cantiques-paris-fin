@@ -17,8 +17,7 @@ import {
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { FaChevronDown } from "react-icons/fa";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import HeaderTop from "./components/poubelle/HeaderTop";
-import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 import SubcategoriesDisplay from "./components/pages/SubcategoriesDisplay";
 import { supabase } from './../supabase';
 import ItemsForSaleSupabase from "./components/main/ItemForSaleSupabase";
@@ -27,7 +26,6 @@ import SearchAccordion from "./components/sidebar/SearchAccordion";
 import MetalAccordion from "./components/sidebar/MetalAccordion";
 import PriceRangeSlider from "./components/sidebar/PriceRangeSlider";
 import FullWidthBanner from "./components/header/ FullWidthBanner";
-import Navbar from "./components/Navbar";
 import Headerb from "./components/Headerb";
 import HeaderTopb from "./components/HeaderTopb";
 import HeaderBar from "./components/HeaderBar";
@@ -73,12 +71,11 @@ const App = () => {
   return (
     <ChakraProvider>
       <Router>
-        <Header />
-        <HeaderBar/>
-        <HeaderTopb/>
-        <Headerb/>
-        <Navbar/>
-        <FullWidthBanner/>
+        <HeaderBar />
+        <HeaderTopb />
+        <Headerb />
+        <Navbar />
+        <FullWidthBanner />
         <Flex>
           {/* Mobile Nav Drawer */}
           <IconButton
@@ -97,8 +94,8 @@ const App = () => {
                   <Box width={sidebarWidth}>
                     <GemstoneAccordion />
                     <SearchAccordion />
-                    <MetalAccordion/>
-                    <PriceRangeSlider/>
+                    <MetalAccordion />
+                    <PriceRangeSlider />
                   </Box>
                 </VStack>
               </DrawerBody>
@@ -109,12 +106,12 @@ const App = () => {
             display={{ base: 'none', md: 'block' }} // Hide on base, show on md and up
             width={sidebarWidth} // Responsive width
             p={4}
-            >
+          >
             <VStack spacing={4}>
               <GemstoneAccordion />
               <SearchAccordion />
-              <MetalAccordion/>
-              <PriceRangeSlider/>
+              <MetalAccordion />
+              <PriceRangeSlider />
             </VStack>
           </Box>
           {/* Main Content */}
@@ -122,7 +119,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Navigate to="/art" />} />
               {categoriesWithSubs.map(category => (
-                <Route key={category.categoryId} path={`/${category.categoryName.toLowerCase()}`} element={<SubcategoriesDisplay category={category} />} />
+                <Route key={category.categoryId} path={`/${category.categoryName.toLowerCase()}`} element={''} />
               ))}
             </Routes>
             <ItemsForSaleSupabase />
