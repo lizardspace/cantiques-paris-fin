@@ -1,9 +1,18 @@
 import React from 'react';
-import { Flex, Box, Text, Menu, MenuButton, MenuItem, MenuList, ChevronDownIcon } from '@chakra-ui/react';
+import {
+  Flex,
+  Text,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Box
+} from '@chakra-ui/react';
+import { ChevronDownIcon } from '@chakra-ui/icons';
 
 const Navbar = () => {
   return (
-    <Flex justifyContent="center" p={4} borderBottom="1px" borderColor="gray.200">
+    <Flex justifyContent="center" p={4} borderBottom="1px" borderColor="gray.200" bg="white">
       {/* Wrap each navigation item in a Menu component if it has a dropdown */}
       <Menu>
         <MenuButton as={Text} cursor="pointer" mx={2} _hover={{ textDecoration: 'underline' }}>

@@ -28,6 +28,7 @@ import MetalAccordion from "./components/MetalAccordion";
 import PriceRangeSlider from "./components/PriceRangeSlider";
 import FullWidthBanner from "./components/ FullWidthBanner";
 import Navbar from "./components/Navbar";
+import Headerb from "./components/Headerb";
 
 const App = () => {
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
@@ -72,6 +73,7 @@ const App = () => {
       <Router>
         <HeaderTop />
         <Header />
+        <Headerb/>
         <Navbar/>
         <FullWidthBanner/>
         <Flex>
