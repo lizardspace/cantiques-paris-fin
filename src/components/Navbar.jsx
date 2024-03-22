@@ -1,47 +1,54 @@
-import React from 'react';
-import {
-  Flex,
-  Text,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Box
-} from '@chakra-ui/react';
+import React, { useState, useEffect } from 'react';
+import { Flex, Text, Menu, MenuButton, MenuItem, MenuList, Box } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
+import { supabase } from './../../supabase'; // Import the Supabase client
 
 const Navbar = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      let { data: categories, error } = await supabase
+        .from('categories')
+        .select('*');
+
+      if (error) console.error('error', error);
+      else {
+        // Fetch subcategories for each category
+        for (const category of categories) {
+          let { data: subcategories, error: subError } = await supabase
+            .from('subcategories')
+            .select('*')
+            .eq('category_id', category.id);
+
+          if (subError) console.error('subError', subError);
+          else category.subcategories = subcategories;
+        }
+
+        setCategories(categories);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
   return (
     <Flex justifyContent="center" p={4} borderBottom="1px" borderColor="gray.200" bg="white">
-      {/* Wrap each navigation item in a Menu component if it has a dropdown */}
-      <Menu>
-        <MenuButton as={Text} cursor="pointer" mx={2} _hover={{ textDecoration: 'underline' }}>
-          Nouveautés <ChevronDownIcon />
-        </MenuButton>
-        <MenuList>
-          {/* Dropdown items */}
-          <MenuItem>New Item 1</MenuItem>
-          <MenuItem>New Item 2</MenuItem>
-        </MenuList>
-      </Menu>
-
-      {/* Repeat for each top-level navigation item */}
-      <Menu>
-        <MenuButton as={Text} cursor="pointer" mx={2} _hover={{ textDecoration: 'underline' }}>
-          Tous les Bijoux <ChevronDownIcon />
-        </MenuButton>
-        <MenuList>
-          {/* Dropdown items */}
-          <MenuItem>Jewelry Item 1</MenuItem>
-          <MenuItem>Jewelry Item 2</MenuItem>
-        </MenuList>
-      </Menu>
+      {categories.map((category) => (
+        <Menu key={category.id}>
+          <MenuButton as={Text} cursor="pointer" mx={2} _hover={{ textDecoration: 'underline' }}>
+            {category.name} <ChevronDownIcon />
+          </MenuButton>
+          <MenuList>
+            {category.subcategories && category.subcategories.map((subcategory) => (
+              <MenuItem key={subcategory.id}>{subcategory.name}</MenuItem>
+            ))}
+          </MenuList>
+        </Menu>
+      ))}
 
       {/* Other menu items */}
-      <Text mx={2} cursor="pointer" _hover={{ textDecoration: 'underline' }}>Bijoux Signés</Text>
-      <Text mx={2} cursor="pointer" _hover={{ textDecoration: 'underline' }}>Bijoux Vintage</Text>
-      <Text mx={2} cursor="pointer" _hover={{ textDecoration: 'underline' }}>Montres</Text>
-      <Text mx={2} cursor="pointer" _hover={{ textDecoration: 'underline' }}>Nos boutiques</Text>
+
 
       {/* Spacer */}
       <Box flex="1"></Box>
