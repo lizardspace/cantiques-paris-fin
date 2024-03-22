@@ -29,6 +29,7 @@ import FullWidthBanner from "./components/header/ FullWidthBanner";
 import Headerb from "./components/Headerb";
 import HeaderTopb from "./components/HeaderTopb";
 import HeaderBar from "./components/HeaderBar";
+import ImageScrollingSelection from "./components/itemdisplay/ImageScrollingSelection";
 
 const App = () => {
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
@@ -123,6 +124,7 @@ const App = () => {
               ))}
             </Routes>
             <ItemsForSaleSupabase />
+            <ImageScrollingSelection/>
           </Box>
         </Flex>
       </Router>
