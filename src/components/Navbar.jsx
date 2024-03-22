@@ -39,11 +39,6 @@ const Navbar = () => {
         navigate(`/${categoryName.toLowerCase()}`);
     };
 
-    const handleSubcategoryClick = (subcategoryName) => {
-        // Redirect to subcategory page on click
-        navigate(`/subcategory/${subcategoryName.toLowerCase()}`);
-    };
-
     return (
         <Flex justifyContent="center" p={4} borderBottom="1px" borderColor="gray.200" bg="white">
             {categories.map((category) => (
@@ -53,19 +48,21 @@ const Navbar = () => {
                         cursor="pointer"
                         mx={2}
                         _hover={{ textDecoration: 'underline' }}
+                        onMouseEnter={() => handleCategoryHover(category)}
                         onClick={() => handleCategoryClick(category.name)}
                     >
                         {category.name} <ChevronDownIcon />
                     </MenuButton>
                     <MenuList>
-                        {category.subcategories && category.subcategories.map((subcategory) => (
-                            <MenuItem
-                                key={subcategory.id}
-                                onClick={() => handleSubcategoryClick(subcategory.name)}
-                            >
-                                {subcategory.name}
-                            </MenuItem>
-                        ))}
+                        {category.subcategories &&
+                            category.subcategories.map((subcategory) => (
+                                <MenuItem
+                                    key={subcategory.id}
+                                    onClick={() => navigate(`/subcategory/${subcategory.name.toLowerCase()}`)}
+                                >
+                                    {subcategory.name}
+                                </MenuItem>
+                            ))}
                     </MenuList>
                 </Menu>
             ))}
@@ -76,9 +73,15 @@ const Navbar = () => {
             <Box flex="1"></Box>
 
             {/* Align these items to the right */}
-            <Text mx={2} cursor="pointer" _hover={{ textDecoration: 'underline' }}>Contactez-Nous</Text>
-            <Text mx={2} cursor="pointer" _hover={{ textDecoration: 'underline' }}>Livraison & Retours</Text>
-            <Text mx={2} cursor="pointer" _hover={{ textDecoration: 'underline' }}>Estimation Bijou</Text>
+            <Text mx={2} cursor="pointer" _hover={{ textDecoration: 'underline' }}>
+                Contactez-Nous
+            </Text>
+            <Text mx={2} cursor="pointer" _hover={{ textDecoration: 'underline' }}>
+                Livraison & Retours
+            </Text>
+            <Text mx={2} cursor="pointer" _hover={{ textDecoration: 'underline' }}>
+                Estimation Bijou
+            </Text>
         </Flex>
     );
 };
