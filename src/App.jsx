@@ -15,6 +15,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import { FaChevronDown } from "react-icons/fa";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import HeaderTop from "./components/HeaderTop";
 import Header from "./components/Header";
@@ -26,6 +27,7 @@ import SearchAccordion from "./components/SearchAccordion";
 import MetalAccordion from "./components/MetalAccordion";
 import PriceRangeSlider from "./components/PriceRangeSlider";
 import FullWidthBanner from "./components/ FullWidthBanner";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
@@ -70,6 +72,7 @@ const App = () => {
       <Router>
         <HeaderTop />
         <Header />
+        <Navbar/>
         <FullWidthBanner/>
         <Flex>
           {/* Mobile Nav Drawer */}
