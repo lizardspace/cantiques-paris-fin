@@ -25,6 +25,7 @@ import GemstoneAccordion from "./components/GemstoneAccordion";
 import SearchAccordion from "./components/SearchAccordion";
 import MetalAccordion from "./components/MetalAccordion";
 import PriceRangeSlider from "./components/PriceRangeSlider";
+import FullWidthBanner from "./components/ FullWidthBanner";
 
 const App = () => {
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
@@ -69,6 +70,7 @@ const App = () => {
       <Router>
         <HeaderTop />
         <Header />
+        <FullWidthBanner/>
         <Flex>
           {/* Mobile Nav Drawer */}
           <IconButton
