@@ -30,6 +30,7 @@ import FullWidthBanner from "./components/ FullWidthBanner";
 import Navbar from "./components/Navbar";
 import Headerb from "./components/Headerb";
 import HeaderTopb from "./components/HeaderTopb";
+import HeaderBar from "./components/HeaderBar";
 
 const App = () => {
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
@@ -74,6 +75,7 @@ const App = () => {
       <Router>
         <HeaderTop />
         <Header />
+        <HeaderBar/>
         <HeaderTopb/>
         <Headerb/>
         <Navbar/>

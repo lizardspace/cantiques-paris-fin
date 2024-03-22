@@ -1,8 +1,8 @@
 import React from 'react';
 import {
   Flex,
+  HStack,
   Text,
-  Box,
   IconButton,
   Spacer,
   Button,
@@ -15,61 +15,60 @@ import { EmailIcon, AtSignIcon } from '@chakra-ui/icons';
 import { FaFacebook, FaInstagram } from 'react-icons/fa';
 import { BsGlobe } from 'react-icons/bs';
 
-const HeaderTopb = () => {
+const HeaderTopBar = () => {
   return (
     <Flex
-      as="footer"
+      as="header"
       p={4}
       justifyContent="space-between"
       alignItems="center"
-      borderTop="1px"
+      borderBottom="1px"
       borderColor="gray.200"
     >
-      <Box>
-        <Text cursor="pointer" mx={2} _hover={{ textDecoration: 'underline' }}>À propos</Text>
-        <Text cursor="pointer" mx={2} _hover={{ textDecoration: 'underline' }}>Nos services</Text>
-        <Text cursor="pointer" mx={2} _hover={{ textDecoration: 'underline' }}>Nos engagements</Text>
-      </Box>
+      {/* Align À propos, Nos services, Nos engagements in a single line using HStack */}
+      <HStack spacing={8}>
+        <Text cursor="pointer" _hover={{ textDecoration: 'underline', color: 'blue.500' }}>À propos</Text>
+        <Text cursor="pointer" _hover={{ textDecoration: 'underline', color: 'blue.500' }}>Nos services</Text>
+        <Text cursor="pointer" _hover={{ textDecoration: 'underline', color: 'blue.500' }}>Nos engagements</Text>
+      </HStack>
 
       <Spacer />
 
-      <Box>
+      <HStack spacing={2}>
         <IconButton
           size="sm"
           icon={<FaFacebook />}
           aria-label="Facebook"
-          mr={2}
         />
         <IconButton
           size="sm"
           icon={<FaInstagram />}
           aria-label="Instagram"
-          mr={2}
         />
         <IconButton
           size="sm"
           icon={<EmailIcon />}
           aria-label="Email"
-          mr={2}
         />
         <Menu>
           <MenuButton as={Button} rightIcon={<BsGlobe />}>
             FR
           </MenuButton>
           <MenuList>
-            <MenuItem minH="48px">
-              <span>EN</span>
-              <AtSignIcon boxSize="2em" mr="2" />
+            <MenuItem minH="40px">
+              <Text fontSize="sm">EN</Text>
+              {/* Adjusted the icon size */}
+              <AtSignIcon boxSize="1.5em" ml="3" />
             </MenuItem>
             <MenuItem minH="40px">
-              <span>FR</span>
-              <AtSignIcon boxSize="2em" mr="2" />
+              <Text fontSize="sm">FR</Text>
+              <AtSignIcon boxSize="1.5em" ml="3" />
             </MenuItem>
           </MenuList>
         </Menu>
-      </Box>
+      </HStack>
     </Flex>
   );
 };
 
-export default HeaderTopb;
+export default HeaderTopBar;
