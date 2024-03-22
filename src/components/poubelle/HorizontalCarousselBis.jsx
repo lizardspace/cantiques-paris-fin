@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Grid, GridItem, IconButton, Box, useBreakpointValue } from '@chakra-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
-import CollectionCard from './CollectionCard'; // Ensure the correct import path
+import CollectionCard from '../CollectionCard'; // Ensure the correct import path
 
 const HorizontalCarouselBis = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

@@ -17,16 +17,16 @@ import {
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { FaChevronDown } from "react-icons/fa";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import HeaderTop from "./components/HeaderTop";
+import HeaderTop from "./components/poubelle/HeaderTop";
 import Header from "./components/Header";
 import SubcategoriesDisplay from "./components/pages/SubcategoriesDisplay";
 import { supabase } from './../supabase';
-import ItemsForSaleSupabase from "./components/ItemForSaleSupabase";
-import GemstoneAccordion from "./components/GemstoneAccordion";
-import SearchAccordion from "./components/SearchAccordion";
-import MetalAccordion from "./components/MetalAccordion";
-import PriceRangeSlider from "./components/PriceRangeSlider";
-import FullWidthBanner from "./components/ FullWidthBanner";
+import ItemsForSaleSupabase from "./components/main/ItemForSaleSupabase";
+import GemstoneAccordion from "./components/sidebar/GemstoneAccordion";
+import SearchAccordion from "./components/sidebar/SearchAccordion";
+import MetalAccordion from "./components/sidebar/MetalAccordion";
+import PriceRangeSlider from "./components/sidebar/PriceRangeSlider";
+import FullWidthBanner from "./components/header/ FullWidthBanner";
 import Navbar from "./components/Navbar";
 import Headerb from "./components/Headerb";
 import HeaderTopb from "./components/HeaderTopb";
@@ -73,7 +73,6 @@ const App = () => {
   return (
     <ChakraProvider>
       <Router>
-        <HeaderTop />
         <Header />
         <HeaderBar/>
         <HeaderTopb/>

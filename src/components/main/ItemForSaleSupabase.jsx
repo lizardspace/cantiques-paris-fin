@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, SimpleGrid } from '@chakra-ui/react';
-import SaleItemCard from './SaleItemCard'; // Adjust the import path as needed
-import { supabase } from './../../supabase'; // Import your configured Supabase client
+import SaleItemCard from '../SaleItemCard'; // Adjust the import path as needed
+import { supabase } from '../../../supabase'; // Import your configured Supabase client
 
 const ItemsForSaleSupabase = () => {
   const [items, setItems] = useState([]);
