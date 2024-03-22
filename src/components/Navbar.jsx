@@ -39,6 +39,11 @@ const Navbar = () => {
         navigate(`/${categoryName.toLowerCase()}`);
     };
 
+    const handleSubcategoryClick = (subcategoryName) => {
+        // Redirect to subcategory page on click
+        navigate(`/subcategory/${subcategoryName.toLowerCase()}`);
+    };
+
     return (
         <Flex justifyContent="center" p={4} borderBottom="1px" borderColor="gray.200" bg="white">
             {categories.map((category) => (
