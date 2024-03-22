@@ -12,7 +12,7 @@ const HeaderBar = () => {
       p={2}
     >
       <Text fontSize="md">
-        SERVICE CLIENT : +33 (0)1 84 60 50 35
+        SERVICE CLIENT : +33 (0) 4 78 34 26 23
       </Text>
     </Flex>
   );
