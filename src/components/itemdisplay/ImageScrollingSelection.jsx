@@ -82,9 +82,9 @@ function ScrollableImageSelector({ images }) {
 const ImageScrollingSelection = () => {
   // Replace these with your image sources
   const images = [
-    'public/images/BijouxPage/bijoux.jpg',
-    'public/images/BijouxPage/diamant.jpg',
-    'public/images/BijouxPage/pierresprecieuses.jpg',
+    '/images/BijouxPage/bijoux.jpg',
+    '/images/BijouxPage/diamant.jpg',
+    '/images/BijouxPage/pierresprecieuses.jpg',
     // ...other images
   ];
 

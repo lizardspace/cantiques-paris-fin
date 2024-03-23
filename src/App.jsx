@@ -30,6 +30,7 @@ import Headerb from "./components/Headerb";
 import HeaderTopb from "./components/HeaderTopb";
 import HeaderBar from "./components/HeaderBar";
 import ImageScrollingSelection from "./components/itemdisplay/ImageScrollingSelection";
+import ProductCard from "./components/itemdisplay/ProductCard";
 
 const App = () => {
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
@@ -125,6 +126,7 @@ const App = () => {
             </Routes>
             <ItemsForSaleSupabase />
             <ImageScrollingSelection/>
+            <ProductCard/>
           </Box>
         </Flex>
       </Router>
