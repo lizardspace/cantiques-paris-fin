@@ -1,8 +1,9 @@
 import React from 'react';
 import { Box, Image, Text, Flex, Badge, IconButton, useColorModeValue } from '@chakra-ui/react';
 import { FaHeart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
-const SaleItemCard = ({ imageUrl, title, price, daysLeft, likes }) => {
+const SaleItemCard = ({ id, imageUrl, title, price, daysLeft, likes }) => {
   const cardBg = useColorModeValue('white', 'gray.800');
 
   return (
@@ -45,6 +46,11 @@ const SaleItemCard = ({ imageUrl, title, price, daysLeft, likes }) => {
             </Badge>
           </Flex>
         </Flex>
+        <Link to={`/${id}`} style={{ textDecoration: 'none' }}>
+          <Text mt="2" color="blue.400" fontSize="sm" fontWeight="bold">
+            View Details
+          </Text>
+        </Link>
       </Box>
     </Box>
   );

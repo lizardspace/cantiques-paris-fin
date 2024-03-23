@@ -32,6 +32,7 @@ import HeaderBar from "./components/HeaderBar";
 import ImageScrollingSelection from "./components/itemdisplay/ImageScrollingSelection";
 import ProductCard from "./components/itemdisplay/ProductCard";
 import CombinedComponent from "./components/itemdisplay/CombinedComponent";
+import ItemDetail from "./components/main/ItemDetail";
 
 const App = () => {
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
@@ -122,12 +123,10 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Navigate to="/art" />} />
               {categoriesWithSubs.map(category => (
-                <Route key={category.categoryId} path={`/${category.categoryName.toLowerCase()}`} element={''} />
+                <Route key={category.categoryId} path={`/${category.categoryName.toLowerCase()}/:itemId`} element={<ItemDetail />} />
               ))}
             </Routes>
             <ItemsForSaleSupabase />
-            <ImageScrollingSelection/>
-            <ProductCard/>
             <CombinedComponent/>
           </Box>
         </Flex>

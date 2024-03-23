@@ -1,3 +1,5 @@
+// Adjusted ItemsForSaleSupabase.jsx
+
 import React, { useEffect, useState } from 'react';
 import { Box, SimpleGrid } from '@chakra-ui/react';
 import SaleItemCard from '../SaleItemCard'; // Adjust the import path as needed
@@ -10,13 +12,14 @@ const ItemsForSaleSupabase = () => {
     const fetchItems = async () => {
       const { data: fetchedItems, error } = await supabase
         .from('items')
-        .select('image_url, title, current_offer, closing_time')
+        .select('id, image_url, title, current_offer, closing_time')
         .order('closing_time', { ascending: true });
 
       if (error) {
         console.error('error', error);
       } else {
         const itemsWithProps = fetchedItems.map(item => ({
+          id: item.id, // Add id property
           imageUrl: item.image_url,
           title: item.title,
           price: item.current_offer,
@@ -42,8 +45,8 @@ const ItemsForSaleSupabase = () => {
   return (
     <Box padding="4">
       <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="4">
-        {items.map((item, index) => (
-          <SaleItemCard key={index} {...item} />
+        {items.map((item) => (
+          <SaleItemCard key={item.id} id={item.id} imageUrl={item.imageUrl} title={item.title} price={item.price} daysLeft={item.daysLeft} likes={item.likes} />
         ))}
       </SimpleGrid>
     </Box>
