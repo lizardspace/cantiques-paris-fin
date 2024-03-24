@@ -27,7 +27,6 @@ import FullWidthBanner from "./components/header/ FullWidthBanner";
 import Headerb from "./components/Headerb";
 import HeaderTopb from "./components/HeaderTopb";
 import HeaderBar from "./components/HeaderBar";
-import CombinedComponent from "./components/itemdisplay/CombinedComponent";
 import ItemDetail from "./components/main/ItemDetail";
 
 const App = () => {
@@ -121,9 +120,10 @@ const App = () => {
               {categoriesWithSubs.map(category => (
                 <Route key={category.categoryId} path={`/${category.categoryName.toLowerCase()}/:itemId`} element={<ItemDetail />} />
               ))}
+              <Route path="/items" element={<ItemsForSaleSupabase />} />
             </Routes>
+
             <ItemsForSaleSupabase />
-            <CombinedComponent/>
           </Box>
         </Flex>
       </Router>

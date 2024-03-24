@@ -1,4 +1,3 @@
-// ItemDetail.jsx
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { supabase } from '../../../supabase'; // Import your configured Supabase client
@@ -32,7 +31,9 @@ const ItemDetail = () => {
   return (
     <div>
       <h2>{item.title}</h2>
+      <img src={item.image_url} alt={item.title} style={{ maxWidth: '100%' }} />
       <p>{item.description}</p>
+      <p>Price: {item.price} €</p>
       {/* Render other item details */}
     </div>
   );
