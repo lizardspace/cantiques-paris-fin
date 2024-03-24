@@ -1,30 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { Box, SimpleGrid } from '@chakra-ui/react';
-import SaleItemCard from './SaleItemCard'; // Adjust the import path as needed
-import { supabase } from '../../../supabase'; // Import your configured Supabase client
-import { useParams } from 'react-router-dom'
-// Include subcategory as a new prop
-const ItemsForSaleSupabase = ({ category, subcategory }) => {
+import SaleItemCard from './SaleItemCard'; // Ajustez le chemin d'importation si nécessaire
+import { supabase } from '../../../supabase'; // Importez votre client Supabase configuré
+import { useParams } from 'react-router-dom'; // Importez useParams
+
+const ItemsForSaleSupabase = ({ category }) => {
   const [items, setItems] = useState([]);
-  const { subcat } = useParams(); // Si vous utilisez 'subcategory/:subcat' comme chemin
-  const decodedSubcat = decodeURIComponent(subcat); 
+  const { subcat } = useParams(); // Extrait le paramètre de sous-catégorie de l'URL
+  const decodedSubcat = subcat ? decodeURIComponent(subcat).toLowerCase() : null;
 
   useEffect(() => {
     const fetchItems = async () => {
       let { data: fetchedItems, error } = await supabase
         .from('items')
-        .select('id, image_url, title, current_offer, closing_time, categories(*), subcategories(*)') // Ensure you are selecting subcategories as well
+        .select('id, image_url, title, current_offer, closing_time, categories(*), subcategories(*)')
         .order('closing_time', { ascending: true });
   
       if (error) {
         console.error('error', error);
       } else {
-        // Adjust filtering to accommodate subcategory if provided
         if (category) {
           fetchedItems = fetchedItems.filter(item => item.categories.name.toLowerCase() === category.toLowerCase());
-        } else if (subcategory) {
-          // Add a filtering condition for subcategory
-          fetchedItems = fetchedItems.filter(item => item.subcategories.name.toLowerCase() === subcategory.toLowerCase());
+        } else if (decodedSubcat) {
+          // Utilisez decodedSubcat pour le filtrage par sous-catégorie
+          fetchedItems = fetchedItems.filter(item => item.subcategories.name.toLowerCase() === decodedSubcat);
         }
   
         const itemsWithProps = fetchedItems.map(item => ({
@@ -33,7 +32,7 @@ const ItemsForSaleSupabase = ({ category, subcategory }) => {
           title: item.title,
           price: item.current_offer,
           daysLeft: calculateDaysLeft(item.closing_time),
-          likes: 0, // Adjust based on your app's functionality
+          likes: 0, // Ajustez en fonction de la fonctionnalité de votre application
         }));
   
         setItems(itemsWithProps);
@@ -41,7 +40,7 @@ const ItemsForSaleSupabase = ({ category, subcategory }) => {
     };
   
     fetchItems();
-  }, [category, subcategory]); // Add subcategory to the dependency array
+  }, [category, decodedSubcat]); // Ajoutez decodedSubcat comme dépendance
 
   const calculateDaysLeft = (closingTime) => {
     const now = new Date();
