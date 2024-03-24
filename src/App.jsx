@@ -15,10 +15,8 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { FaChevronDown } from "react-icons/fa";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import SubcategoriesDisplay from "./components/pages/SubcategoriesDisplay";
 import { supabase } from './../supabase';
 import ItemsForSaleSupabase from "./components/main/ItemForSaleSupabase";
 import GemstoneAccordion from "./components/sidebar/GemstoneAccordion";
@@ -29,8 +27,6 @@ import FullWidthBanner from "./components/header/ FullWidthBanner";
 import Headerb from "./components/Headerb";
 import HeaderTopb from "./components/HeaderTopb";
 import HeaderBar from "./components/HeaderBar";
-import ImageScrollingSelection from "./components/itemdisplay/ImageScrollingSelection";
-import ProductCard from "./components/itemdisplay/ProductCard";
 import CombinedComponent from "./components/itemdisplay/CombinedComponent";
 import ItemDetail from "./components/main/ItemDetail";
 
