@@ -6,6 +6,7 @@ import { supabase } from './../../supabase'; // Import the Supabase client
 
 const Navbar = () => {
     const [categories, setCategories] = useState([]);
+    const [openMenuId, setOpenMenuId] = useState(null); // State to store the ID of the open menu
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -16,7 +17,6 @@ const Navbar = () => {
 
             if (error) console.error('error', error);
             else {
-                // Fetch subcategories for each category
                 for (const category of categories) {
                     let { data: subcategories, error: subError } = await supabase
                         .from('subcategories')
@@ -35,44 +35,49 @@ const Navbar = () => {
     }, []);
 
     const handleCategoryClick = (categoryName) => {
-        // Redirect to category page on click
         navigate(`/${categoryName.toLowerCase()}`);
+    };
+
+    const openMenu = (categoryId) => {
+        setOpenMenuId(categoryId);
+    };
+
+    const closeMenu = () => {
+        setOpenMenuId(null);
     };
 
     return (
         <Flex justifyContent="center" p={4} borderBottom="1px" borderColor="gray.200" bg="white">
             {categories.map((category) => (
-                <Menu key={category.id}>
+                <Menu key={category.id} isOpen={openMenuId === category.id} onClose={closeMenu} onMouseLeave={closeMenu}>
                     <MenuButton
                         as={Text}
                         cursor="pointer"
                         mx={2}
                         _hover={{ textDecoration: 'underline' }}
-                        onMouseEnter={() => handleCategoryHover(category)}
+                        onMouseEnter={() => openMenu(category.id)}
                         onClick={() => handleCategoryClick(category.name)}
                     >
                         {category.name} <ChevronDownIcon />
                     </MenuButton>
                     <MenuList>
-                        {category.subcategories &&
-                            category.subcategories.map((subcategory) => (
-                                <MenuItem
-                                    key={subcategory.id}
-                                    onClick={() => navigate(`/${subcategory.name.toLowerCase()}`)}
-                                >
-                                    {subcategory.name}
-                                </MenuItem>
-                            ))}
+                        {category.subcategories?.map((subcategory) => (
+                            <MenuItem
+                                key={subcategory.id}
+                                onClick={() => navigate(`/${subcategory.name.toLowerCase()}`)}
+                            >
+                                {subcategory.name}
+                            </MenuItem>
+                        ))}
                     </MenuList>
                 </Menu>
             ))}
 
             {/* Other menu items */}
 
-            {/* Spacer */}
             <Box flex="1"></Box>
 
-            {/* Align these items to the right */}
+            {/* Right-aligned items */}
             <Text mx={2} cursor="pointer" _hover={{ textDecoration: 'underline' }}>
                 Contactez-Nous
             </Text>
