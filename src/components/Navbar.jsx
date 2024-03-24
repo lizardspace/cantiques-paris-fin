@@ -58,7 +58,7 @@ const Navbar = () => {
                             category.subcategories.map((subcategory) => (
                                 <MenuItem
                                     key={subcategory.id}
-                                    onClick={() => navigate(`/subcategory/${subcategory.name.toLowerCase()}`)}
+                                    onClick={() => navigate(`/${subcategory.name.toLowerCase()}`)}
                                 >
                                     {subcategory.name}
                                 </MenuItem>
