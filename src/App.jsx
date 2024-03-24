@@ -121,6 +121,7 @@ const App = () => {
                   <Route key={category.categoryId} path={`/${category.categoryName.toLowerCase()}`} element={<ItemsForSaleSupabase category={category.categoryName} />} />
                 ))}
                 <Route path="/subcategory/:subcat" element={<ItemsForSaleSupabase />} />
+                <Route path="/item/:itemId" element={<ItemDetail />} /> {/* Route pour les détails de l'item */}
               </Routes>
           </Box>
         </Flex>

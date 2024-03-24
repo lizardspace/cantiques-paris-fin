@@ -1,12 +1,18 @@
 import React from 'react';
 import { Box, Image, Text, Flex, IconButton, useColorModeValue } from '@chakra-ui/react';
 import { FaHeart } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const SaleItemCard = ({ id, imageUrl, title, price }) => {
+  const navigate = useNavigate();
+  const handleItemClick = () => {
+    navigate(`/item/${id}`); // Navigue vers les détails de l'item
+  };
   const cardBg = useColorModeValue('white', 'gray.800');
 
   return (
+    <div onClick={handleItemClick} style={{ cursor: 'pointer' }}>
     <Link to={`/${id}`} style={{ textDecoration: 'none' }}>
       <Box
         maxW="sm"
@@ -40,6 +46,7 @@ const SaleItemCard = ({ id, imageUrl, title, price }) => {
 
       </Box>
     </Link>
+    </div>
   );
 };
 
