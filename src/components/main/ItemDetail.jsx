@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ContactForm from './ContactForm';
 import { useParams } from 'react-router-dom';
 import { supabase } from '../../../supabase';
 import {
@@ -8,7 +9,7 @@ import {
   Text,
   Image,
   VStack,
-HStack,
+  HStack,
   Button,
   Link,
   Divider,
@@ -83,18 +84,24 @@ const ItemDetail = () => {
             <AccordionPanel pb={4}>
               <Text><strong>Estimation de la galerie :</strong> {item.estimated_gallery_value}</Text>
               <Text><strong>Sélectionné par :</strong> {item.selected_by}</Text>
-<Text><strong>Méthodes de paiement :</strong> {paymentMethods}</Text>
-        <Text><strong>Informations légales :</strong> {item.legal_information}</Text>
+              <Text><strong>Méthodes de paiement :</strong> {paymentMethods}</Text>
+              <Text><strong>Informations légales :</strong> {item.legal_information}</Text>
               <Text><strong>Marque :</strong> {item.brand}</Text>
               <Text><strong>Poids :</strong> {item.weight}</Text>
               <Text><strong>Dimensions :</strong> {item.dimensions}</Text>
               <Text><strong>Pierre :</strong> {item.pierre}</Text>
               <Text><strong>Métal :</strong> {item.metal}</Text>
-            </AccordionPanel>
+              </AccordionPanel>
+              {/* AccordionItem pour le formulaire de contact */}
+              <AccordionButton>
+                <Box flex="1" textAlign="left">Contactez-nous</Box>
+                <AccordionIcon />
+              </AccordionButton>
+              <AccordionPanel pb={4}>
+                <ContactForm />
+              </AccordionPanel>
           </AccordionItem>
         </Accordion>
-
-
 
         <Button colorScheme="blue" size="lg" mt="4">Acheter maintenant</Button>
 
