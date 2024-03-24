@@ -44,7 +44,7 @@ const ItemsForSaleSupabase = () => {
 
   return (
     <Box padding="4">
-      <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="4">
+      <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4, xl: 6 }} spacing="4">
         {items.map((item) => (
           <SaleItemCard key={item.id} id={item.id} imageUrl={item.imageUrl} title={item.title} price={item.price} daysLeft={item.daysLeft} likes={item.likes} />
         ))}
