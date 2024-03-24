@@ -56,14 +56,14 @@ const ItemDetail = () => {
       </VStack>
       <VStack flex={{ base: "none", md: "1" }} p="4" spacing="4" alignItems="start">
         <Heading size="lg">{item.title}</Heading>
-        <Text fontSize="xl" color="blue.500">{item.price} €</Text>
-        <Text>{item.description}</Text>
-        {/* Autres détails de l'item */}
+        <Text fontSize="xl" color="blue.500">{item.current_offer} €</Text>
+        <Text>{item.item_description}</Text> {/* Affichez la description de l'item */}
+        {/* Incluez ici les autres détails de l'item que vous souhaitez afficher */}
         <Button colorScheme="blue" size="lg">Acheter maintenant</Button>
         <Link color="blue.600" href="#">Plus de détails</Link>
       </VStack>
     </Flex>
-  );
+  );  
 };
 
 export default ItemDetail;
