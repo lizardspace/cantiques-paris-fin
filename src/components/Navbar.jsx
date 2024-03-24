@@ -38,6 +38,11 @@ const Navbar = () => {
         navigate(`/${categoryName.toLowerCase()}`);
     };
 
+    const handleSubcategoryClick = (subcategoryName) => {
+        const path = encodeURIComponent(subcategoryName.toLowerCase());
+        navigate(`/subcategory/${path}`); // Utilisez une route spécifique pour les sous-catégories
+    };
+
     const openMenu = (categoryId) => {
         setOpenMenuId(categoryId);
     };
@@ -62,12 +67,10 @@ const Navbar = () => {
                     </MenuButton>
                     <MenuList>
                         {category.subcategories?.map((subcategory) => (
-                            <MenuItem
-                                key={subcategory.id}
-                                onClick={() => navigate(`/${subcategory.name.toLowerCase()}`)}
-                            >
+                            <MenuItem key={subcategory.id} onClick={() => handleSubcategoryClick(subcategory.name)}>
                                 {subcategory.name}
                             </MenuItem>
+
                         ))}
                     </MenuList>
                 </Menu>

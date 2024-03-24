@@ -115,12 +115,13 @@ const App = () => {
           </Box>
           {/* Main Content */}
           <Box flex="1" p={5}>
-            <Routes>
-              <Route path="/" element={<ItemsForSaleSupabase />} />
-              {categoriesWithSubs.map(category => (
-                <Route key={category.categoryId} path={`/${category.categoryName.toLowerCase()}`} element={<ItemsForSaleSupabase category={category.categoryName} />} />
-              ))}
-            </Routes>
+              <Routes>
+                <Route path="/" element={<ItemsForSaleSupabase />} />
+                {categoriesWithSubs.map(category => (
+                  <Route key={category.categoryId} path={`/${category.categoryName.toLowerCase()}`} element={<ItemsForSaleSupabase category={category.categoryName} />} />
+                ))}
+                <Route path="/subcategory/:subcat" element={<ItemsForSaleSupabase />} />
+              </Routes>
           </Box>
         </Flex>
       </Router>
