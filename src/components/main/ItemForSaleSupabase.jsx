@@ -5,34 +5,38 @@ import { Box, SimpleGrid } from '@chakra-ui/react';
 import SaleItemCard from './SaleItemCard'; // Adjust the import path as needed
 import { supabase } from '../../../supabase'; // Import your configured Supabase client
 
-const ItemsForSaleSupabase = () => {
+const ItemsForSaleSupabase = ({ category }) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
     const fetchItems = async () => {
-      const { data: fetchedItems, error } = await supabase
+      let { data: fetchedItems, error } = await supabase
         .from('items')
-        .select('id, image_url, title, current_offer, closing_time')
+        .select('id, image_url, title, current_offer, closing_time, categories(*)')
         .order('closing_time', { ascending: true });
-
+  
       if (error) {
         console.error('error', error);
       } else {
+        if (category) {
+          fetchedItems = fetchedItems.filter(item => item.categories.name.toLowerCase() === category.toLowerCase());
+        }
+  
         const itemsWithProps = fetchedItems.map(item => ({
-          id: item.id, // Add id property
+          id: item.id,
           imageUrl: item.image_url,
           title: item.title,
           price: item.current_offer,
           daysLeft: calculateDaysLeft(item.closing_time),
           likes: 0, // Adjust based on your app's functionality
         }));
-
+  
         setItems(itemsWithProps);
       }
     };
-
+  
     fetchItems();
-  }, []);
+  }, [category]);  
 
   const calculateDaysLeft = (closingTime) => {
     const now = new Date();

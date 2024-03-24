@@ -116,11 +116,10 @@ const App = () => {
           {/* Main Content */}
           <Box flex="1" p={5}>
             <Routes>
-              <Route path="/" element={<Navigate to="/art" />} />
+              <Route path="/" element={<ItemsForSaleSupabase />} />
               {categoriesWithSubs.map(category => (
-                <Route key={category.categoryId} path={`/${category.categoryName.toLowerCase()}/:itemId`} element={<ItemDetail />} />
+                <Route key={category.categoryId} path={`/${category.categoryName.toLowerCase()}`} element={<ItemsForSaleSupabase category={category.categoryName} />} />
               ))}
-              <Route path="/items" element={<ItemsForSaleSupabase />} />
             </Routes>
 
             <ItemsForSaleSupabase />
