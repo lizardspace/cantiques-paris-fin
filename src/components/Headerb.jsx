@@ -7,7 +7,7 @@ import {
   InputLeftElement,
   Button,
   IconButton,
-  Text,
+  Image, // Importez le composant Image de Chakra UI
   useColorModeValue
 } from '@chakra-ui/react';
 import { SearchIcon, AddIcon, BellIcon, AtSignIcon } from '@chakra-ui/icons';
@@ -24,9 +24,13 @@ const Headerb = () => {
       borderColor="gray.200"
     >
       <Box>
-        <Text fontSize="xl" fontWeight="bold">
-          CANTIQUES PARIS
-        </Text>
+        {/* Remplacez Text par Image pour afficher le logo */}
+        <Image
+          src="/images/agavic/agaviclogo.png" // Assurez-vous que le chemin est correct
+          alt="Logo Agavic"
+          htmlWidth="100px" // Vous pouvez ajuster la largeur selon vos besoins
+          htmlHeight="auto" // Hauteur auto pour maintenir l'aspect ratio
+        />
       </Box>
       <InputGroup maxWidth="480px" w="100%">
         <InputLeftElement pointerEvents="none" children={<SearchIcon color="gray.500" />} />
