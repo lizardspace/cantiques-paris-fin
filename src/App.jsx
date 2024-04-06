@@ -16,7 +16,6 @@ const App = () => {
     </ChakraProvider>
   );
 };
-
 const InnerApp = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const location = useLocation();
@@ -26,14 +25,10 @@ const InnerApp = () => {
 
   const urlPath = decodeURIComponent(location.pathname);
   const normalizeComponentName = (name) => {
-    // Vérifie si 'name' est une chaîne; si ce n'est pas le cas, convertissez-la en chaîne
     if (typeof name !== 'string') {
       console.error("Expected 'name' to be a string", name);
-      // Convertissez 'name' en chaîne si possible ou gérez l'erreur différemment
       name = String(name);
     }
-    
-    // Remplacez les espaces par rien ou un autre caractère valide
     return name.replace(/\s+/g, '');
   };
 
@@ -43,24 +38,24 @@ const InnerApp = () => {
   
     return (props) => (
       <React.Suspense fallback={<div>Loading...</div>}>
-        <Component {...props} /> // Assurez-vous que le composant est rendu correctement
+        <Component {...props} />
       </React.Suspense>
     );
   }; 
 
-// Supposons que cette partie reste inchangée
-const createDynamicRoutes = (urlPath) => {
-  const component = urlPath.split('/').pop(); // Utilisez la dernière partie de l'URL comme nom de composant
-  const normalizedComponent = normalizeComponentName(component);
+  // Déplacez la déclaration de createDynamicRoutes et dynamicRoutes ici
+  const createDynamicRoutes = (urlPath) => {
+    const component = urlPath.split('/').pop();
+    const normalizedComponent = normalizeComponentName(component);
 
-  const dynamicRoute = {
-    path: urlPath,
-    component: normalizedComponent, // Assurez-vous que ceci est une chaîne
-    data: {} // Des données supplémentaires si nécessaire
+    const dynamicRoute = {
+      path: urlPath,
+      component: normalizedComponent,
+      data: {}
+    };
+
+    return [dynamicRoute];
   };
-
-  return [dynamicRoute];
-};
 
 // Assurez-vous que l'appel à LazyComponentWrapper utilise la chaîne directement
 {dynamicRoutes.map((route, index) => (
@@ -102,9 +97,7 @@ const createDynamicRoutes = (urlPath) => {
               <Route
                 key={index}
                 path={route.path}
-                element={
-                  <LazyComponentWrapper component={route.component} />
-                }
+                element={<LazyComponentWrapper component={route.component} />}
               />
             ))}
           </Routes>
