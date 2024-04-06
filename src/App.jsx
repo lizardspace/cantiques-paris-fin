@@ -40,26 +40,39 @@ const InnerApp = () => {
   const LazyComponentWrapper = (componentName) => {
     const normalizedComponentName = normalizeComponentName(componentName);
     const Component = React.lazy(() => import(`./routes/${normalizedComponentName}/index.jsx`));
-
+  
     return (props) => (
       <React.Suspense fallback={<div>Loading...</div>}>
-        <Component {...props} />
+        <Component {...props} /> // Assurez-vous que le composant est rendu correctement
       </React.Suspense>
     );
+  }; 
+
+// Supposons que cette partie reste inchangée
+const createDynamicRoutes = (urlPath) => {
+  const component = urlPath.split('/').pop(); // Utilisez la dernière partie de l'URL comme nom de composant
+  const normalizedComponent = normalizeComponentName(component);
+
+  const dynamicRoute = {
+    path: urlPath,
+    component: normalizedComponent, // Assurez-vous que ceci est une chaîne
+    data: {} // Des données supplémentaires si nécessaire
   };
 
-  const createDynamicRoutes = (urlPath) => {
-    const component = urlPath.split('/').pop(); // Utilisez la dernière partie de l'URL comme nom de composant
-    const normalizedComponent = normalizeComponentName(component);
+  return [dynamicRoute];
+};
 
-    const dynamicRoute = {
-      path: urlPath,
-      component: normalizedComponent, // Nom de composant normalisé
-      data: {} // Vous pouvez ajouter des données supplémentaires ici si nécessaire
-    };
+// Assurez-vous que l'appel à LazyComponentWrapper utilise la chaîne directement
+{dynamicRoutes.map((route, index) => (
+  <Route
+    key={index}
+    path={route.path}
+    element={
+      <LazyComponentWrapper component={route.component} /> // Assurez-vous que 'route.component' est une chaîne
+    }
+  />
+))}
 
-    return [dynamicRoute];
-  };
 
   const dynamicRoutes = createDynamicRoutes(urlPath);
 
