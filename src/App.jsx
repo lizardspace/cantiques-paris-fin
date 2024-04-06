@@ -22,16 +22,22 @@ const InnerApp = () => {
   const location = useLocation();
 
   const getComponentName = (path) => {
-    // Convertit "/assurance-vie" en "AssuranceVie"
     const name = path.split('/').filter(Boolean).map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
     return name;
   };
-  
+
   const ComponentName = getComponentName(location.pathname);
-  const ComponentToRender = lazy(() => import(`./routes/${ComponentName}/index.jsx`).catch(() => import('./NotFound.jsx')));
+  console.log("ComponentName:", ComponentName);
+  
+  const ComponentToRender = lazy(() => import(`./routes/${ComponentName}/index.jsx`).catch(() => {
+    console.log("Fallback: NotFound.jsx");
+    return import('./NotFound.jsx');
+  }));
+  
+  console.log("ComponentToRender:", ComponentToRender);
 
   useEffect(() => {
-    // Met à jour le composant à rendre chaque fois que l'URL change
+    console.log("Location pathname:", location.pathname);
     getComponentName(location.pathname);
   }, [location.pathname]);
 
