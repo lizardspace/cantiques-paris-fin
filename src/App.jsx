@@ -22,7 +22,7 @@ const InnerApp = () => {
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
 
   const urlPath = decodeURIComponent(location.pathname);
-  
+
   const normalizeComponentName = (name) => {
     if (typeof name !== 'string') {
       console.error("Expected 'name' to be a string", name);
@@ -51,7 +51,7 @@ const InnerApp = () => {
   const LazyComponentWrapper = (componentName) => {
     const normalizedComponentName = normalizeComponentName(componentName);
     const Component = React.lazy(() => import(`./routes/${normalizedComponentName}/index.jsx`));
-  
+
     return (props) => (
       <React.Suspense fallback={<div>Loading...</div>}>
         <Component {...props} />
