@@ -7,7 +7,7 @@ const BannerModal = ({ isOpen, onClose }) => {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Inscrivez-vous maintenant et profitez de 50€ de bon d'achat!</ModalHeader>
+        <ModalHeader>Boostez votre épargne* Visez entre 4,50% et 5% de rendement net en 2024 sous conditions.</ModalHeader>
         <ModalBody>
           <Text mb={4}>Veuillez entrer votre email pour vous inscrire:</Text>
           <Input placeholder='Email' />
@@ -40,7 +40,7 @@ const FullWidthBanner = () => {
         cursor="pointer"
       >
         <Text textAlign="center" fontWeight="bold">
-          Inscrivez-vous à notre newsletter et profitez de 50€ de bon d'achat!
+        Boostez votre épargne* Visez entre 4,50% et 5% de rendement net en 2024 sous conditions.
         </Text>
       </Flex>
       
