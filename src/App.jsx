@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { Suspense, lazy, useState, useEffect } from "react";
 import { ChakraProvider, Box, Flex, IconButton, useDisclosure, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import FullWidthBanner from "./components/header/FullWidthBanner";
 import Headerb from "./components/Headerb";
@@ -16,48 +17,26 @@ const App = () => {
     </ChakraProvider>
   );
 };
+
 const InnerApp = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const location = useLocation();
-  const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
 
-  const urlPath = decodeURIComponent(location.pathname);
-
-  const normalizeComponentName = (name) => {
-    if (typeof name !== 'string') {
-      console.error("Expected 'name' to be a string", name);
-      name = String(name);
-    }
-    return name.replace(/\s+/g, '');
+  // Fonction pour nettoyer et normaliser le chemin d'accès
+  const getComponentName = (path) => {
+    // Exemple: convertit "/assurance-vie" en "AssuranceVie"
+    const name = path.split('/').filter(Boolean).map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
+    return name;
   };
 
-  // Définissez `createDynamicRoutes` ici avant de l'utiliser
-  const createDynamicRoutes = (urlPath) => {
-    const component = urlPath.split('/').pop();
-    const normalizedComponent = normalizeComponentName(component);
+  const ComponentName = getComponentName(location.pathname);
+  // Chargez le composant correspondant de manière paresseuse
+  const ComponentToRender = lazy(() => import(`./routes/${ComponentName}/index.jsx`).catch(() => import('./NotFound.jsx')));
 
-    const dynamicRoute = {
-      path: urlPath,
-      component: normalizedComponent, // Assurez-vous que ceci est une chaîne
-      data: {} // Des données supplémentaires si nécessaire
-    };
-
-    return [dynamicRoute];
-  };
-
-  // Initialisez `dynamicRoutes` juste après sa définition
-  const dynamicRoutes = createDynamicRoutes(urlPath);
-
-  const LazyComponentWrapper = (componentName) => {
-    const normalizedComponentName = normalizeComponentName(componentName);
-    const Component = React.lazy(() => import(`./routes/${normalizedComponentName}/index.jsx`));
-
-    return (props) => (
-      <React.Suspense fallback={<div>Loading...</div>}>
-        <Component {...props} />
-      </React.Suspense>
-    );
-  };
+  useEffect(() => {
+    // Met à jour le composant à rendre chaque fois que l'URL change
+    getComponentName(location.pathname);
+  }, [location.pathname]);
 
   return (
     <>
@@ -80,15 +59,11 @@ const InnerApp = () => {
       </Drawer>
       <Flex>
         <Box flex="1" p={5}>
-          <Routes>
-            {dynamicRoutes.map((route, index) => (
-              <Route
-                key={index}
-                path={route.path}
-                element={<LazyComponentWrapper component={route.component} />}
-              />
-            ))}
-          </Routes>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              <Route path="*" element={<ComponentToRender />} />
+            </Routes>
+          </Suspense>
         </Box>
       </Flex>
     </>
