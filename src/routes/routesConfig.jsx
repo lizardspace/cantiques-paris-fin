@@ -1,3 +1,5 @@
+// routesConfig.js
+
 const createDynamicRoutes = (categoriesWithSubs) => {
   const dynamicRoutes = categoriesWithSubs.flatMap(category => [
     { path: `/${encodeURIComponent(category.name.toLowerCase())}`, component: 'CategoryPage', data: category },
