@@ -21,9 +21,8 @@ const InnerApp = () => {
   const location = useLocation();
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
 
-  // Logique pour récupérer les catégories avec useEffect
-
   const urlPath = decodeURIComponent(location.pathname);
+  
   const normalizeComponentName = (name) => {
     if (typeof name !== 'string') {
       console.error("Expected 'name' to be a string", name);
@@ -31,6 +30,23 @@ const InnerApp = () => {
     }
     return name.replace(/\s+/g, '');
   };
+
+  // Définissez `createDynamicRoutes` ici avant de l'utiliser
+  const createDynamicRoutes = (urlPath) => {
+    const component = urlPath.split('/').pop();
+    const normalizedComponent = normalizeComponentName(component);
+
+    const dynamicRoute = {
+      path: urlPath,
+      component: normalizedComponent, // Assurez-vous que ceci est une chaîne
+      data: {} // Des données supplémentaires si nécessaire
+    };
+
+    return [dynamicRoute];
+  };
+
+  // Initialisez `dynamicRoutes` juste après sa définition
+  const dynamicRoutes = createDynamicRoutes(urlPath);
 
   const LazyComponentWrapper = (componentName) => {
     const normalizedComponentName = normalizeComponentName(componentName);
@@ -41,35 +57,7 @@ const InnerApp = () => {
         <Component {...props} />
       </React.Suspense>
     );
-  }; 
-
-  // Déplacez la déclaration de createDynamicRoutes et dynamicRoutes ici
-  const createDynamicRoutes = (urlPath) => {
-    const component = urlPath.split('/').pop();
-    const normalizedComponent = normalizeComponentName(component);
-
-    const dynamicRoute = {
-      path: urlPath,
-      component: normalizedComponent,
-      data: {}
-    };
-
-    return [dynamicRoute];
   };
-
-// Assurez-vous que l'appel à LazyComponentWrapper utilise la chaîne directement
-{dynamicRoutes.map((route, index) => (
-  <Route
-    key={index}
-    path={route.path}
-    element={
-      <LazyComponentWrapper component={route.component} /> // Assurez-vous que 'route.component' est une chaîne
-    }
-  />
-))}
-
-
-  const dynamicRoutes = createDynamicRoutes(urlPath);
 
   return (
     <>
