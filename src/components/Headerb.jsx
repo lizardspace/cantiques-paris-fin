@@ -55,7 +55,7 @@ const Headerb = () => {
     >
       <Flex alignItems="center">
         <Image
-          src="/public/images/agavic/agaviclogo.png"
+          src="/images/agavic/agaviclogo.png"
           alt="Logo Agavic"
           htmlWidth="240px"
           htmlHeight="auto"

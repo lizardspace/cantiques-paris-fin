@@ -21,14 +21,22 @@ import FullWidthBanner from "./components/header/FullWidthBanner";
 import Headerb from "./components/Headerb";
 import HeaderBar from "./components/HeaderBar";
 import ItemDetail from "./components/main/ItemDetail";
+import routesConfig, { createDynamicRoutes } from './routes/routesConfig';
+import LazyComponentWrapper from './LazyComponentWrapper';
 
 const App = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  // Logic to fetch categories from Supabase can be placed here or inside useEffect
+  const categoriesWithSubs = []; // Assume this is fetched and formatted as needed
+
+  const dynamicRoutes = createDynamicRoutes(categoriesWithSubs);
+  const combinedRoutes = [...routesConfig, ...dynamicRoutes];
+
   return (
     <ChakraProvider>
       <Router>
-        <HeaderBar />
+      <HeaderBar />
         <Headerb />
         {/* Navbar only visible on larger screens */}
         <Box display={{ base: 'none', md: 'block' }}>
@@ -60,10 +68,15 @@ const App = () => {
         <Flex>
           {/* Main Content */}
           <Box flex="1" p={5}>
-            <Routes>
-              <Route path="/" element={<ItemsForSaleSupabase />} />
-              {/* ... more routes */}
-            </Routes>
+        <Routes>
+          {combinedRoutes.map((route) => (
+            <Route 
+              key={route.path} 
+              path={route.path} 
+              element={LazyComponentWrapper(route.component)({ data: route.data })} 
+            />
+          ))}
+        </Routes>
           </Box>
         </Flex>
       </Router>
