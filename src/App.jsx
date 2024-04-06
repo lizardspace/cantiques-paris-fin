@@ -25,10 +25,21 @@ const InnerApp = () => {
   // Logique pour récupérer les catégories avec useEffect
 
   const urlPath = decodeURIComponent(location.pathname);
+  const normalizeComponentName = (name) => {
+    // Vérifie si 'name' est une chaîne; si ce n'est pas le cas, convertissez-la en chaîne
+    if (typeof name !== 'string') {
+      console.error("Expected 'name' to be a string", name);
+      // Convertissez 'name' en chaîne si possible ou gérez l'erreur différemment
+      name = String(name);
+    }
+    
+    // Remplacez les espaces par rien ou un autre caractère valide
+    return name.replace(/\s+/g, '');
+  };
 
   const LazyComponentWrapper = (componentName) => {
-    const encodedComponentName = encodeURIComponent(componentName);
-    const Component = React.lazy(() => import(`./routes/${encodedComponentName}/index.jsx`));
+    const normalizedComponentName = normalizeComponentName(componentName);
+    const Component = React.lazy(() => import(`./routes/${normalizedComponentName}/index.jsx`));
 
     return (props) => (
       <React.Suspense fallback={<div>Loading...</div>}>
@@ -38,9 +49,12 @@ const InnerApp = () => {
   };
 
   const createDynamicRoutes = (urlPath) => {
+    const component = urlPath.split('/').pop(); // Utilisez la dernière partie de l'URL comme nom de composant
+    const normalizedComponent = normalizeComponentName(component);
+
     const dynamicRoute = {
       path: urlPath,
-      component: urlPath.split('/').pop(), // Utilisez la dernière partie de l'URL comme nom de composant
+      component: normalizedComponent, // Nom de composant normalisé
       data: {} // Vous pouvez ajouter des données supplémentaires ici si nécessaire
     };
 
