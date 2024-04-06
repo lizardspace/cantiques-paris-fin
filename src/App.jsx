@@ -12,7 +12,6 @@ import {
   DrawerHeader,
   DrawerBody,
   IconButton,
-  VStack,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -33,7 +32,7 @@ const App = () => {
       <Router>
         <HeaderBar />
         <Headerb />
-        <Navbar />
+        <Navbar isDrawer={false} />
         <FullWidthBanner />
         {/* Mobile Nav Button */}
         <IconButton
@@ -52,22 +51,21 @@ const App = () => {
             <DrawerCloseButton />
             <DrawerHeader>Menu</DrawerHeader>
             <DrawerBody>
-              <Navbar />
+              <Navbar isDrawer={true} />
             </DrawerBody>
           </DrawerContent>
         </Drawer>
-        {/* Main Content and Static Navbar */}
         <Flex>
           {/* Main Content */}
           <Box flex="1" p={5}>
-              <Routes>
-                <Route path="/" element={<ItemsForSaleSupabase />} />
-                {categoriesWithSubs.map(category => (
-                  <Route key={category.categoryId} path={`/${category.categoryName.toLowerCase()}`} element={<ItemsForSaleSupabase category={category.categoryName} />} />
-                ))}
-                <Route path="/subcategory/:subcat" element={<ItemsForSaleSupabase />} />
-                <Route path="/item/:itemId" element={<ItemDetail />} /> {/* Route pour les détails de l'item */}
-              </Routes>
+            <Routes>
+              <Route path="/" element={<ItemsForSaleSupabase />} />
+              {categoriesWithSubs.map(category => (
+                <Route key={category.categoryId} path={`/${category.categoryName.toLowerCase()}`} element={<ItemsForSaleSupabase category={category.categoryName} />} />
+              ))}
+              <Route path="/subcategory/:subcat" element={<ItemsForSaleSupabase />} />
+              <Route path="/item/:itemId" element={<ItemDetail />} /> {/* Route pour les détails de l'item */}
+            </Routes>
           </Box>
         </Flex>
       </Router>

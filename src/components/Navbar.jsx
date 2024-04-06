@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Flex, Text, Menu, MenuButton, MenuItem, MenuList, Box } from '@chakra-ui/react';
+import { Flex, Box, Text, Menu, MenuButton, MenuItem, MenuList, VStack } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from './../../supabase'; // Import the Supabase client
 
-const Navbar = () => {
+const Navbar = ({ isDrawer }) => {
     const [categories, setCategories] = useState([]);
     const [openMenuId, setOpenMenuId] = useState(null); // State to store the ID of the open menu
     const navigate = useNavigate();
@@ -50,47 +50,57 @@ const Navbar = () => {
     const closeMenu = () => {
         setOpenMenuId(null);
     };
+    const Container = isDrawer ? VStack : Flex;
 
     return (
-        <Flex justifyContent="center" p={4} borderBottom="1px" borderColor="gray.200" bg="white">
-            {categories.map((category) => (
-                <Menu key={category.id} isOpen={openMenuId === category.id} onClose={closeMenu} onMouseLeave={closeMenu}>
-                    <MenuButton
-                        as={Text}
-                        cursor="pointer"
-                        mx={2}
-                        _hover={{ textDecoration: 'underline' }}
-                        onMouseEnter={() => openMenu(category.id)}
-                        onClick={() => handleCategoryClick(category.name)}
-                    >
-                        {category.name} <ChevronDownIcon />
-                    </MenuButton>
-                    <MenuList>
-                        {category.subcategories?.map((subcategory) => (
-                            <MenuItem key={subcategory.id} onClick={() => handleSubcategoryClick(subcategory.name)}>
-                                {subcategory.name}
-                            </MenuItem>
+        <Container
+            justifyContent={isDrawer ? "start" : "center"}
+            alignItems={isDrawer ? "stretch" : "center"}
+            p={4}
+            borderBottom="1px"
+            borderColor="gray.200"
+            bg="white"
+            direction={isDrawer ? "column" : "row"} // Flex direction based on isDrawer
+            spacing={isDrawer ? 4 : 0} // Spacing for VStack, not needed for Flex
+        >
+                {categories.map((category) => (
+                    <Menu key={category.id} isOpen={openMenuId === category.id} onClose={closeMenu} onMouseLeave={closeMenu}>
+                        <MenuButton
+                            as={Text}
+                            cursor="pointer"
+                            mx={2}
+                            _hover={{ textDecoration: 'underline' }}
+                            onMouseEnter={() => openMenu(category.id)}
+                            onClick={() => handleCategoryClick(category.name)}
+                        >
+                            {category.name} <ChevronDownIcon />
+                        </MenuButton>
+                        <MenuList>
+                            {category.subcategories?.map((subcategory) => (
+                                <MenuItem key={subcategory.id} onClick={() => handleSubcategoryClick(subcategory.name)}>
+                                    {subcategory.name}
+                                </MenuItem>
 
-                        ))}
-                    </MenuList>
-                </Menu>
-            ))}
+                            ))}
+                        </MenuList>
+                    </Menu>
+                ))}
 
-            {/* Other menu items */}
+                {/* Other menu items */}
 
-            <Box flex="1"></Box>
+                <Box flex="1"></Box>
 
-            {/* Right-aligned items */}
-            <Text mx={2} cursor="pointer" _hover={{ textDecoration: 'underline' }}>
-                Contactez-Nous
-            </Text>
-            <Text mx={2} cursor="pointer" _hover={{ textDecoration: 'underline' }}>
-                Livraison & Retours
-            </Text>
-            <Text mx={2} cursor="pointer" _hover={{ textDecoration: 'underline' }}>
-                Estimation Bijou
-            </Text>
-        </Flex>
+                {/* Right-aligned items */}
+                <Text mx={2} cursor="pointer" _hover={{ textDecoration: 'underline' }}>
+                    Contactez-Nous
+                </Text>
+                <Text mx={2} cursor="pointer" _hover={{ textDecoration: 'underline' }}>
+                    Livraison & Retours
+                </Text>
+                <Text mx={2} cursor="pointer" _hover={{ textDecoration: 'underline' }}>
+                    Estimation Bijou
+                </Text>
+        </Container>
     );
 };
 
