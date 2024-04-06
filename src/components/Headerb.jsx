@@ -38,7 +38,7 @@ const Headerb = () => {
       </Flex>
       <InputGroup maxWidth="480px" w="100%">
         <InputLeftElement pointerEvents="none" children={<SearchIcon color="gray.500" />} />
-        <Input placeholder="Rechercher" bg={searchInputBg} />
+        <Input placeholder="Rechercher un produit ou une information" bg={searchInputBg} />
       </InputGroup>
       <Flex alignItems="center">
         <Button size="sm" mr={2}>
