@@ -21,15 +21,13 @@ const InnerApp = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const location = useLocation();
 
-  // Fonction pour nettoyer et normaliser le chemin d'accès
   const getComponentName = (path) => {
-    // Exemple: convertit "/assurance-vie" en "AssuranceVie"
+    // Convertit "/assurance-vie" en "AssuranceVie"
     const name = path.split('/').filter(Boolean).map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
     return name;
   };
-
+  
   const ComponentName = getComponentName(location.pathname);
-  // Chargez le composant correspondant de manière paresseuse
   const ComponentToRender = lazy(() => import(`./routes/${ComponentName}/index.jsx`).catch(() => import('./NotFound.jsx')));
 
   useEffect(() => {
