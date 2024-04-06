@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState, useEffect } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { ChakraProvider, Box, Flex, IconButton, useDisclosure, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
@@ -21,25 +21,23 @@ const InnerApp = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const location = useLocation();
 
-  const getComponentName = (path) => {
-    const name = path.split('/').filter(Boolean).map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
-    return name;
-  };
+  // Récupérer l'URL actuelle
+  const currentPath = location.pathname;
 
-  const ComponentName = getComponentName(location.pathname);
-  console.log("ComponentName:", ComponentName);
-  
-  const ComponentToRender = lazy(() => import(`./routes/${ComponentName}/index.jsx`).catch(() => {
-    console.log("Fallback: NotFound.jsx");
-    return import('./NotFound.jsx');
-  }));
-  
-  console.log("ComponentToRender:", ComponentToRender);
+  // Remplacer les %20 par des tirets bas dans le nom du composant
+  const componentName = currentPath.split('/').filter(Boolean).map(part => part.replace(/%20/g, '_')).join('');
+
+  // Déduire le chemin du fichier du composant en remplaçant les %20 par des tirets bas
+  const componentFilePath = `./routes/${componentName}/index.jsx`;
+
+  // Charger le composant dynamiquement
+  const ComponentToRender = lazy(() => import(componentFilePath).catch(() => import('./NotFound.jsx')));
 
   useEffect(() => {
-    console.log("Location pathname:", location.pathname);
-    getComponentName(location.pathname);
-  }, [location.pathname]);
+    console.log("Location pathname:", currentPath);
+    console.log("Component name:", componentName);
+    console.log("Component file path:", componentFilePath);
+  }, [currentPath, componentName, componentFilePath]);
 
   return (
     <>
