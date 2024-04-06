@@ -8,6 +8,7 @@ import {
   Button,
   IconButton,
   Image, // Importez le composant Image de Chakra UI
+  Text, // Importez le composant Text pour le numéro de téléphone
   useColorModeValue
 } from '@chakra-ui/react';
 import { SearchIcon, AddIcon, BellIcon, AtSignIcon } from '@chakra-ui/icons';
@@ -23,15 +24,18 @@ const Headerb = () => {
       borderBottom="1px"
       borderColor="gray.200"
     >
-      <Box>
-        {/* Remplacez Text par Image pour afficher le logo */}
+      <Flex alignItems="center">
         <Image
-          src="/images/agavic/agaviclogo.png" // Assurez-vous que le chemin est correct
+          src="/public/images/agavic/agaviclogo.png" // Assurez-vous que le chemin est correct
           alt="Logo Agavic"
-          htmlWidth="100px" // Vous pouvez ajuster la largeur selon vos besoins
+          htmlWidth="240px" // Taille du logo doublée
           htmlHeight="auto" // Hauteur auto pour maintenir l'aspect ratio
+          mr={4} // Ajoutez une marge à droite pour espacer le logo du numéro de téléphone
         />
-      </Box>
+        <Text fontWeight="bold" color="blue.800" fontSize="lg">
+          +33 (0) 4 78 34 26 23
+        </Text>
+      </Flex>
       <InputGroup maxWidth="480px" w="100%">
         <InputLeftElement pointerEvents="none" children={<SearchIcon color="gray.500" />} />
         <Input placeholder="Rechercher" bg={searchInputBg} />
