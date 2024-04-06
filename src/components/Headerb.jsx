@@ -61,10 +61,10 @@ const Headerb = () => {
       </InputGroup>
       <Flex alignItems="center">
         <Button size="sm" mr={2}>
-          VENDRE VOS BIJOUX
+         Souscrire en ligne
         </Button>
         <Button size="sm" mr={2}>
-          Se connecter
+         Espace client
         </Button>
         <IconButton
           size="sm"
