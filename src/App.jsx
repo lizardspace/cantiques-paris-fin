@@ -1,8 +1,7 @@
 import React, { Suspense, lazy, useState, useEffect } from "react";
 import { ChakraProvider, Box, Flex, IconButton, useDisclosure, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { useLocation } from 'react-router-dom';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import FullWidthBanner from "./components/header/FullWidthBanner";
 import Headerb from "./components/Headerb";
