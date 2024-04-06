@@ -15,14 +15,10 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { supabase } from './../supabase';
 import ItemsForSaleSupabase from "./components/main/ItemForSaleSupabase";
-import GemstoneAccordion from "./components/sidebar/GemstoneAccordion";
-import SearchAccordion from "./components/sidebar/SearchAccordion";
-import MetalAccordion from "./components/sidebar/MetalAccordion";
-import PriceRangeSlider from "./components/sidebar/PriceRangeSlider";
 import FullWidthBanner from "./components/header/ FullWidthBanner";
 import Headerb from "./components/Headerb";
 import HeaderBar from "./components/HeaderBar";
@@ -32,40 +28,6 @@ const App = () => {
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  // Define responsive sidebar widths
-  const sidebarWidth = { base: "100%", sm: "100%", md: "250px" };
-
-  useEffect(() => {
-    const fetchSubcategories = async () => {
-      let { data: subcategories, error } = await supabase
-        .from('subcategories')
-        .select('*, categories(*)')
-        .order('created_at', { ascending: true });
-
-      if (error) {
-        console.error('error', error);
-      } else {
-        const grouped = subcategories.reduce((acc, subcategory) => {
-          const categoryId = subcategory.category_id;
-          if (!acc[categoryId]) {
-            acc[categoryId] = {
-              categoryId,
-              categoryName: subcategory.categories.name,
-              color: subcategory.categories.color,
-              subcategories: []
-            };
-          }
-          acc[categoryId].subcategories.push(subcategory);
-          return acc;
-        }, {});
-
-        setCategoriesWithSubs(Object.values(grouped));
-      }
-    };
-
-    fetchSubcategories();
-  }, []);
-
   return (
     <ChakraProvider>
       <Router>
@@ -73,44 +35,29 @@ const App = () => {
         <Headerb />
         <Navbar />
         <FullWidthBanner />
+        {/* Mobile Nav Button */}
+        <IconButton
+          icon={<HamburgerIcon />}
+          onClick={onOpen}
+          display={{ sm: "inline-flex", md: "none" }}
+          aria-label="Open menu"
+          position="absolute" // Adjust this as needed
+          top={4}
+          left={4}
+        />
+        {/* Mobile Drawer */}
+        <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerHeader>Menu</DrawerHeader>
+            <DrawerBody>
+              <Navbar />
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
+        {/* Main Content and Static Navbar */}
         <Flex>
-          {/* Mobile Nav Drawer */}
-          <IconButton
-            icon={<HamburgerIcon />}
-            onClick={onOpen}
-            display={{ sm: "inline-flex", md: "none" }}
-            aria-label="Open menu"
-          />
-          <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
-            <DrawerOverlay />
-            <DrawerContent>
-              <DrawerCloseButton />
-              <DrawerHeader>Gemstones</DrawerHeader>
-              <DrawerBody>
-                <VStack spacing="24px" align="stretch">
-                  <Box width={sidebarWidth}>
-                    <GemstoneAccordion />
-                    <SearchAccordion />
-                    <MetalAccordion />
-                    <PriceRangeSlider />
-                  </Box>
-                </VStack>
-              </DrawerBody>
-            </DrawerContent>
-          </Drawer>
-          {/* Sidebar for non-mobile */}
-          <Box
-            display={{ base: 'none', md: 'block' }} // Hide on base, show on md and up
-            width={sidebarWidth} // Responsive width
-            p={4}
-          >
-            <VStack spacing={4}>
-              <GemstoneAccordion />
-              <SearchAccordion />
-              <MetalAccordion />
-              <PriceRangeSlider />
-            </VStack>
-          </Box>
           {/* Main Content */}
           <Box flex="1" p={5}>
               <Routes>
