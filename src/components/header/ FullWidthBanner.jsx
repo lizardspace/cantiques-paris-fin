@@ -32,15 +32,18 @@ const FullWidthBanner = () => {
       <Flex
         width="100%"
         bg="blue.500"
-        color="white"
         justifyContent="center"
         alignItems="center"
         p={4}
         onClick={onOpen}
         cursor="pointer"
       >
-        <Text textAlign="center" fontWeight="bold">
-        Boostez votre épargne* Visez entre 4,50% et 5% de rendement net en 2024 sous conditions.
+        {/* Wrapped the specific text in its own Text component for individual styling */}
+        <Text color="orange.500" fontWeight="bold" mr={2}>
+          Boostez votre épargne*
+        </Text>
+        <Text color="white" textAlign="center" fontWeight="bold">
+          Visez entre 4,50% et 5% de rendement net en 2024 sous conditions.
         </Text>
       </Flex>
       
