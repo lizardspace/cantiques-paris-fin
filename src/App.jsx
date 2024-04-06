@@ -68,15 +68,9 @@ const App = () => {
         <Flex>
           {/* Main Content */}
           <Box flex="1" p={5}>
-        <Routes>
-          {combinedRoutes.map((route) => (
-            <Route 
-              key={route.path} 
-              path={route.path} 
-              element={LazyComponentWrapper(route.component)({ data: route.data })} 
-            />
-          ))}
-        </Routes>
+          <Routes>
+              {/* ... more routes */}
+            </Routes>
           </Box>
         </Flex>
       </Router>

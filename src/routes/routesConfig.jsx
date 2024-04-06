@@ -1,12 +1,3 @@
-// routesConfig.js
-const routesConfig = [
-    { path: '/', component: 'ItemsForSaleSupabase' },
-    { path: '/item/:itemId', component: 'ItemDetail' },
-    // Add more static routes here
-  ];
-  
-  export default routesConfig;
-
   // Add this function to routesConfig.js
 export const createDynamicRoutes = (categoriesWithSubs) => {
     const dynamicRoutes = categoriesWithSubs.flatMap(category => [
