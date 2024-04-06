@@ -31,31 +31,4 @@ const FeatureBox = ({ icon, title, description }) => {
   );
 };
 
-const FeaturesComponent = () => {
-  return (
-    <Flex wrap="wrap" justifyContent="center" p={5}>
-      <FeatureBox
-        icon={featureIcons.lowFees}
-        title="Des frais parmi les plus bas du marché"
-        description="0%* de frais d'entrée, de versement et d'arbitrage en ligne *Hors SCPI, SCI, trackers et actions. D'autres frais peuvent s'appliquer."
-      />
-      <FeatureBox
-        icon={featureIcons.dynamicFunds}
-        title="Des fonds euros dynamiques et des supports innovants"
-        description="OPCVM, ETF, Private Equity, SCPI, etc."
-      />
-      <FeatureBox
-        icon={featureIcons.advice}
-        title="Conseil"
-        description="des conseillers en investissement financier 5/7 de 09h à 18h"
-      />
-      <FeatureBox
-        icon={featureIcons.simplicity}
-        title="Simplicité"
-        description="souscription et gestion 100% en ligne"
-      />
-    </Flex>
-  );
-};
-
-export default FeaturesComponent;
+export default FeatureBox;

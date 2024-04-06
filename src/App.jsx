@@ -8,15 +8,15 @@ import Headerb from "./components/Headerb";
 import HeaderBar from "./components/HeaderBar";
 import LazyComponentWrapper from './LazyComponentWrapper';
 import createDynamicRoutes from './routes/routesConfig';
+import AssuranceVie from './routes/assurancevie/index'; // Importez le composant AssuranceVie
 
 const App = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
 
-
+  // Logique de récupération des catégories avec useEffect, comme précédemment mentionné
 
   const dynamicRoutes = createDynamicRoutes(categoriesWithSubs);
-
   const combinedRoutes = [...dynamicRoutes];
 
   return (
@@ -54,6 +54,8 @@ const App = () => {
                   }
                 />
               ))}
+              {/* Assurez-vous que la route vers AssuranceVie est correctement définie */}
+              <Route path="/assurance vie" element={<AssuranceVie />} />
             </Routes>
           </Box>
         </Flex>
