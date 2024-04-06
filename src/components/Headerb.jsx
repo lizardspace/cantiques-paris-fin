@@ -4,14 +4,14 @@ import {
   Box,
   Input,
   InputGroup,
-  InputRightAddon, // Use InputRightAddon for placing the icon in a styled box to the right
+  InputRightAddon,
   Button,
   IconButton,
   Image,
   Text,
   useColorModeValue
 } from '@chakra-ui/react';
-import { SearchIcon, AddIcon, BellIcon, AtSignIcon } from '@chakra-ui/icons';
+import { SearchIcon, ChevronRightIcon, AddIcon, BellIcon, AtSignIcon } from '@chakra-ui/icons'; // Updated to include ChevronRightIcon
 
 const Headerb = () => {
   const searchInputBg = useColorModeValue('gray.100', 'gray.700');
@@ -22,6 +22,17 @@ const Headerb = () => {
     // Implement your search functionality here
   };
 
+  // Custom styling for the buttons based on the image inspiration
+  const buttonStyle = {
+    size: 'md', // Make buttons larger
+    fontWeight: 'bold',
+    borderRadius: 'full', // Fully rounded borders
+    paddingX: '1.5rem', // Horizontal padding
+    boxShadow: 'md', // Medium shadow for depth
+    _hover: { boxShadow: 'lg' }, // Larger shadow on hover for a nice effect
+    // Adjust colors, sizes, and other properties as needed
+  };
+
   return (
     <Flex
       justifyContent="space-between"
@@ -29,6 +40,7 @@ const Headerb = () => {
       p={4}
       borderBottom="1px"
       borderColor="gray.200"
+      wrap="wrap" // Wrap elements for responsiveness
     >
       <Flex alignItems="center">
         <Image
@@ -38,33 +50,32 @@ const Headerb = () => {
           htmlHeight="auto"
           mr={4}
         />
-        <Text fontWeight="bold" color="blue.800" fontSize="lg">
+        <Text fontWeight="bold" color="blue.800" fontSize="lg" display={{ base: 'none', md: 'block' }}>
           +33 (0) 4 78 34 26 23
         </Text>
       </Flex>
-      <InputGroup maxWidth="480px" w="100%">
+      <InputGroup maxWidth="480px" w="100%" my={2}>
         <Input
           placeholder="Rechercher un produit ou une information"
           bg={searchInputBg}
         />
-        {/* InputRightAddon with IconButton inside */}
-        <InputRightAddon children={
+        <InputRightAddon>
           <IconButton
             icon={<SearchIcon />}
             aria-label="Search"
             size="sm"
-            colorScheme="blue" // Sets the icon button color scheme to blue
-            onClick={handleSearchClick} // Adds click functionality
-            _hover={{ bg: "blue.600" }} // Changes background on hover
+            colorScheme="blue"
+            onClick={handleSearchClick}
+            _hover={{ bg: "blue.600" }}
           />
-        } />
+        </InputRightAddon>
       </InputGroup>
-      <Flex alignItems="center">
-        <Button size="sm" mr={2}>
-         Souscrire en ligne
+      <Flex alignItems="center" my={2}>
+        <Button {...buttonStyle} colorScheme="orange" mr={2} rightIcon={<ChevronRightIcon />}>
+          Souscrire en ligne
         </Button>
-        <Button size="sm" mr={2}>
-         Espace client
+        <Button {...buttonStyle} colorScheme="orange" mr={2} rightIcon={<ChevronRightIcon />}>
+          Espace client
         </Button>
         <IconButton
           size="sm"
