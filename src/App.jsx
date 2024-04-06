@@ -1,5 +1,5 @@
 // App.jsx
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   ChakraProvider,
   Flex,
@@ -16,15 +16,13 @@ import {
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import { supabase } from './../supabase';
 import ItemsForSaleSupabase from "./components/main/ItemForSaleSupabase";
-import FullWidthBanner from "./components/header/ FullWidthBanner";
+import FullWidthBanner from "./components/header/FullWidthBanner";
 import Headerb from "./components/Headerb";
 import HeaderBar from "./components/HeaderBar";
 import ItemDetail from "./components/main/ItemDetail";
 
 const App = () => {
-  const [categoriesWithSubs, setCategoriesWithSubs] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -32,15 +30,18 @@ const App = () => {
       <Router>
         <HeaderBar />
         <Headerb />
-        <Navbar isDrawer={false} />
+        {/* Navbar only visible on larger screens */}
+        <Box display={{ base: 'none', md: 'block' }}>
+          <Navbar />
+        </Box>
         <FullWidthBanner />
         {/* Mobile Nav Button */}
         <IconButton
           icon={<HamburgerIcon />}
           onClick={onOpen}
-          display={{ sm: "inline-flex", md: "none" }}
+          display={{ base: "inline-flex", md: "none" }}
           aria-label="Open menu"
-          position="absolute" // Adjust this as needed
+          position="absolute"
           top={4}
           left={4}
         />
@@ -51,6 +52,7 @@ const App = () => {
             <DrawerCloseButton />
             <DrawerHeader>Menu</DrawerHeader>
             <DrawerBody>
+              {/* Navbar for small screens, within the Drawer */}
               <Navbar isDrawer={true} />
             </DrawerBody>
           </DrawerContent>
@@ -60,11 +62,7 @@ const App = () => {
           <Box flex="1" p={5}>
             <Routes>
               <Route path="/" element={<ItemsForSaleSupabase />} />
-              {categoriesWithSubs.map(category => (
-                <Route key={category.categoryId} path={`/${category.categoryName.toLowerCase()}`} element={<ItemsForSaleSupabase category={category.categoryName} />} />
-              ))}
-              <Route path="/subcategory/:subcat" element={<ItemsForSaleSupabase />} />
-              <Route path="/item/:itemId" element={<ItemDetail />} /> {/* Route pour les détails de l'item */}
+              {/* ... more routes */}
             </Routes>
           </Box>
         </Flex>
