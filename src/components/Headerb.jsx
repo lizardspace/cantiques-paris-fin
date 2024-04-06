@@ -4,17 +4,23 @@ import {
   Box,
   Input,
   InputGroup,
-  InputLeftElement,
+  InputRightAddon, // Use InputRightAddon for placing the icon in a styled box to the right
   Button,
   IconButton,
-  Image, // Importez le composant Image de Chakra UI
-  Text, // Importez le composant Text pour le numéro de téléphone
+  Image,
+  Text,
   useColorModeValue
 } from '@chakra-ui/react';
 import { SearchIcon, AddIcon, BellIcon, AtSignIcon } from '@chakra-ui/icons';
 
 const Headerb = () => {
   const searchInputBg = useColorModeValue('gray.100', 'gray.700');
+
+  // Function to handle search icon click event
+  const handleSearchClick = () => {
+    console.log("Search clicked!");
+    // Implement your search functionality here
+  };
 
   return (
     <Flex
@@ -26,19 +32,32 @@ const Headerb = () => {
     >
       <Flex alignItems="center">
         <Image
-          src="/public/images/agavic/agaviclogo.png" // Assurez-vous que le chemin est correct
+          src="/public/images/agavic/agaviclogo.png"
           alt="Logo Agavic"
-          htmlWidth="240px" // Taille du logo doublée
-          htmlHeight="auto" // Hauteur auto pour maintenir l'aspect ratio
-          mr={4} // Ajoutez une marge à droite pour espacer le logo du numéro de téléphone
+          htmlWidth="240px"
+          htmlHeight="auto"
+          mr={4}
         />
         <Text fontWeight="bold" color="blue.800" fontSize="lg">
           +33 (0) 4 78 34 26 23
         </Text>
       </Flex>
       <InputGroup maxWidth="480px" w="100%">
-        <InputLeftElement pointerEvents="none" children={<SearchIcon color="gray.500" />} />
-        <Input placeholder="Rechercher un produit ou une information" bg={searchInputBg} />
+        <Input
+          placeholder="Rechercher un produit ou une information"
+          bg={searchInputBg}
+        />
+        {/* InputRightAddon with IconButton inside */}
+        <InputRightAddon children={
+          <IconButton
+            icon={<SearchIcon />}
+            aria-label="Search"
+            size="sm"
+            colorScheme="blue" // Sets the icon button color scheme to blue
+            onClick={handleSearchClick} // Adds click functionality
+            _hover={{ bg: "blue.600" }} // Changes background on hover
+          />
+        } />
       </InputGroup>
       <Flex alignItems="center">
         <Button size="sm" mr={2}>
