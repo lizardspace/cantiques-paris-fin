@@ -4,33 +4,44 @@ import {
   Box,
   Input,
   InputGroup,
-  InputRightAddon,
+  InputRightElement, // Change to InputRightElement for the icon button
   Button,
   IconButton,
   Image,
   Text,
   useColorModeValue
 } from '@chakra-ui/react';
-import { SearchIcon, ChevronRightIcon, AddIcon, BellIcon, AtSignIcon } from '@chakra-ui/icons'; // Updated to include ChevronRightIcon
+import { SearchIcon, ChevronRightIcon, AddIcon, BellIcon, AtSignIcon } from '@chakra-ui/icons';
 
 const Headerb = () => {
   const searchInputBg = useColorModeValue('gray.100', 'gray.700');
 
   // Function to handle search icon click event
   const handleSearchClick = () => {
-    console.log("Search clicked!");
     // Implement your search functionality here
+    console.log("Search clicked!");
   };
 
-  // Custom styling for the buttons based on the image inspiration
+  // Custom styling for the buttons based on the blue theme
   const buttonStyle = {
-    size: 'md', // Make buttons larger
+    size: 'md',
     fontWeight: 'bold',
-    borderRadius: 'full', // Fully rounded borders
-    paddingX: '1.5rem', // Horizontal padding
-    boxShadow: 'md', // Medium shadow for depth
-    _hover: { boxShadow: 'lg' }, // Larger shadow on hover for a nice effect
-    // Adjust colors, sizes, and other properties as needed
+    borderRadius: 'full',
+    boxShadow: 'md',
+    _hover: {
+      boxShadow: 'lg',
+    },
+  };
+
+  // Custom styling for the IconButton components
+  const iconButtonStyle = {
+    ...buttonStyle, // Spread the button styles to maintain consistency
+    backgroundColor: 'blue.500', // Set the default background color
+    color: 'white', // Set the icon color
+    _hover: {
+      backgroundColor: 'blue.600', // Darken the button on hover
+    },
+    // Add more styles if needed
   };
 
   return (
@@ -40,7 +51,7 @@ const Headerb = () => {
       p={4}
       borderBottom="1px"
       borderColor="gray.200"
-      wrap="wrap" // Wrap elements for responsiveness
+      wrap="wrap"
     >
       <Flex alignItems="center">
         <Image
@@ -55,44 +66,41 @@ const Headerb = () => {
         </Text>
       </Flex>
       <InputGroup maxWidth="480px" w="100%" my={2}>
-        <Input
-          placeholder="Rechercher un produit ou une information"
-          bg={searchInputBg}
-        />
-        <InputRightAddon>
+        <Input placeholder="Rechercher un produit ou une information" bg={searchInputBg} />
+        <InputRightElement>
           <IconButton
             icon={<SearchIcon />}
             aria-label="Search"
-            size="sm"
-            colorScheme="blue"
+            size="md"
+            {...iconButtonStyle}
             onClick={handleSearchClick}
-            _hover={{ bg: "blue.600" }}
           />
-        </InputRightAddon>
+        </InputRightElement>
       </InputGroup>
       <Flex alignItems="center" my={2}>
-        <Button {...buttonStyle} colorScheme="orange" mr={2} rightIcon={<ChevronRightIcon />}>
+        <Button {...buttonStyle} colorScheme="blue" mr={2} rightIcon={<ChevronRightIcon />}>
           Souscrire en ligne
         </Button>
-        <Button {...buttonStyle} colorScheme="orange" mr={2} rightIcon={<ChevronRightIcon />}>
+        <Button {...buttonStyle} colorScheme="blue" mr={2} rightIcon={<ChevronRightIcon />}>
           Espace client
         </Button>
+        {/* Apply iconButtonStyle to each IconButton */}
         <IconButton
-          size="sm"
+          aria-label="Add to Wishlist"
           icon={<AddIcon />}
-          aria-label="Wishlist"
+          {...iconButtonStyle}
           mr={2}
         />
         <IconButton
-          size="sm"
-          icon={<BellIcon />}
           aria-label="Notifications"
+          icon={<BellIcon />}
+          {...iconButtonStyle}
           mr={2}
         />
         <IconButton
-          size="sm"
-          icon={<AtSignIcon />}
           aria-label="Contact"
+          icon={<AtSignIcon />}
+          {...iconButtonStyle}
         />
       </Flex>
     </Flex>
