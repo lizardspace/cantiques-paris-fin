@@ -25,7 +25,6 @@ import MetalAccordion from "./components/sidebar/MetalAccordion";
 import PriceRangeSlider from "./components/sidebar/PriceRangeSlider";
 import FullWidthBanner from "./components/header/ FullWidthBanner";
 import Headerb from "./components/Headerb";
-import HeaderTopb from "./components/HeaderTopb";
 import HeaderBar from "./components/HeaderBar";
 import ItemDetail from "./components/main/ItemDetail";
 
@@ -71,7 +70,6 @@ const App = () => {
     <ChakraProvider>
       <Router>
         <HeaderBar />
-        <HeaderTopb />
         <Headerb />
         <Navbar />
         <FullWidthBanner />
