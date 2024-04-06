@@ -28,7 +28,7 @@ const InnerApp = () => {
 
   const LazyComponentWrapper = (componentName) => {
     const encodedComponentName = encodeURIComponent(componentName);
-    const Component = React.lazy(() => import(`./components/main/${encodedComponentName}`));
+    const Component = React.lazy(() => import(`./routes/${encodedComponentName}/index.jsx`));
 
     return (props) => (
       <React.Suspense fallback={<div>Loading...</div>}>
@@ -38,10 +38,13 @@ const InnerApp = () => {
   };
 
   const createDynamicRoutes = (urlPath) => {
-    // Logique pour générer dynamiquement les routes en fonction de urlPath
-    // Cette logique doit être implémentée en fonction de votre cas d'utilisation
-    // Dans cet exemple, nous n'avons pas de données de catégories, donc nous ne générons pas de routes dynamiques pour l'instant
-    return [];
+    const dynamicRoute = {
+      path: urlPath,
+      component: urlPath.split('/').pop(), // Utilisez la dernière partie de l'URL comme nom de composant
+      data: {} // Vous pouvez ajouter des données supplémentaires ici si nécessaire
+    };
+
+    return [dynamicRoute];
   };
 
   const dynamicRoutes = createDynamicRoutes(urlPath);
@@ -73,10 +76,7 @@ const InnerApp = () => {
                 key={index}
                 path={route.path}
                 element={
-                  React.createElement(LazyComponentWrapper(route.component), {
-                    ...route.data,
-                    key: index,
-                  })
+                  <LazyComponentWrapper component={route.component} />
                 }
               />
             ))}
