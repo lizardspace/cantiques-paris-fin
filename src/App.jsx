@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 import FullWidthBanner from "./components/header/FullWidthBanner";
 import Headerb from "./components/Headerb";
 import HeaderBar from "./components/HeaderBar";
-import AssuranceViePage from "./routes/assurance_vie";
+
 
 const App = () => {
   return (
@@ -30,11 +30,10 @@ const InnerApp = () => {
   const ComponentToRender = lazy(() =>
     import(componentFilePath)
       .catch(() => {
-        // Tenter de recharger après un court délai avant de se résoudre à une erreur
-        return new Promise((resolve) => setTimeout(resolve, 10000)) // Délai d'1 seconde
+        return new Promise((resolve) => setTimeout(resolve, 1000)) 
           .then(() => import(componentFilePath))
           .catch(() => {
-            setLoadError(true); // Si le rechargement échoue, activer l'état d'erreur
+            setLoadError(true); 
             return import('./NotFound.jsx');
           });
       })
