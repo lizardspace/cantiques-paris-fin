@@ -1,21 +1,27 @@
 import React from 'react';
-import {
-  Box,
-  Heading,
-  Text,
-  Button,
-  Flex,
-  Image,
-  VStack,
-  HStack
-} from '@chakra-ui/react';
+import { Box, Flex, Text, Button, VStack, Image, Icon } from '@chakra-ui/react';
+import { FiCheckCircle } from 'react-icons/fi';
 
-// Component for displaying the simulation button and text
+// SVG Line Chart
+const MiniChart = () => {
+  return (
+    <Image
+      src="public/images/agavic/undraw_growth_analytics_re_pyxf.svg"
+      alt="Growth Analytics"
+      borderRadius="md"
+      mb={2} // Ajuster la marge inférieure pour réduire l'espace entre le SVG et les autres composants
+      maxHeight="150px" // Définir une hauteur maximale pour réduire la taille du SVG
+    />
+  );
+};
+
+// Simulation Button and Text Component
 const SimulationButton = () => {
   return (
-    <VStack align="start" p={5} spacing={4} bg="orange.100" borderRadius="md">
-      <Heading size="md">L'assurance-vie :</Heading>
-      <Text fontSize="sm">
+    <VStack align="center" p={8} spacing={6} bg="#3182ce" borderRadius="xl" width="300px" boxShadow="lg">
+      <Icon as={FiCheckCircle} boxSize="48px" color="white" />
+      <Text fontWeight="bold" fontSize="2xl" color="white">L'assurance-vie 💼</Text>
+      <Text fontSize="lg" textAlign="center" color="white">
         Nous sélectionnons pour vous les meilleurs contrats du marché : des frais bas et un large choix de supports
       </Text>
       <Button colorScheme="orange" size="lg">Faire votre simulation</Button>
@@ -23,33 +29,13 @@ const SimulationButton = () => {
   );
 };
 
-// Component to display the image and the account balance
-const AccountBalance = () => {
-  return (
-    <Flex direction="column" justify="center" align="center" ml={10}>
-      <Image src="/images/agavic/assurancevie1.jpg" alt="Assurance Vie" boxSize="300px" objectFit="cover" borderRadius="md" />
-      <Box p={5}>
-        <Text fontSize="sm" color="gray.500">Evolution du contrat au 02/05/2023</Text>
-        <HStack justify="space-between" w="full">
-          <Text fontSize="2xl" fontWeight="bold">10 600,00 €</Text>
-          <Box p={2} bg="green.200" borderRadius="md">
-            <Text fontSize="sm" color="green.800">+743,00 €</Text>
-          </Box>
-        </HStack>
-      </Box>
-    </Flex>
-  );
-};
-
-// Main component
+// Main InvestmentComponent component
 const InvestmentComponent = () => {
   return (
-    <Box maxW="container.xl" mx="auto" p={5} boxShadow="md" bg="white">
-      <Flex direction={{ base: 'column', md: 'row' }} align="center">
-        <SimulationButton />
-        <AccountBalance />
-      </Flex>
-    </Box>
+    <Flex direction={{ base: 'column', md: 'row' }} align="center" justify="space-around" p={8} bg="#F7FAFC" borderRadius="xl" boxShadow="xl">
+      <SimulationButton />
+      <MiniChart />
+    </Flex>
   );
 };
 
