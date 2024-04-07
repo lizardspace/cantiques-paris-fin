@@ -6,26 +6,27 @@ const AdviceComponent = () => {
     <Flex
       direction={{ base: 'column', md: 'row' }}
       alignItems="center"
-      justifyContent="center" // This ensures content is centered, especially in a row layout
+      justifyContent="center" 
       p={{ base: 4, md: 8 }}
       bg="#3182ce"
       color="white"
-      borderRadius="lg" // Adds border radius to the Flex container
+      borderRadius="lg"
+      textAlign="center" 
+      width="100%" 
     >
       <Image
-        src="/public/images/agavic/undraw_remote_meeting_re_abe7.svg" // Updated path to the image
+        src="/public/images/agavic/undraw_remote_meeting_re_abe7.svg"
         alt="Expert Advice"
         boxSize={{ base: '150px', md: '200px' }}
         objectFit="contain"
         mr={{ base: 0, md: 8 }}
-        borderRadius="md" // Optionally, add borderRadius to the Image
+        borderRadius="md"
       />
       <Box
         flex="1"
         ml={{ base: 0, md: 8 }}
         mt={{ base: 4, md: 0 }}
-        textAlign={{ base: 'center', md: 'left' }}
-        borderRadius="md" // Adds borderRadius to the Box, if desired for individual components
+        borderRadius="md"
       >
         <Text fontSize="xl" fontWeight="bold" mb={2}>
           Besoin de conseil ?
