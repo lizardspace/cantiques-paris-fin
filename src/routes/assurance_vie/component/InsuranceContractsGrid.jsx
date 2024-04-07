@@ -64,7 +64,7 @@ function InsuranceContractsGrid() {
 
   return (
     <Box maxW="container.xl" mx="auto" p={5}>
-      <Heading mb={6}>Notre gamme de contrats d’assurance vie</Heading>
+      <Heading mb={6} color="blue.600" fontSize="2xl" textAlign="center">Notre gamme de contrats d’assurance vie</Heading>
       <Alert status="warning" mb={6}>
         <AlertIcon />
         Agavic vous propose 4 contrats d’assurance vie à frais réduits : Agavic Avenir 2 (Suravenir), Agavic Spirit 2 (Spirica), Agavic Vie (Generali) et Agavic Zen (Apicil). Ces contrats présentent un risque de perte en capital.
@@ -82,11 +82,13 @@ function InsuranceContractsGrid() {
               boxShadow="sm"
               spacing={4}
             >
-              <Icon as={contract.icon} w={16} h={16} color="orange.400" />
-              <Heading size="md" textAlign="center">{contract.title}</Heading>
+              <Icon as={contract.icon} w={16} h={16} color="green.500" />
+              <Heading size="lg" textAlign="center" color="blue.600">
+                <Badge colorScheme="blue">{contract.title}</Badge>
+              </Heading>
               {contract.features.map((feature, featureIndex) => (
                 <Text key={featureIndex} fontSize="sm" textAlign="center">
-                  <Text as="span" fontWeight="bold" fontSize="sm">{feature.subtitle}</Text>{' '}
+                  <Badge colorScheme="green">{feature.subtitle}</Badge>{' '}
                   {feature.content}
                 </Text>
               ))}
