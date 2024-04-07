@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Link, SimpleGrid, Text, Center } from '@chakra-ui/react';
+import { Box, Link, SimpleGrid, Text, Center, Flex } from '@chakra-ui/react';
 
 const FooterComponent = () => {
   return (
@@ -12,20 +12,21 @@ const FooterComponent = () => {
         </Box>
         <Center>
           <Box>
-            <Text fontWeight="bold" marginBottom="4">Liens utiles :</Text>
             <Box as="nav" aria-label="Footer navigation">
-              <Link href="#" color="white" isExternal marginBottom="2" display="block">
-                Conditions générales d'utilisation
-              </Link>
-              <Link href="#" color="white" isExternal marginBottom="2" display="block">
-                Données personnelles
-              </Link>
-              <Link href="#" color="white" isExternal marginBottom="2" display="block">
-                Mentions légales
-              </Link>
-              <Link href="#" color="white" isExternal marginBottom="2" display="block">
-                Cookies
-              </Link>
+              <Flex direction="row" justifyContent="center" alignItems="center">
+                <Link href="#" color="white" isExternal marginBottom="2" marginRight="4">
+                  Conditions générales d'utilisation
+                </Link>
+                <Link href="#" color="white" isExternal marginBottom="2" marginRight="4">
+                  Données personnelles
+                </Link>
+                <Link href="#" color="white" isExternal marginBottom="2" marginRight="4">
+                  Mentions légales
+                </Link>
+                <Link href="#" color="white" isExternal marginBottom="2">
+                  Cookies
+                </Link>
+              </Flex>
             </Box>
           </Box>
         </Center>
