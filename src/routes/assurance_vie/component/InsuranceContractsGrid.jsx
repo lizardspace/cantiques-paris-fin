@@ -83,12 +83,16 @@ function InsuranceContractsGrid() {
               spacing={4}
             >
               <Icon as={contract.icon} w={16} h={16} color="green.500" />
-              <Heading size="lg" textAlign="center" color="blue.600">
-                <Badge colorScheme="blue">{contract.title}</Badge>
+              <Heading size="lg" textAlign="center">
+                <Badge colorScheme="blue" borderRadius="full" px={2} py={1} mb={2}>
+                  {contract.title}
+                </Badge>
               </Heading>
               {contract.features.map((feature, featureIndex) => (
                 <Text key={featureIndex} fontSize="sm" textAlign="center">
-                  <Badge colorScheme="green">{feature.subtitle}</Badge>{' '}
+                  <Badge colorScheme="green" borderRadius="full" px={2} py={1} mb={1}>
+                    {feature.subtitle}
+                  </Badge>{' '}
                   {feature.content}
                 </Text>
               ))}
