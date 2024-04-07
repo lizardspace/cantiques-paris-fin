@@ -211,15 +211,15 @@ const SavingsSimulator = () => {
                         title="Versements cumulés"
                         value={formattedCumulative + " €"}
                     />
-                    <Box as="span" fontSize="3xl" p={2}>
-                        <FaPlus />
+                    <Box fontSize="3xl" p={2}>
+                        <Box as={FaPlus} color="green.500" />
                     </Box>
                     <DataCard
                         title="Intérêts cumulés au terme"
                         value={formattedInterests + " €"}
                     />
-                    <Box as="span" fontSize="3xl" p={2}>
-                        <FaEquals />
+                    <Box fontSize="3xl" p={2}>
+                        <Box as={FaEquals} color="blue.500" />
                     </Box>
                     <DataCard
                         title="Capital final"
