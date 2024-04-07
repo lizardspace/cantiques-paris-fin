@@ -14,7 +14,9 @@ const AdviceComponent = () => {
       textAlign="center"
       width="100%"
       boxShadow="md" // Ajout d'une ombre
+      mb={5}
     >
+
       <Image
         src="/public/images/agavic/undraw_remote_meeting_re_abe7.svg"
         alt="Expert Advice"
