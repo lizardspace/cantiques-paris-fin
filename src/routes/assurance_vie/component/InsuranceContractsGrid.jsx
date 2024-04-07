@@ -6,7 +6,10 @@ import {
   Heading,
   Text,
   VStack,
-  Icon
+  Icon,
+  Alert,
+  AlertIcon,
+  Badge
 } from '@chakra-ui/react';
 import {
   FcAssistant,
@@ -62,9 +65,10 @@ function InsuranceContractsGrid() {
   return (
     <Box maxW="container.xl" mx="auto" p={5}>
       <Heading mb={6}>Notre gamme de contrats d’assurance vie</Heading>
-      <Text mb={6} textAlign="center">
-          Agavic vous propose 4 contrats d’assurance vie à frais réduits : Agavic Avenir 2 (Suravenir), Agavic Spirit 2 (Spirica), Agavic Vie (Generali) et Agavic Zen (Apicil). Ces contrats présentent un risque de perte en capital.
-        </Text>
+      <Alert status="warning" mb={6}>
+        <AlertIcon />
+        Agavic vous propose 4 contrats d’assurance vie à frais réduits : Agavic Avenir 2 (Suravenir), Agavic Spirit 2 (Spirica), Agavic Vie (Generali) et Agavic Zen (Apicil). Ces contrats présentent un risque de perte en capital.
+      </Alert>
       <Grid templateColumns={{ sm: "repeat(1, 1fr)", md: "repeat(2, 1fr)", lg: "repeat(4, 1fr)" }} gap={6}>
         {contracts.map((contract, index) => (
           <GridItem key={index}>
@@ -81,7 +85,9 @@ function InsuranceContractsGrid() {
               <Icon as={contract.icon} w={16} h={16} color="orange.400" />
               <Heading size="md" textAlign="center">{contract.title}</Heading>
               {contract.features.map((feature, featureIndex) => (
-                <Text key={featureIndex} fontSize="sm" textAlign="center">{feature}</Text>
+                <Badge key={featureIndex} variant="outline" colorScheme="green" borderRadius="full" px={2} py={1}>
+                  {feature}
+                </Badge>
               ))}
             </VStack>
           </GridItem>
