@@ -9,6 +9,8 @@ import SavingsSimulator from './component/SavingsSimulator';
 import SubscriptionComponent from './component/SubscriptionComponent';
 import FundPerformanceCard from './component/FundPerformanceCard';
 import ManagementModesComponent from './component/ManagementModesComponent';
+import InfoAlert from './component/InfoAlert';
+import InsuranceContractsGrid from './component/InsuranceContractsGrid';
 
 const AssuranceViePage = () => {
   return (
@@ -21,6 +23,8 @@ const AssuranceViePage = () => {
         <SavingsSimulator/>
         <FundPerformanceCard/>
         <ManagementModesComponent/>
+        <InfoAlert/>
+        <InsuranceContractsGrid/>
       </Stack>
     </Box>
   );
