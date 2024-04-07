@@ -12,7 +12,8 @@ import {
     VStack,
     Flex,
     IconButton,
-    Badge,
+    Alert,
+    AlertIcon,
     Card,
     CardBody,
 } from '@chakra-ui/react';
@@ -30,14 +31,19 @@ export default function SavingsSimulator() {
                 <Heading as="h1" size="xl">
                     Simulateur d'épargne
                 </Heading>
-                <Badge colorScheme="green">Un projet d'épargne?</Badge>
+                <Box width="fit-content">
+                    <Alert status="success">
+                        <AlertIcon />
+                        Un projet d'épargne?
+                    </Alert>
+                </Box>
                 <Text textAlign="center" fontSize="lg">En fonction de votre capacité, simulez différents scénarios d'épargne.</Text>
 
                 <Grid templateColumns="repeat(4, 1fr)" gap={8} width="100%" mt={8}>
                     <Box>
                         <Card>
                             <CardBody>
-                                <Flex align="center" mb={8}> 
+                                <Flex align="center" mb={8}>
                                     <IconButton
                                         aria-label="Initial Deposit"
                                         icon={<FaMoneyBillWave />}
@@ -70,7 +76,7 @@ export default function SavingsSimulator() {
                     <Box>
                         <Card>
                             <CardBody>
-                                <Flex align="center"  mb={8}>
+                                <Flex align="center" mb={8}>
                                     <IconButton
                                         aria-label="Monthly Deposit"
                                         icon={<FaMoneyBillWave />}
@@ -103,7 +109,7 @@ export default function SavingsSimulator() {
                     <Box>
                         <Card>
                             <CardBody>
-                                <Flex align="center"  mb={8}>
+                                <Flex align="center" mb={8}>
                                     <IconButton
                                         aria-label="Investment Duration"
                                         icon={<FaCalendarAlt />}
@@ -135,7 +141,7 @@ export default function SavingsSimulator() {
                     <Box>
                         <Card>
                             <CardBody>
-                                <Flex align="center"  mb={8}>
+                                <Flex align="center" mb={8}>
                                     <IconButton
                                         aria-label="Return Rate"
                                         icon={<FaPercentage />}
