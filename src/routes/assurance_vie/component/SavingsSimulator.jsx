@@ -12,8 +12,7 @@ import {
     VStack,
     Flex,
     IconButton,
-    Tooltip,
-    Image,
+    Badge,
     Card,
     CardBody,
 } from '@chakra-ui/react';
@@ -31,9 +30,10 @@ export default function SavingsSimulator() {
                 <Heading as="h1" size="xl">
                     Simulateur d'épargne
                 </Heading>
-                <Text textAlign="center">Un projet d'épargne? En fonction de votre capacité, simulez différents scénarios d'épargne.</Text>
+                <Badge colorScheme="green">Un projet d'épargne?</Badge>
+                <Text textAlign="center" fontSize="lg">En fonction de votre capacité, simulez différents scénarios d'épargne.</Text>
 
-                <Grid templateColumns="repeat(4, 1fr)" gap={6} width="100%">
+                <Grid templateColumns="repeat(4, 1fr)" gap={8} width="100%" mt={8}>
                     <Box>
                         <Card>
                             <CardBody>
@@ -55,8 +55,8 @@ export default function SavingsSimulator() {
                                     step={1000}
                                     onChange={(val) => setInitialDeposit(val)}
                                 >
-                  <SliderMark value={initialDeposit} textAlign="center" bg="orange.300" color="white" mt="-10" ml="-5" w="18">
-                    {initialDeposit}€
+                                    <SliderMark value={initialDeposit} textAlign="center" bg="orange.300" color="white" mt="-10" ml="-5" w="18">
+                                        {initialDeposit}€
                                     </SliderMark>
                                     <SliderTrack>
                                         <SliderFilledTrack bg="orange.300" />
