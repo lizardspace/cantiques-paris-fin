@@ -28,16 +28,17 @@ const InnerApp = () => {
   const componentFilePath = `./routes/${componentName}/index.jsx`;
 
   const ComponentToRender = lazy(() =>
-    import(componentFilePath)
-      .catch(() => {
-        return new Promise((resolve) => setTimeout(resolve, 1000)) 
-          .then(() => import(componentFilePath))
-          .catch(() => {
-            setLoadError(true); 
-            return import('./NotFound.jsx');
-          });
-      })
-  );
+  import(/* @vite-ignore */ componentFilePath)
+    .catch(() => {
+      return new Promise((resolve) => setTimeout(resolve, 10000))
+        .then(() => import(/* @vite-ignore */ componentFilePath))
+        .catch(() => {
+          setLoadError(true);
+          return import('./NotFound.jsx');
+        });
+    })
+);
+
 
   useEffect(() => {
     setLoadError(false); // Réinitialiser l'état d'erreur lors du changement de route
