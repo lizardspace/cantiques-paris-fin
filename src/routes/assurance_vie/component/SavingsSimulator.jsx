@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Slider, SliderTrack, SliderFilledTrack, SliderThumb, SliderMark, Text, Grid, Heading, VStack, Flex, IconButton, Alert, AlertIcon, Card, CardBody } from '@chakra-ui/react';
 import { FaMoneyBillWave, FaCalendarAlt, FaPercentage, FaEquals, FaPlus } from 'react-icons/fa';
+import SubscriptionComponent from './SubscriptionComponent'; // Import du composant SubscriptionComponent
 
 const SavingsSimulator = () => {
     const [initialDeposit, setInitialDeposit] = useState(10000);
@@ -230,6 +231,9 @@ const SavingsSimulator = () => {
                 </Flex>
 
             </VStack>
+                <Box p={8} >
+                <SubscriptionComponent />
+                </Box>  
         </Box>
     );
 };
