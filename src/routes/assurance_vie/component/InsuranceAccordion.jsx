@@ -10,46 +10,64 @@ import {
   Text
 } from '@chakra-ui/react';
 
+// Définir les données pour chaque section de l'accordéon
+const accordionData = [
+  {
+    title: "Introduction à l'assurance vie",
+    description: "Ajoutez ici la description de l'introduction à l'assurance vie."
+  },
+  {
+    title: "Principe de fonctionnement",
+    description: "Ajoutez ici la description du principe de fonctionnement de l'assurance vie."
+  },
+  {
+    title: "Le cadre fiscal avantageux de l'assurance vie",
+    description: "Ajoutez ici la description du cadre fiscal avantageux de l'assurance vie."
+  },
+  {
+    title: "Quels sont les frais de l'assurance vie ?",
+    description: "Ajoutez ici la description des frais de l'assurance vie."
+  },
+  {
+    title: "Halte aux idées reçues sur l’assurance vie",
+    description: "Ajoutez ici la description pour combattre les idées reçues sur l'assurance vie."
+  },
+  {
+    title: "Questions fréquentes sur l'assurance vie",
+    description: "Ajoutez ici la description des questions fréquentes sur l'assurance vie."
+  }
+];
+
 function InsuranceAccordion() {
   return (
     <Accordion allowToggle>
-      <AccordionItem border="none">
-        {({ isExpanded }) => (
-          <>
-            <h2>
-              <AccordionButton
-                _expanded={{ bg: 'blue.100', color: 'blue.800' }}
-                px={5}
-                py={4}
-              >
-                <Box flex="1" textAlign="left">
-                  <Heading as="h3" size="lg">
-                    Comprendre l'assurance vie
-                  </Heading>
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4} px={5}>
-              <Text mb={2}>
-                On lit souvent que l’assurance vie est « le placement préféré des Français ». Et pour cause, ce placement répond à tous les projets – préparer sa retraite, faire fructifier un capital, protéger sa famille, anticiper un projet immobilier – le tout dans un cadre fiscal unique. Cerise sur le gâteau, votre argent reste disponible à tout moment sans frais, exactement comme sur un livret A. Pour débuter en épargne, l’assurance vie est un placement incontournable.
-              </Text>
-              <Text fontWeight="bold">
-                Ses avantages principaux:
-              </Text>
-              <Text>
-                - Le couteau suisse de l’épargne: l’assurance vie est une enveloppe qui vous permet d’investir sur tous les supports disponibles au contrat (OPCVM, SCPI, ETF, Actions en direct, produits structurés, Private Equity..)
-              </Text>
-              <Text>
-                - La sécurité du fonds en euros: la part placée sur votre fonds euro est garantie (totalement ou partiellement), non plafonnée et disponible à tout moment
-              </Text>
-              <Text>
-                - Une fiscalité très avantageuse: retraits et transmission peu voire pas taxés
-              </Text>
-            </AccordionPanel>
-          </>
-        )}
-      </AccordionItem>
+      {accordionData.map((item, index) => (
+        <AccordionItem key={index} border="none">
+          {({ isExpanded }) => (
+            <>
+              <h2>
+                <AccordionButton
+                  _expanded={{ bg: 'blue.100', color: 'blue.800' }}
+                  px={5}
+                  py={4}
+                >
+                  <Box flex="1" textAlign="left">
+                    <Heading as="h3" size="lg">
+                      {item.title}
+                    </Heading>
+                  </Box>
+                  <AccordionIcon />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel pb={4} px={5}>
+                <Text mb={2}>
+                  {item.description}
+                </Text>
+              </AccordionPanel>
+            </>
+          )}
+        </AccordionItem>
+      ))}
     </Accordion>
   );
 }
