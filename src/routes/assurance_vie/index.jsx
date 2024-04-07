@@ -18,10 +18,10 @@ const MiniChart = () => {
 // Simulation Button and Text Component
 const SimulationButton = () => {
   return (
-    <VStack align="center" p={8} spacing={6} bg="#FFD700" borderRadius="xl" width="300px" boxShadow="lg">
+    <VStack align="center" p={8} spacing={6} bg="#3182ce" borderRadius="xl" width="300px" boxShadow="lg">
       <Icon as={FiCheckCircle} boxSize="48px" color="white" />
-      <Text fontWeight="bold" fontSize="2xl">L'assurance-vie 💼</Text>
-      <Text fontSize="lg" textAlign="center">
+      <Text fontWeight="bold" fontSize="2xl" color="white">L'assurance-vie 💼</Text>
+      <Text fontSize="lg" textAlign="center" color="white">
         Nous sélectionnons pour vous les meilleurs contrats du marché : des frais bas et un large choix de supports
       </Text>
       <Button colorScheme="orange" size="lg">Faire votre simulation</Button>
