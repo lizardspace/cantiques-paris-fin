@@ -11,6 +11,9 @@ import FundPerformanceCard from './component/FundPerformanceCard';
 import ManagementModesComponent from './component/ManagementModesComponent';
 import InfoAlert from './component/InfoAlert';
 import InsuranceContractsGrid from './component/InsuranceContractsGrid';
+import FinancialServicesComponent from './component/FinancialServicesComponent';
+import InsuranceRisksComponent from './component/InsuranceRisksComponent';
+import InsuranceAccordion from './component/InsuranceAccordion';
 
 const AssuranceViePage = () => {
   return (
@@ -25,6 +28,9 @@ const AssuranceViePage = () => {
         <ManagementModesComponent/>
         <InfoAlert/>
         <InsuranceContractsGrid/>
+        <FinancialServicesComponent/>
+        <InsuranceRisksComponent/>
+        <InsuranceAccordion/>
       </Stack>
     </Box>
   );
