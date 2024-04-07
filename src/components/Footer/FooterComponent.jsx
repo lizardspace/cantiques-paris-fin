@@ -1,37 +1,32 @@
 import React from 'react';
-import { Flex, Button, Text, Spacer, Divider } from '@chakra-ui/react';
+import { Box, Link, SimpleGrid, Text } from '@chakra-ui/react';
 
+// Assuming you want to make this a separate component
 const FooterComponent = () => {
   return (
-    <>
-    <Divider borderColor="blue.600" />
-    <Flex bg="white" color="blue.600" align="center" p="2" justify="center" wrap="wrap">
-    {/* Logo and category dropdown */}
-    <Flex align="center" mr={{ base: 2, sm: 4 }}>
-    <Flex
-      as="footer"
-      width="full"
-      align="center"
-      justifyContent="center"
-      p="4"
-
-      color="blue.600"
-    >
-      <Button colorScheme="blue" mr="4">
-        Connectez-vous
-      </Button>
-      <Button colorScheme="blue" mr="4">
-        Inscrivez-vous
-      </Button>
-      <Spacer />
-      <Text>
-        Chaque semaine, découvrez plus de 65,000 objets d'exception, sélectionnés par 240+ experts
-      </Text>
-    </Flex>
-    </Flex>
-    </Flex>
-    <Divider borderColor="blue.600" />
-    </>
+    <Box backgroundColor="orange.300" paddingY="4" paddingX="8">
+      <SimpleGrid columns={5} spacing={10}>
+        <Box>
+          <Text fontWeight="bold">Conseiller en Investissements Financiers (CIF)</Text>
+          <Text>Membre de la CNCIF, association professionnelle agréée par l'Autorité des Marchés Financiers (AMF).</Text>
+          <Text>Enregistré à l'ORIAS en tant que Courtier en Assurance, activité régulée par l'Autorité de Contrôle Prudentiel et de Résolution (ACPR).</Text>
+        </Box>
+        <Box as="nav" aria-label="Footer navigation">
+          <Link href="#" color="white" isExternal>
+            Conditions générales d'utilisation
+          </Link>
+          <Link href="#" color="white" isExternal marginTop="2">
+            Données personnelles
+          </Link>
+          <Link href="#" color="white" isExternal marginTop="2">
+            Mentions légales
+          </Link>
+          <Link href="#" color="white" isExternal marginTop="2">
+            Cookies
+          </Link>
+        </Box>
+      </SimpleGrid>
+    </Box>
   );
 };
 

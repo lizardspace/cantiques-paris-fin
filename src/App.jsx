@@ -8,6 +8,7 @@ import Headerb from "./components/Headerb";
 import HeaderBar from "./components/HeaderBar";
 import Footer from "./components/Footer/Footer";
 import FooterBottom from "./components/Footer/FooterBottom";
+import FooterComponent from "./components/Footer/FooterComponent";
 
 
 const App = () => {
@@ -79,6 +80,7 @@ const InnerApp = () => {
       </Flex>
       <Footer/>
       <FooterBottom/>
+      <FooterComponent/>
     </>
   );
 };
