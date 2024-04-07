@@ -27,7 +27,7 @@ const SimulationButton = () => {
 const AccountBalance = () => {
   return (
     <Flex direction="column" justify="center" align="center" ml={10}>
-      <Image src="public/images/agavic/assurancevie1.jpg" alt="Assurance Vie" boxSize="300px" objectFit="cover" borderRadius="md" />
+      <Image src="/images/agavic/assurancevie1.jpg" alt="Assurance Vie" boxSize="300px" objectFit="cover" borderRadius="md" />
       <Box p={5}>
         <Text fontSize="sm" color="gray.500">Evolution du contrat au 02/05/2023</Text>
         <HStack justify="space-between" w="full">
