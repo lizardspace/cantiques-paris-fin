@@ -14,7 +14,6 @@ import FinancialServicesComponent from './component/FinancialServicesComponent';
 import InsuranceRisksComponent from './component/InsuranceRisksComponent';
 import InsuranceAccordion from './component/InsuranceAccordion';
 import AwardComponent from './component/AwardComponent';
-import AdviceComponent from './component/AdviceComponent';
 
 const AssuranceViePage = () => {
   return (
@@ -33,7 +32,6 @@ const AssuranceViePage = () => {
         <InsuranceRisksComponent/>
         <InsuranceAccordion/>
         <AwardComponent/>
-        <AdviceComponent/>
       </Stack>
     </Box>
   );

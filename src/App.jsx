@@ -9,6 +9,7 @@ import HeaderBar from "./components/HeaderBar";
 import Footer from "./components/Footer/Footer";
 import FooterBottom from "./components/Footer/FooterBottom";
 import FooterComponent from "./components/Footer/FooterComponent";
+import AdviceComponent from "./components/Footer/AdviceComponent";
 
 
 const App = () => {
@@ -78,6 +79,7 @@ const InnerApp = () => {
           </Suspense>
         </Box>
       </Flex>
+      <AdviceComponent/>
       <Footer/>
       <FooterBottom/>
       <FooterComponent/>
