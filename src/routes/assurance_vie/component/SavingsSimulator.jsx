@@ -1,22 +1,5 @@
 import React, { useState } from 'react';
-import {
-    Box,
-    Slider,
-    SliderTrack,
-    SliderFilledTrack,
-    SliderThumb,
-    SliderMark,
-    Text,
-    Grid,
-    Heading,
-    VStack,
-    Flex,
-    IconButton,
-    Alert,
-    AlertIcon,
-    Card,
-    CardBody,
-} from '@chakra-ui/react';
+import { Box, Slider, SliderTrack, SliderFilledTrack, SliderThumb, SliderMark, Text, Grid, Heading, VStack, Flex, IconButton, Alert, AlertIcon, Card, CardBody } from '@chakra-ui/react';
 import { FaMoneyBillWave, FaCalendarAlt, FaPercentage, FaEquals, FaPlus } from 'react-icons/fa';
 
 const SavingsSimulator = () => {
@@ -24,7 +7,26 @@ const SavingsSimulator = () => {
     const [monthlyDeposit, setMonthlyDeposit] = useState(200);
     const [investmentDuration, setInvestmentDuration] = useState(20);
     const [returnRate, setReturnRate] = useState(2);
-
+    const DataCard = ({ title, value, detail }) => {
+        return (
+          <VStack
+            border="1px solid"
+            borderColor="gray.200"
+            borderRadius="md"
+            p={4}
+            align="start"
+            bg="white"
+            minW="200px"
+            _hover={{ bg: 'gray.50' }}
+          >
+            <Text fontSize="sm" color="gray.500">
+              {title}
+            </Text>
+            <Heading size="md">{value}</Heading>
+            {detail && <Text fontSize="xs" color="blue.500">{detail}</Text>}
+          </VStack>
+        );
+      };
     // Formulas
     const monthlyRate = returnRate / 100 / 12;
     const totalMonths = investmentDuration * 12;
@@ -62,7 +64,7 @@ const SavingsSimulator = () => {
                 <Text textAlign="center" fontSize="lg">En fonction de votre capacité, simulez différents scénarios d'épargne.</Text>
 
                 <Grid templateColumns="repeat(4, 1fr)" gap={8} width="100%" mt={8}>
-                <Box>
+                    <Box>
                         <Card>
                             <CardBody>
                                 <Flex align="center" mb={8}>
@@ -195,40 +197,36 @@ const SavingsSimulator = () => {
                 </Grid>
                 
                 <Flex direction={['column', 'row']} justify="space-around" align="center" p={5} bg="gray.100">
-                    <Box minW="200px" align="start">
-                        <Text fontSize="sm" color="gray.500">
-                            Économie de frais par rapport à votre banque:
-                        </Text>
-                        <Heading size="md">21 438 €</Heading>
-                        <Text fontSize="xs" color="blue.500">> Voir le détail</Text>
-                    </Box>
-                    <Flex align="center">
-                        <Box minW="200px" align="start">
-                            <Text fontSize="sm" color="gray.500">
-                                Versements cumulés
-                            </Text>
-                            <Heading size="md">{formattedCumulative} €</Heading>
-                        </Box>
-                        <Box as="span" fontSize="3xl" p={2}>
-                            <FaPlus />
-                        </Box>
-                        <Box minW="200px" align="start">
-                            <Text fontSize="sm" color="gray.500">
-                                Intérêts cumulés au terme
-                            </Text>
-                            <Heading size="md">{formattedInterests} €</Heading>
-                        </Box>
-                        <Box as="span" fontSize="3xl" p={2}>
-                            <FaEquals />
-                        </Box>
-                        <Box minW="200px" align="start">
-                            <Text fontSize="sm" color="gray.500">
-                                Capital final
-                            </Text>
-                            <Heading size="md" bg="blue.500" color="white">{formattedFutureValue} €</Heading>
-                        </Box>
-                    </Flex>
-                </Flex>
+    <DataCard
+        title="Économie de frais par rapport à votre banque:"
+        value="21 438 €"
+        detail="> Voir le détail"
+    />
+    <Box as="span" fontSize="3xl" p={2}>
+        
+    </Box>
+    <DataCard
+        title="Versements cumulés"
+        value="{formattedCumulative} €"
+    />
+    <Box as="span" fontSize="3xl" p={2}>
+        <FaPlus />
+    </Box>
+    <DataCard
+        title="Intérêts cumulés au terme"
+        value="{formattedInterests} €"
+    />
+    <Box as="span" fontSize="3xl" p={2}>
+        <FaEquals />
+    </Box>
+    <DataCard
+        title="Capital final"
+        value="{formattedFutureValue} €"
+        bg="blue.500"
+        color="white"
+    />
+</Flex>
+
             </VStack>
         </Box>
     );
