@@ -1,96 +1,64 @@
 import React from 'react';
 import {
-  Box, SimpleGrid, List, ListItem, Link, Select, Stack, Container, Flex, Spacer, Icon,
+  Box, SimpleGrid, List, ListItem, Link, Container,
 } from '@chakra-ui/react';
-import { FaFacebook, FaInstagram } from 'react-icons/fa';
 
-// Updated Data component
+// Updated data to match the footer structure from the image
 const footerData = [
   {
-    title: 'À propos de Cantiques Paris',
+    title: 'ASSURANCE VIE',
     links: [
-      { name: 'À propos de Cantiques Paris', url: '#' },
-      { name: 'Nos experts', url: '#' },
-      { name: 'Offres d\'emploi', url: '#' },
-      { name: 'Presse', url: '#' },
-      { name: 'Partenariat avec Cantiques Paris', url: '#' },
-      { name: 'Portail du collectionneur', url: '#' },
+      { name: 'Le guide de l\'assurance vie', url: '#' },
+      { name: 'Linxea Avenir 2', url: '#' },
+      { name: 'Linxea Spirit 2', url: '#' },
+      { name: 'Linxea Vie', url: '#' },
+      { name: 'Linxea Zen', url: '#' },
+      { name: 'Comparateur de contrat', url: '#' },
+      { name: 'Fonds stars : la sélection Linxea', url: '#' },
     ],
   },
   {
-    title: 'Acheter',
+    title: 'SCPI',
     links: [
-      { name: 'Comment acheter ?', url: '#' },
-      { name: 'Protection des acheteurs', url: '#' },
-      { name: 'Cantiques Paris Stories', url: '#' },
-      { name: 'Conditions pour les acheteurs', url: '#' },
+      { name: 'Le guide Linxea des SCPI', url: '#' },
+      { name: 'SCPI à crédit', url: '#' },
+      { name: 'SCPI en nue-propriété', url: '#' },
+      { name: 'Simulateur SCPI en nue-propriété', url: '#' },
+      { name: 'Simulateur de SCPI à crédit', url: '#' },
+      { name: 'SCPI de rendement', url: '#' },
     ],
   },
-  {
-    title: 'Vendre',
-    links: [
-      { name: 'Comment vendre ?', url: '#' },
-      { name: 'Conseils pour les vendeurs', url: '#' },
-      { name: 'Consignes pour la soumission de lots', url: '#' },
-      { name: 'Conditions pour les vendeurs', url: '#' },
-      { name: 'Partenaires', url: '#' },
-    ],
-  },
-  {
-    title: 'Mon Cantiques Paris',
-    links: [
-      { name: 'Connectez-vous', url: '#' },
-      { name: 'Inscrivez-vous', url: '#' },
-      { name: 'Centre d\'aide', url: '#' },
-    ],
-  },
+  // ... Add other categories
 ];
 
-// FooterItem component for each column
 const FooterItem = ({ title, links }) => (
   <Box>
     <Box fontWeight="bold" mb={2}>{title}</Box>
-    <List spacing={2}>
+    <List spacing={1}>
       {links.map((link, index) => (
         <ListItem key={index}>
-          <Link href={link.url}>{link.name}</Link>
+          <Link href={link.url} color="gray.500" _hover={{ textDecoration: 'none', color: 'blue.500' }}>
+            {link.name}
+          </Link>
         </ListItem>
       ))}
     </List>
   </Box>
 );
 
-// Design component
-const Footer = () => {
+const FooterBottom = () => {
   return (
-    <Box as="footer" bg="gray.100" color="gray.700" py={10}>
+    <Box as="footer" bg="white" color="gray.700" py={10} borderTop="1px" borderColor="gray.200">
       <Container maxW="container.xl">
-        <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
+        <SimpleGrid columns={{ base: 1, sm: 2, md: 5 }} spacing={10}>
           {footerData.map((column, index) => (
             <FooterItem key={index} title={column.title} links={column.links} />
           ))}
         </SimpleGrid>
-
-        <Flex align="center" mt={10}>
-          <Select w={40} defaultValue="Français">
-            {/* Replace with actual language options */}
-            <option>Français</option>
-            <option>English</option>
-            {/* Add other languages here */}
-          </Select>
-          <Spacer />
-          <Stack direction="row" spacing={6}>
-            <Link href="https://www.facebook.com" isExternal>
-              <Icon as={FaFacebook} boxSize={6} />
-            </Link>
-            <Link href="https://www.instagram.com" isExternal>
-              <Icon as={FaInstagram} boxSize={6} />
-            </Link>
-          </Stack>
-        </Flex>
+        {/* Add any additional elements such as social media icons or language selector if present in the image */}
       </Container>
     </Box>
   );
 };
 
-export default Footer;
+export default FooterBottom;

@@ -7,6 +7,7 @@ import FullWidthBanner from "./components/header/FullWidthBanner";
 import Headerb from "./components/Headerb";
 import HeaderBar from "./components/HeaderBar";
 import Footer from "./components/Footer/Footer";
+import FooterBottom from "./components/Footer/FooterBottom";
 
 
 const App = () => {
@@ -77,6 +78,7 @@ const InnerApp = () => {
         </Box>
       </Flex>
       <Footer/>
+      <FooterBottom/>
     </>
   );
 };
