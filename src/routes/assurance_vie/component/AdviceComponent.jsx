@@ -6,13 +6,14 @@ const AdviceComponent = () => {
     <Flex
       direction={{ base: 'column', md: 'row' }}
       alignItems="center"
-      justifyContent="center" 
+      justifyContent="center"
       p={{ base: 4, md: 8 }}
       bg="#3182ce"
       color="white"
       borderRadius="lg"
-      textAlign="center" 
-      width="100%" 
+      textAlign="center"
+      width="100%"
+      boxShadow="md" // Ajout d'une ombre
     >
       <Image
         src="/public/images/agavic/undraw_remote_meeting_re_abe7.svg"
