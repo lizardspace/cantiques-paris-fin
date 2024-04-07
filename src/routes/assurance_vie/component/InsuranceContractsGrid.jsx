@@ -24,40 +24,40 @@ function InsuranceContractsGrid() {
       icon: FcAssistant,
       title: 'Agavic Avenir 2',
       features: [
-        'Accessible: Ouverture dès 100€ en gestion libre et 25€/mois',
-        'Diversifié: 2 fonds en euros dont 1 dynamique, + 600 supports dont + 80 ETF',
-        'Flexible: La possibilité de combiner la gestion pilotée Otea Capital et la gestion libre',
-        'Le + du contrat: Une offre financière responsable avec + 150 fonds labellisés'
+        { subtitle: 'Accessible:', content: 'Ouverture dès 100€ en gestion libre et 25€/mois' },
+        { subtitle: 'Diversifié:', content: '2 fonds en euros dont 1 dynamique, + 600 supports dont + 80 ETF' },
+        { subtitle: 'Flexible:', content: 'La possibilité de combiner la gestion pilotée Otea Capital et la gestion libre' },
+        { subtitle: 'Le + du contrat:', content: 'Une offre financière responsable avec + 150 fonds labellisés' }
       ],
     },
     {
       icon: FcDonate,
       title: 'Agavic Spirit 2',
       features: [
-        'Investissement responsable : + 200 supports labellisés ISR et Solidaire',
-        'Performance : 0% de frais sur les versements, 0% sur les arbitrages en gestion libre',
-        'Liberté : Arbitrages gratuits, rachats partiels sans frais, 0% sur versements programmés',
-        'Le + du contrat : Une offre financière responsable avec + 150 fonds labellisés'
+        { subtitle: 'Investissement responsable :', content: '+ 200 supports labellisés ISR et Solidaire' },
+        { subtitle: 'Performance :', content: '0% de frais sur les versements, 0% sur les arbitrages en gestion libre' },
+        { subtitle: 'Liberté :', content: 'Arbitrages gratuits, rachats partiels sans frais, 0% sur versements programmés' },
+        { subtitle: 'Le + du contrat :', content: 'Une offre financière responsable avec + 150 fonds labellisés' }
       ],
     },
     {
       icon: FcInTransit,
       title: 'Agavic Zen',
       features: [
-        'Accessibilité : Ouverture dès 100€, versements libres à partir de 50€',
-        'Liberté : 0% de frais sur les versements, arbitrages et rentes, rachats partiels sans frais',
-        'Diversification : 5 profils de gestion pilotée accessibles dès 100€',
-        'Le + du contrat : Une offre financière responsable avec + 150 fonds labellisés'
+        { subtitle: 'Accessibilité :', content: 'Ouverture dès 100€, versements libres à partir de 50€' },
+        { subtitle: 'Liberté :', content: '0% de frais sur les versements, arbitrages et rentes, rachats partiels sans frais' },
+        { subtitle: 'Diversification :', content: '5 profils de gestion pilotée accessibles dès 100€' },
+        { subtitle: 'Le + du contrat :', content: 'Une offre financière responsable avec + 150 fonds labellisés' }
       ],
     },
     {
       icon: FcBullish,
       title: 'Agavic Vie',
       features: [
-        'Performance : 0% de frais sur versements, arbitrages, et rentes',
-        'Liberté : Rachats partiels gratuits, versements programmés 0% sur le versement initial',
-        'Accessibilité : Versements libres dès 100€ et rentes accessibles dès 30€/mois',
-        'Le + du contrat : Une offre financière responsable avec + 150 fonds labellisés'
+        { subtitle: 'Performance :', content: '0% de frais sur versements, arbitrages, et rentes' },
+        { subtitle: 'Liberté :', content: 'Rachats partiels gratuits, versements programmés 0% sur le versement initial' },
+        { subtitle: 'Accessibilité :', content: 'Versements libres dès 100€ et rentes accessibles dès 30€/mois' },
+        { subtitle: 'Le + du contrat :', content: 'Une offre financière responsable avec + 150 fonds labellisés' }
       ],
     },
   ];
@@ -85,9 +85,10 @@ function InsuranceContractsGrid() {
               <Icon as={contract.icon} w={16} h={16} color="orange.400" />
               <Heading size="md" textAlign="center">{contract.title}</Heading>
               {contract.features.map((feature, featureIndex) => (
-                <Badge key={featureIndex} variant="outline" colorScheme="green" borderRadius="full" px={2} py={1}>
-                  {feature}
-                </Badge>
+                <Text key={featureIndex} fontSize="sm" textAlign="center">
+                  <Text as="span" fontWeight="bold" fontSize="sm">{feature.subtitle}</Text>{' '}
+                  {feature.content}
+                </Text>
               ))}
             </VStack>
           </GridItem>
