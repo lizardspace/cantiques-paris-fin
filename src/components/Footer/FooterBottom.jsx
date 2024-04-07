@@ -28,7 +28,40 @@ const footerData = [
       { name: 'SCPI de rendement', url: '#' },
     ],
   },
-  // ... Add other categories
+  {
+    title: 'AUTRES SOLUTIONS',
+    links: [
+      { name: 'Plan Epargne Retraite', url: '#' },
+      { name: 'Défiscalisation', url: '#' },
+      { name: 'Produits Structurés', url: '#' },
+      { name: 'Epargne', url: '#' },
+      { name: 'Moderniser votre contrat Linxea Avenir vers Linxea Avenir 2', url: '#' },
+    ],
+  },
+  {
+    title: 'DÉCOUVREZ-NOUS',
+    links: [
+      { name: 'Qui sommes-nous ?', url: '#' },
+      { name: 'Conseil', url: '#' },
+      { name: 'Notre équipe', url: '#' },
+      { name: 'Nos récompenses', url: '#' },
+      { name: 'Nos sponsorings', url: '#' },
+      { name: 'Nos partenaires', url: '#' },
+      { name: 'Parrainage', url: '#' },
+      { name: 'Presse', url: '#' },
+      { name: 'Nous rejoindre', url: '#' },
+    ],
+  },
+  {
+    title: 'OUTILS',
+    links: [
+      { name: 'Modifier mes préférences de cookies', url: '#' },
+      { name: 'Tous les documents', url: '#' },
+      { name: 'Liste des supports', url: '#' },
+      { name: 'Simulateur de frais', url: '#' },
+      { name: 'Simulateur d’épargne', url: '#' },
+    ],
+  },
 ];
 
 const FooterItem = ({ title, links }) => (
