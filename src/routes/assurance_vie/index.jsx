@@ -4,6 +4,7 @@ import { Box, Stack } from '@chakra-ui/react';
 import FeatureGrid from './component/FeatureGrid';
 import InvestmentComponent from './component/InvestmentComponent';
 import ImpactBanner from './component/ImpactBanner';
+import InfoBanner from './component/InfoBanner';
 
 const AssuranceViePage = () => {
   return (
@@ -12,6 +13,7 @@ const AssuranceViePage = () => {
         <InvestmentComponent />
         <FeatureGrid />
         <ImpactBanner />
+        <InfoBanner/>
       </Stack>
     </Box>
   );
