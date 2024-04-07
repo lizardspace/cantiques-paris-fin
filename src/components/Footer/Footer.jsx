@@ -6,18 +6,25 @@ const Footer = () => {
   return (
     <Flex
       as="footer"
-      bg="gray.100"
+      bg="gray.900"
+      color="white"
       align="center"
       justify="space-between"
       p={4}
       wrap="wrap"
     >
-      <Image
-        src="/images/agavic/agaviclogo.png"
-        alt="Agavic Logo"
-        boxSize="100px"
-        objectFit="contain"
-      />
+      <Flex align="center" justify="center">
+        <Image
+          src="/images/agavic/agaviclogo.png"
+          alt="Agavic Logo"
+          boxSize="100px"
+          objectFit="contain"
+          mr={4}
+        />
+        <Text fontSize="lg" fontWeight="bold" mr={8}>
+          Agavic
+        </Text>
+      </Flex>
 
       <HStack spacing={4} display={{ base: 'none', md: 'flex' }}>
         <Link href="https://www.facebook.com" isExternal>
@@ -34,11 +41,16 @@ const Footer = () => {
         </Link>
       </HStack>
 
-      <Text fontSize="lg">
-        04 78 34 26 23
-        <br />
-        Du lundi au vendredi de 9h à 18h
-      </Text>
+      <Flex direction="column" align="center" justify="center" mr={8}>
+        <Text fontSize="md" mb={2}>
+          Contactez-nous
+        </Text>
+        <Text fontSize="sm">
+          04 78 34 26 23
+          <br />
+          Du lundi au vendredi de 9h à 18h
+        </Text>
+      </Flex>
 
       <HStack spacing={4}>
         {/* Icons representing the partners */}
