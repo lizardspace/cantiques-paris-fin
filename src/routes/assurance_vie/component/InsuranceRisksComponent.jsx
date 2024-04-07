@@ -1,5 +1,5 @@
 import { Box, Flex, Heading, Text, VStack, HStack } from '@chakra-ui/react';
-import { FcAutomatic, FcApproval, FcCurrencyExchange, FcTax } from "react-icons/fc";
+import { FcAutomatic, FcApproval, FcCurrencyExchange, FcSurvey } from "react-icons/fc";
 
 function InsuranceRisksComponent() {
   const risks = [
@@ -19,7 +19,7 @@ function InsuranceRisksComponent() {
       description: 'Des frais de gestion annuels s’appliquent ainsi que certains frais de transaction en fonction des supports et des contrats'
     },
     {
-      icon: FcTax,
+      icon: FcSurvey,
       title: 'Fiscalité',
       description: 'Fiscalité applicable en fonction de la date des versements et de l’âge du contrat.'
     }

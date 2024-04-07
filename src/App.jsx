@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import { ChakraProvider, Box, Flex, IconButton, useDisclosure, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import FullWidthBanner from "./components/header/FullWidthBanner";
 import Headerb from "./components/Headerb";
 import HeaderBar from "./components/HeaderBar";
+import AssuranceViePage from "./routes/assurance_vie";
 
 const App = () => {
   return (
@@ -20,20 +21,27 @@ const App = () => {
 const InnerApp = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const location = useLocation();
+  const [loadError, setLoadError] = useState(false);
 
-  // Récupérer l'URL actuelle
   const currentPath = location.pathname;
-
-  // Remplacer les %20 par des tirets bas dans le nom du composant
   const componentName = currentPath.split('/').filter(Boolean).map(part => part.replace(/%20/g, '_')).join('');
-
-  // Déduire le chemin du fichier du composant en remplaçant les %20 par des tirets bas
   const componentFilePath = `./routes/${componentName}/index.jsx`;
 
-  // Charger le composant dynamiquement
-  const ComponentToRender = lazy(() => import(componentFilePath).catch(() => import('./NotFound.jsx')));
+  const ComponentToRender = lazy(() =>
+    import(componentFilePath)
+      .catch(() => {
+        // Tenter de recharger après un court délai avant de se résoudre à une erreur
+        return new Promise((resolve) => setTimeout(resolve, 10000)) // Délai d'1 seconde
+          .then(() => import(componentFilePath))
+          .catch(() => {
+            setLoadError(true); // Si le rechargement échoue, activer l'état d'erreur
+            return import('./NotFound.jsx');
+          });
+      })
+  );
 
   useEffect(() => {
+    setLoadError(false); // Réinitialiser l'état d'erreur lors du changement de route
     console.log("Location pathname:", currentPath);
     console.log("Component name:", componentName);
     console.log("Component file path:", componentFilePath);
