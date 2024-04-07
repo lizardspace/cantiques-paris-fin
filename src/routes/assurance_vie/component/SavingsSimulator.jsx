@@ -37,7 +37,7 @@ export default function SavingsSimulator() {
                     <Box>
                         <Card>
                             <CardBody>
-                                <Flex align="center">
+                                <Flex align="center" mb={8}> 
                                     <IconButton
                                         aria-label="Initial Deposit"
                                         icon={<FaMoneyBillWave />}
@@ -70,7 +70,7 @@ export default function SavingsSimulator() {
                     <Box>
                         <Card>
                             <CardBody>
-                                <Flex align="center">
+                                <Flex align="center"  mb={8}>
                                     <IconButton
                                         aria-label="Monthly Deposit"
                                         icon={<FaMoneyBillWave />}
@@ -103,7 +103,7 @@ export default function SavingsSimulator() {
                     <Box>
                         <Card>
                             <CardBody>
-                                <Flex align="center">
+                                <Flex align="center"  mb={8}>
                                     <IconButton
                                         aria-label="Investment Duration"
                                         icon={<FaCalendarAlt />}
@@ -135,7 +135,7 @@ export default function SavingsSimulator() {
                     <Box>
                         <Card>
                             <CardBody>
-                                <Flex align="center">
+                                <Flex align="center"  mb={8}>
                                     <IconButton
                                         aria-label="Return Rate"
                                         icon={<FaPercentage />}
