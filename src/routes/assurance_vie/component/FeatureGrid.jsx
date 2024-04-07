@@ -1,17 +1,17 @@
 import React from 'react';
-import { Box, SimpleGrid, Text, Icon } from '@chakra-ui/react';
+import { Box, SimpleGrid, Text, Icon, Center, VStack } from '@chakra-ui/react';
 import { AiOutlineDollar, AiOutlinePieChart, AiOutlineCustomerService, AiOutlineCheckCircle } from 'react-icons/ai';
 
 // Subcomponent for each feature
 const Feature = ({ icon, title, description }) => {
   return (
-    <Box p={5} shadow="md" borderWidth="1px" flex="1" borderRadius="md">
+    <Center p={5} shadow="md" borderWidth="1px" borderRadius="md" flexDirection="column">
       <Icon as={icon} w={10} h={10} color="orange.400" />
-      <Text mt={4} fontWeight="bold">
-        {title}
-      </Text>
-      <Text mt={2}>{description}</Text>
-    </Box>
+      <VStack spacing={2}>
+        <Text fontWeight="bold">{title}</Text>
+        <Text textAlign="center">{description}</Text>
+      </VStack>
+    </Center>
   );
 };
 
