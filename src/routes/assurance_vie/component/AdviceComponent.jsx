@@ -41,7 +41,7 @@ const AdviceComponent = () => {
         <Text fontSize="sm" mb={8}>
           Nos conseillers sont à votre écoute du lundi au vendredi de 9h à 18h.
         </Text>
-        <Button colorScheme="blue" variant="solid">
+        <Button colorScheme="green" variant="solid">
           Nous contacter
         </Button>
       </Box>
