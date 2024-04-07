@@ -5,6 +5,7 @@ import FeatureGrid from './component/FeatureGrid';
 import InvestmentComponent from './component/InvestmentComponent';
 import ImpactBanner from './component/ImpactBanner';
 import InfoBanner from './component/InfoBanner';
+import SavingsSimulator from './component/SavingsSimulator';
 
 const AssuranceViePage = () => {
   return (
@@ -14,6 +15,7 @@ const AssuranceViePage = () => {
         <FeatureGrid />
         <ImpactBanner />
         <InfoBanner/>
+        <SavingsSimulator/>
       </Stack>
     </Box>
   );
