@@ -6,6 +6,7 @@ import InvestmentComponent from './component/InvestmentComponent';
 import ImpactBanner from './component/ImpactBanner';
 import InfoBanner from './component/InfoBanner';
 import SavingsSimulator from './component/SavingsSimulator';
+import ResultsComponent from './component/ResultsComponent';
 
 const AssuranceViePage = () => {
   return (
@@ -16,6 +17,7 @@ const AssuranceViePage = () => {
         <ImpactBanner />
         <InfoBanner/>
         <SavingsSimulator/>
+        <ResultsComponent/>
       </Stack>
     </Box>
   );
