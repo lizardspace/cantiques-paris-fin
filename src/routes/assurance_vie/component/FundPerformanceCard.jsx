@@ -1,18 +1,12 @@
-import {
-    Box,
-    Flex,
-    Text,
-    VStack,
-    Image,
-    HStack,
-    Badge
-  } from '@chakra-ui/react';
-  
-  function FundPerformanceCard() {
-    return (
-      <Box maxW="lg" borderWidth="1px" borderRadius="lg" overflow="hidden">
+import { Box, VStack, HStack, Badge, Text, Flex } from '@chakra-ui/react';
+import { FcAreaChart, FcBarChart, FcLineChart } from 'react-icons/fc';
+
+function FundPerformanceCard() {
+  return (
+    <Flex justifyContent="center" alignItems="center" p="6">
+      <Box maxW="full" borderWidth="1px" borderRadius="lg" overflow="hidden">
         <Box p="6">
-          <Box d="flex" alignItems="baseline">
+          <Flex justifyContent="space-between" alignItems="center">
             <Badge borderRadius="full" px="2" colorScheme="teal">
               New
             </Badge>
@@ -24,50 +18,51 @@ import {
               textTransform="uppercase"
               ml="2"
             >
-              2.50% &bull; 3.13% &bull; up to 4.12%
+              2.50% &bull; 3.13% &bull; jusqu'à 4.12%
             </Box>
-          </Box>
-  
-          <Box
+          </Flex>
+
+          <Text
             mt="1"
             fontWeight="semibold"
             as="h4"
             lineHeight="tight"
             isTruncated
+            textAlign="center"
           >
             Les rendements très performants des fonds euro
-          </Box>
-  
-          <Box>
+          </Text>
+
+          <Text textAlign="center" my="4">
             Ces supports sont quasi-garantis en capital, totalement flexibles et sans limite d'investissement!
-          </Box>
-  
-          <HStack mt={4} spacing={10}>
+          </Text>
+
+          <HStack justifyContent="space-evenly" spacing={10}>
             <VStack>
-              <Image src="path_to_avenir2_image" alt="Avenir 2" />
+              <Box as={FcAreaChart} size="50px" />
               <Text mt={2}>2,50% nets en 2023</Text>
               <Text fontSize="sm">sur le fonds en euros "Suravenir Opportunités 2"</Text>
             </VStack>
             <VStack>
-              <Image src="path_to_spirit2_image" alt="Spirit 2" />
+              <Box as={FcBarChart} size="50px" />
               <Text mt={2}>3,13% nets de frais de gestion en 2023</Text>
               <Text fontSize="sm">sur le fonds en euros "Nouvelle Génération"</Text>
             </VStack>
             <VStack>
-              <Image src="path_to_vie_image" alt="Vie" />
+              <Box as={FcLineChart} size="50px" />
               <Text mt={2}>Jusqu'à 4,12%</Text>
               <Text fontSize="sm">nets en 2023 sur le fonds en euros "Netissima"</Text>
             </VStack>
           </HStack>
           
-          <Text mt={4} fontSize="sm">
-            Les rendements passés ne préjugent pas des rendements futurs. 
+          <Text textAlign="center" fontSize="sm" mt={4}>
+            Les rendements passés ne préjugent pas des rendements futurs.
             INVESTISSEMENT POSSIBLE A 100% jusqu'au 29/02/2024.
           </Text>
         </Box>
       </Box>
-    );
-  }
-  
-  export default FundPerformanceCard;
-  
+    </Flex>
+  );
+}
+
+export default FundPerformanceCard;
