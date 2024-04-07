@@ -1,6 +1,6 @@
 import React from 'react';
-import { Flex, Box, Text, Image, Link, HStack } from '@chakra-ui/react';
-import { FaFacebook, FaLinkedinIn, FaYoutube, FaInstagram } from 'react-icons/fa';
+import { Flex, Text, Image, Link, HStack } from '@chakra-ui/react';
+import { FaFacebook, FaLinkedinIn, FaYoutube, FaInstagram, FaBuilding } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -13,39 +13,39 @@ const Footer = () => {
       wrap="wrap"
     >
       <Image
-        src="/path-to-your-logo.png"
-        alt="Linxea Logo"
+        src="/images/agavic/agaviclogo.png"
+        alt="Agavic Logo"
         boxSize="100px"
         objectFit="contain"
       />
 
       <HStack spacing={4} display={{ base: 'none', md: 'flex' }}>
         <Link href="https://www.facebook.com" isExternal>
-          <FaFacebook />
+          <FaFacebook aria-label="Facebook" />
         </Link>
         <Link href="https://www.linkedin.com" isExternal>
-          <FaLinkedinIn />
+          <FaLinkedinIn aria-label="LinkedIn" />
         </Link>
         <Link href="https://www.youtube.com" isExternal>
-          <FaYoutube />
+          <FaYoutube aria-label="YouTube" />
         </Link>
         <Link href="https://www.instagram.com" isExternal>
-          <FaInstagram />
+          <FaInstagram aria-label="Instagram" />
         </Link>
       </HStack>
 
       <Text fontSize="lg">
-        01 45 67 34 22
+        04 78 34 26 23
         <br />
         Du lundi au vendredi de 9h à 18h
       </Text>
 
       <HStack spacing={4}>
-        {/* Add images for each partner logo */}
-        <Image src="/path-to-spirica-logo.png" alt="Spirica Logo" boxSize="50px" />
-        <Image src="/path-to-suravenir-logo.png" alt="Suravenir Logo" boxSize="50px" />
-        <Image src="/path-to-apicil-logo.png" alt="Apicil Logo" boxSize="50px" />
-        <Image src="/path-to-generali-logo.png" alt="Generali Logo" boxSize="50px" />
+        {/* Icons representing the partners */}
+        <FaBuilding aria-label="Spirica" />
+        <FaBuilding aria-label="Suravenir" />
+        <FaBuilding aria-label="Apicil" />
+        <FaBuilding aria-label="Generali" />
       </HStack>
     </Flex>
   );
