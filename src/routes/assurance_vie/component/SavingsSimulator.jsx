@@ -42,6 +42,11 @@ const SavingsSimulator = () => {
     const totalInterests = initialInterests + monthlyInterests;
     const totalFutureValue = initialSavings * (1 + monthlyRate) ** totalMonths + monthlyFutureValue;
 
+    // Format numbers to remove decimal places
+    const formattedCumulative = cumulativeInitialAndMonthlyDeposits.toFixed(0);
+    const formattedInterests = totalInterests.toFixed(0);
+    const formattedFutureValue = totalFutureValue.toFixed(0);
+
     return (
         <Box p={8}>
             <VStack spacing={8} align="center">
@@ -201,7 +206,7 @@ const SavingsSimulator = () => {
                         <Text fontSize="sm" color="gray.500">
                             Versements cumulés
                         </Text>
-                        <Heading size="md">{cumulativeInitialAndMonthlyDeposits} €</Heading>
+                        <Heading size="md">{formattedCumulative} €</Heading>
                     </Box>
                     <Box as="span" fontSize="3xl" p={2}>
                         +
@@ -210,7 +215,7 @@ const SavingsSimulator = () => {
                         <Text fontSize="sm" color="gray.500">
                             Intérêts cumulés au terme
                         </Text>
-                        <Heading size="md">{totalInterests} €</Heading>
+                        <Heading size="md">{formattedInterests} €</Heading>
                     </Box>
                     <Box as="span" fontSize="3xl" p={2}>
                         =
@@ -219,7 +224,7 @@ const SavingsSimulator = () => {
                         <Text fontSize="sm" color="gray.500">
                             Capital final
                         </Text>
-                        <Heading size="md" bg="blue.500" color="white">{totalFutureValue} €</Heading>
+                        <Heading size="md" bg="blue.500" color="white">{formattedFutureValue} €</Heading>
                     </Box>
                 </Flex>
             </VStack>
