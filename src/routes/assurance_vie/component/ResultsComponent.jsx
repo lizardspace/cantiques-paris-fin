@@ -1,4 +1,6 @@
+import React from 'react';
 import { Box, Flex, Text, VStack, Heading } from '@chakra-ui/react';
+import { FaPlus, FaEquals } from 'react-icons/fa';
 
 const DataCard = ({ title, value, detail }) => {
   return (
@@ -29,19 +31,22 @@ const ResultsComponent = () => {
         value="21 438 €"
         detail="> Voir le détail"
       />
+      <Box as="span" fontSize="3xl" p={2}>
+        
+      </Box>
       <DataCard
         title="Versements cumulés"
         value="169 000 €"
       />
       <Box as="span" fontSize="3xl" p={2}>
-        +
+      <FaPlus />
       </Box>
       <DataCard
         title="Intérêts cumulés au terme"
         value="69 857 €"
       />
       <Box as="span" fontSize="3xl" p={2}>
-        =
+        <FaEquals />
       </Box>
       <DataCard
         title="Capital final"

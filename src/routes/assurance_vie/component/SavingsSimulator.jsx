@@ -17,7 +17,7 @@ import {
     Card,
     CardBody,
 } from '@chakra-ui/react';
-import { FaMoneyBillWave, FaCalendarAlt, FaPercentage } from 'react-icons/fa';
+import { FaMoneyBillWave, FaCalendarAlt, FaPercentage, FaEquals, FaPlus } from 'react-icons/fa';
 
 const SavingsSimulator = () => {
     const [initialDeposit, setInitialDeposit] = useState(10000);
@@ -202,30 +202,32 @@ const SavingsSimulator = () => {
                         <Heading size="md">21 438 €</Heading>
                         <Text fontSize="xs" color="blue.500">> Voir le détail</Text>
                     </Box>
-                    <Box minW="200px" align="start">
-                        <Text fontSize="sm" color="gray.500">
-                            Versements cumulés
-                        </Text>
-                        <Heading size="md">{formattedCumulative} €</Heading>
-                    </Box>
-                    <Box as="span" fontSize="3xl" p={2}>
-                        +
-                    </Box>
-                    <Box minW="200px" align="start">
-                        <Text fontSize="sm" color="gray.500">
-                            Intérêts cumulés au terme
-                        </Text>
-                        <Heading size="md">{formattedInterests} €</Heading>
-                    </Box>
-                    <Box as="span" fontSize="3xl" p={2}>
-                        =
-                    </Box>
-                    <Box minW="200px" align="start">
-                        <Text fontSize="sm" color="gray.500">
-                            Capital final
-                        </Text>
-                        <Heading size="md" bg="blue.500" color="white">{formattedFutureValue} €</Heading>
-                    </Box>
+                    <Flex align="center">
+                        <Box minW="200px" align="start">
+                            <Text fontSize="sm" color="gray.500">
+                                Versements cumulés
+                            </Text>
+                            <Heading size="md">{formattedCumulative} €</Heading>
+                        </Box>
+                        <Box as="span" fontSize="3xl" p={2}>
+                            <FaPlus />
+                        </Box>
+                        <Box minW="200px" align="start">
+                            <Text fontSize="sm" color="gray.500">
+                                Intérêts cumulés au terme
+                            </Text>
+                            <Heading size="md">{formattedInterests} €</Heading>
+                        </Box>
+                        <Box as="span" fontSize="3xl" p={2}>
+                            <FaEquals />
+                        </Box>
+                        <Box minW="200px" align="start">
+                            <Text fontSize="sm" color="gray.500">
+                                Capital final
+                            </Text>
+                            <Heading size="md" bg="blue.500" color="white">{formattedFutureValue} €</Heading>
+                        </Box>
+                    </Flex>
                 </Flex>
             </VStack>
         </Box>
