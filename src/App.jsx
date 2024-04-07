@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import FullWidthBanner from "./components/header/FullWidthBanner";
 import Headerb from "./components/Headerb";
 import HeaderBar from "./components/HeaderBar";
+import Footer from "./components/Footer/Footer";
 
 
 const App = () => {
@@ -75,6 +76,7 @@ const InnerApp = () => {
           </Suspense>
         </Box>
       </Flex>
+      <Footer/>
     </>
   );
 };
