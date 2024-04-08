@@ -57,7 +57,7 @@ const FondsEnEuros = () => {
           <Bar dataKey="bonus" stackId="a" fill="#32CD32" barSize={100} radius={[10, 10, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
-      <Button colorScheme="teal" size="sm">
+      <Button colorScheme="teal" size="lg"> {/* Augmenter la taille du bouton */}
         Découvrir l'offre
       </Button>
       <Text fontSize="md" textAlign="center" fontWeight="bold" color={textColor}> {/* Augmenter la taille du texte */}
