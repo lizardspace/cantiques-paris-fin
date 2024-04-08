@@ -7,38 +7,65 @@ import {
   AccordionIcon,
   Box,
   Text,
-  useTheme,
+  VStack,
+  HStack,
 } from '@chakra-ui/react';
 
-const ACCORDION_TITLE_COLOR = 'blue.500';
-const ACCORDION_TITLE_FONT_SIZE = 'lg';
-const ACCORDION_CONTENT_PADDING_BOTTOM = 4;
-
-const ACCORDION_ITEMS = [
-  { title: 'Versements libres', content: 'Contenu pour les versements libres' },
-  { title: 'Versements libres programmés', content: 'Contenu pour les versements libres programmés' },
-  // Add more items as needed...
-];
+const accordionData = [
+    {
+      title: 'Versements libres',
+      details: [
+        { label: 'Versement initial minimum', value: '100 €' },
+        { label: 'Versement complémentaire minimum', value: '100 €' },
+        { label: 'Minimum par support', value: '25 €' },
+        { label: 'Frais', value: '0% (hors SCPI, SCI et ETF)' },
+        { label: 'Date de valeur', value: 'J+2 jours ouvrés si réalisé par prélèvement en ligne avant 20h' },
+      ],
+    },
+    {
+      title: 'Versements libres programmés',
+      details: [
+        // Add the respective details for programmable free payments here...
+      ],
+    },
+    {
+      title: 'Arbitrages',
+      details: [
+        // Add the respective details for arbitrages here...
+      ],
+    },
+    // Add other sections as needed...
+  ];
+  
 
 function CustomAccordion() {
-  const theme = useTheme();
-
   return (
     <Accordion defaultIndex={[0]} allowMultiple>
-      {ACCORDION_ITEMS.map((item, index) => (
+      {accordionData.map((section, index) => (
         <AccordionItem key={index}>
           <h2>
             <AccordionButton>
               <Box flex="1" textAlign="left">
-                <Text color={theme.colors[ACCORDION_TITLE_COLOR]} fontSize={ACCORDION_TITLE_FONT_SIZE}>
-                  {item.title}
+                <Text fontSize="lg" fontWeight="bold">
+                  {section.title}
                 </Text>
               </Box>
               <AccordionIcon />
             </AccordionButton>
           </h2>
-          <AccordionPanel pb={ACCORDION_CONTENT_PADDING_BOTTOM}>
-            <Text>{item.content}</Text>
+          <AccordionPanel pb={4}>
+            {section.details && Array.isArray(section.details) ? (
+              <VStack align="stretch" spacing={4}>
+                {section.details.map((detail, detailIndex) => (
+                  <HStack key={detailIndex} justify="space-between">
+                    <Text fontWeight="semibold">{detail.label}:</Text>
+                    <Text>{detail.value}</Text>
+                  </HStack>
+                ))}
+              </VStack>
+            ) : (
+              <Text>No details available.</Text>
+            )}
           </AccordionPanel>
         </AccordionItem>
       ))}
