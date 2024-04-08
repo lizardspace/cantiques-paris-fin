@@ -34,7 +34,8 @@ const FondsEnEuros = () => {
       borderRadius="lg"
       align="center"
       spacing={4}
-      maxWidth="400px"
+      width="100%" // Adjust to fit your layout needs
+      maxWidth="100%" // This sets the maximum width the VStack can take
     >
       <Text fontSize="lg" fontWeight="bold">
         Objectif 4,50% net de frais de gestion en 2024
@@ -43,12 +44,13 @@ const FondsEnEuros = () => {
         +2% sur le rendement du fonds en euros Suravenir Opportunités 2
       </Text>
       <ResponsiveContainer width="100%" height={250}>
-        <BarChart data={data}>
+        <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
           <XAxis dataKey="name" tickLine={false} axisLine={false} />
           <YAxis hide={true} />
           <Tooltip content={<CustomTooltip />} />
-          <Bar dataKey="uv" stackId="a" fill="#FFA500" barSize={35} radius={[10, 10, 0, 0]} />
-          <Bar dataKey="bonus" stackId="a" fill="#32CD32" barSize={35} radius={[10, 10, 0, 0]} />
+          {/* Adjust barSize to control the width of the bars */}
+          <Bar dataKey="uv" stackId="a" fill="#FFA500" barSize={300} radius={[0, 0, 0, 0]} />
+          <Bar dataKey="bonus" stackId="a" fill="#32CD32" barSize={100} radius={[10, 10, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
       <Button colorScheme="teal" size="sm">
