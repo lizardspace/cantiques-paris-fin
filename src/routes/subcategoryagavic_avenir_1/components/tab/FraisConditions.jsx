@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Text, List, ListItem, ListIcon } from '@chakra-ui/react';
 import { CheckCircleIcon } from '@chakra-ui/icons';
 import FeesTable from './fraisconditions/FeesTable';
+import CustomAccordion from './fraisconditions/CustomAccordion';
 
 function FraisConditions() {
   return (
@@ -31,6 +32,7 @@ function FraisConditions() {
       </List>
     </Box>
     <FeesTable/>
+    <CustomAccordion/>
     </>
   );
 }
