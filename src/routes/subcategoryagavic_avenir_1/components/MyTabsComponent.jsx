@@ -1,5 +1,10 @@
 import React from 'react';
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, useColorModeValue } from '@chakra-ui/react';
+import FondsEnEuros from './tabFondsEnEuros';
+import FraisConditions from './tabFraisConditions';
+import GestionPilotee from './tabGestionPilotee';
+import SupportsGestionLibre from './tabSupportsGestionLibre';
+import SouscrireDocumentation from './tabSouscrireDocumentation';
 
 const MyTabsComponent = () => {
   // Custom colors based on color mode
@@ -24,19 +29,19 @@ const MyTabsComponent = () => {
         </TabList>
         <TabPanels mt={4}>
           <TabPanel>
-            <p>Contenu pour Fonds en euros</p>
+            <FondsEnEuros />
           </TabPanel>
           <TabPanel>
-            <p>Contenu pour Frais / conditions</p>
+            <FraisConditions />
           </TabPanel>
           <TabPanel>
-            <p>Contenu pour Gestion pilotée</p>
+            <GestionPilotee />
           </TabPanel>
           <TabPanel>
-            <p>Contenu pour Supports en gestion libre</p>
+            <SupportsGestionLibre />
           </TabPanel>
           <TabPanel>
-            <p>Contenu pour Souscrire / documentation</p>
+            <SouscrireDocumentation />
           </TabPanel>
         </TabPanels>
       </Tabs>
