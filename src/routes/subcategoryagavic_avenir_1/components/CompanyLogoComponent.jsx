@@ -8,7 +8,7 @@ const CompanyLogoComponent = () => {
       {/* Image logo, remplacez 'path-to-your-image.png' avec le chemin réel de votre image */}
       <Image src="path-to-your-image.png" alt="Linxea Avenir" boxSize="150px" m="auto" />
       
-      <Text fontSize="xl" fontWeight="bold" mt={4}>Linxea Avenir2</Text>
+      <Text fontSize="xl" fontWeight="bold" mt={4}>Agavic Avenir1</Text>
       
       {/* Icône, si vous avez une icône spécifique pour "assuré par", remplacez 'SiSurveymonkey' avec celle-ci */}
       <Stack direction="row" justify="center" align="center" mt={2}>
