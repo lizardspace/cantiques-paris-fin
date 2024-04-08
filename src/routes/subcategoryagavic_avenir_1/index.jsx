@@ -4,6 +4,7 @@ import { Box, Stack } from '@chakra-ui/react';
 import InvestmentComponentAvenir from './components/InvestmentComponentAvenir';
 import PerformanceComponent from './components/PerformanceComponent';
 import CompanyLogoComponent from './components/CompanyLogoComponent';
+import OpportunityComponent from './components/OpportunityComponent';
 
 
 const AssuranceViePage = () => {
@@ -13,6 +14,7 @@ const AssuranceViePage = () => {
         <InvestmentComponentAvenir/>
         <PerformanceComponent/>
         <CompanyLogoComponent/>
+        <OpportunityComponent/>
       </Stack>
     </Box>
   );
