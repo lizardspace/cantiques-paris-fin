@@ -10,6 +10,7 @@ import {
   VStack,
   HStack,
 } from '@chakra-ui/react';
+import { FaAngleDown } from 'react-icons/fa'; // Import the down arrow icon
 
 const accordionData = [
     {
@@ -44,13 +45,13 @@ function CustomAccordion() {
       {accordionData.map((section, index) => (
         <AccordionItem key={index}>
           <h2>
-            <AccordionButton>
+            <AccordionButton _hover={{ color: 'blue' }}> {/* Add hover effect */}
               <Box flex="1" textAlign="left">
                 <Text fontSize="lg" fontWeight="bold">
                   {section.title}
                 </Text>
               </Box>
-              <AccordionIcon />
+              <AccordionIcon as={FaAngleDown} /> {/* Use down arrow icon */}
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
