@@ -24,12 +24,12 @@ function FeesTable() {
   const theme = useTheme();
 
   return (
-    <Box maxW="md" mx="auto">
+    <Box maxW="md" mx="auto" overflow="hidden" borderRadius="lg">
       <Table variant="simple">
         <Thead bg={theme.colors.blue[500]}>
           <Tr>
-            <Th color="white">Type de frais</Th>
-            <Th color="white" isNumeric>Montant des frais</Th>
+            <Th color="white" borderTopLeftRadius="lg">Type de frais</Th>
+            <Th color="white" isNumeric borderTopRightRadius="lg">Montant des frais</Th>
           </Tr>
         </Thead>
         <Tbody>
