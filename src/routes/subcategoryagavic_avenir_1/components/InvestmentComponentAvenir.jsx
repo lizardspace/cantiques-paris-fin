@@ -1,12 +1,22 @@
 import React from 'react';
-import { Box, List, ListItem, ListIcon, Button } from '@chakra-ui/react';
-import { LuLeaf } from 'react-icons/lu'; // Faire attention, cette icône doit exister dans la bibliothèque react-icons, autrement choisir une icône appropriée.
+import { Box, List, ListItem, ListIcon, Button, Text } from '@chakra-ui/react';
+import { LuLeaf } from 'react-icons/lu';
 import { CheckCircleIcon } from '@chakra-ui/icons';
 
 const InvestmentComponentAvenir = () => {
   return (
-    <Box p={5} shadow="md" borderWidth="1px" borderRadius="md" backgroundColor="orange.100">
-      <List spacing={3}>
+    <Box
+      p={5}
+      shadow="2xl"
+      borderWidth="1px"
+      borderRadius="lg"
+      bgGradient="linear(to-r, orange.100, orange.200)"
+      borderColor="orange.300"
+    >
+      <Text fontSize="lg" fontWeight="bold" mb={4}>
+        Votre Plan d'Épargne en Actions
+      </Text>
+      <List spacing={4}>
         <ListItem>
           <ListIcon as={CheckCircleIcon} color="blue.500" />
           0% frais d'entrée, d'arbitrage et de versement
@@ -28,7 +38,7 @@ const InvestmentComponentAvenir = () => {
           23% de fonds responsables (Article 9 et labellisés)
         </ListItem>
       </List>
-      <Button colorScheme="orange" mt={4}>
+      <Button colorScheme="orange" size="lg" mt={6} boxShadow="md">
         Souscrire en ligne
       </Button>
     </Box>
