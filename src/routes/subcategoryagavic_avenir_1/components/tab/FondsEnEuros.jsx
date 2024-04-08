@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, VStack, Button, useColorModeValue, Icon } from '@chakra-ui/react';
+import { Box, Text, VStack, Button, useColorModeValue, HStack, Icon } from '@chakra-ui/react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { MdInfoOutline } from 'react-icons/md';
 
@@ -39,15 +39,15 @@ const FondsEnEuros = () => {
       width="100%"
       maxWidth="100%"
     >
-      <Text fontSize="lg" fontWeight="bold">
+      <Text fontSize="xl" fontWeight="bold"> {/* Modifié la taille du texte */}
         Objectif 4,50% net de frais de gestion en 2024
       </Text>
-      <Box d="flex" alignItems="center">
-        <Icon as={MdInfoOutline} mr={1} color="green.500" />
-        <Text color="green.500" fontSize="sm">
+      <HStack alignItems="center"> {/* Utilisation de HStack pour placer l'icône et le texte sur la même ligne */}
+        <Icon as={MdInfoOutline} color="green.500" />
+        <Text color="green.500" fontSize="lg" fontWeight="medium"> {/* Augmenter la taille du texte et changer le poids de la police */}
           +2% sur le rendement du fonds en euros Suravenir Opportunités 2
         </Text>
-      </Box>
+      </HStack>
       <ResponsiveContainer width="100%" height={250}>
         <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
           <XAxis dataKey="name" tickLine={false} axisLine={false} />
@@ -60,7 +60,7 @@ const FondsEnEuros = () => {
       <Button colorScheme="teal" size="sm">
         Découvrir l'offre
       </Button>
-      <Text fontSize="xs" textAlign="center" fontWeight="bold" color={textColor}>
+      <Text fontSize="md" textAlign="center" fontWeight="bold" color={textColor}> {/* Augmenter la taille du texte */}
         Du 27/01/2024 au 31/12/2024, Suravenir applique une bonification...
         {/* Insert the rest of the text here */}
       </Text>
