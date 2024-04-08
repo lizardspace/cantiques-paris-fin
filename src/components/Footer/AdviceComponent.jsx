@@ -18,7 +18,7 @@ const AdviceComponent = () => {
     >
 
       <Image
-        src="/public/images/agavic/undraw_remote_meeting_re_abe7.svg"
+        src="/images/agavic/undraw_remote_meeting_re_abe7.svg"
         alt="Expert Advice"
         boxSize={{ base: '150px', md: '200px' }}
         objectFit="contain"

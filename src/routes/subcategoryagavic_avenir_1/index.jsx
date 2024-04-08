@@ -5,6 +5,7 @@ import InvestmentComponentAvenir from './components/InvestmentComponentAvenir';
 import PerformanceComponent from './components/PerformanceComponent';
 import CompanyLogoComponent from './components/CompanyLogoComponent';
 import OpportunityComponent from './components/OpportunityComponent';
+import MyTabsComponent from './components/MyTabsComponent';
 
 
 const AssuranceViePage = () => {
@@ -15,6 +16,7 @@ const AssuranceViePage = () => {
         <PerformanceComponent/>
         <CompanyLogoComponent/>
         <OpportunityComponent/>
+        <MyTabsComponent/>
       </Stack>
     </Box>
   );
