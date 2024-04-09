@@ -1,5 +1,6 @@
 import { Tab, Tabs, TabList, TabPanel, TabPanels, Box, Grid } from '@chakra-ui/react';
 import { FaShieldAlt, FaBalanceScale, FaTachometerAlt, FaFire } from 'react-icons/fa';
+import InvestmentManagementComponent from './InvestmentManagementComponent';
 
 const GestionPilotee = () => {
   // Define tab styles
@@ -14,6 +15,7 @@ const GestionPilotee = () => {
   const iconStyles = { marginRight: '0.5rem', fontSize: '1.2rem' };
 
   return (
+    <>
     <Tabs variant="soft-rounded" colorScheme="green">
       <TabList bg="green.200" borderRadius="md" mb={4} px={10} p={5}> {/* Ajout de padding horizontal */}
         <Grid templateColumns="repeat(4, 1fr)" gap={4}>
@@ -56,6 +58,8 @@ const GestionPilotee = () => {
         </TabPanel>
       </TabPanels>
     </Tabs>
+    <InvestmentManagementComponent/>
+    </>
   );
 };
 
