@@ -1,5 +1,5 @@
 import React from 'react';
-import { Accordion, AccordionItem, AccordionButton, AccordionPanel, Box, Button, Link, VStack, List, ListItem, Text } from '@chakra-ui/react';
+import { Accordion, AccordionItem, AccordionButton, AccordionPanel, Box, Button, Link, VStack, List, ListItem, Flex, Text } from '@chakra-ui/react';
 import { FcDownload, FcDocument, FcHome, FcPhone } from 'react-icons/fc'; // Importer les icônes spécifiques nécessaires depuis 'react-icons/fc'
 
 const AccordionComponent = () => {
@@ -36,16 +36,28 @@ const AccordionComponent = () => {
           <AccordionPanel pb={4}>
             <List spacing={3}>
               <ListItem>
-                <FcDocument size={20} style={{ marginRight: '8px' }} /> Pièce d'identité française à jour
+                <Flex alignItems="center">
+                  <FcDocument size={20} style={{ marginRight: '8px' }} />
+                  <Text>Pièce d'identité française à jour</Text>
+                </Flex>
               </ListItem>
               <ListItem>
-                <FcDocument size={20} style={{ marginRight: '8px' }} /> RIB
+                <Flex alignItems="center">
+                  <FcDocument size={20} style={{ marginRight: '8px' }} />
+                  <Text>RIB</Text>
+                </Flex>
               </ListItem>
               <ListItem>
-                <FcHome size={20} style={{ marginRight: '8px' }} /> Justificatif de domicile de moins de 3 mois
+                <Flex alignItems="center">
+                  <FcHome size={20} style={{ marginRight: '8px' }} />
+                  <Text>Justificatif de domicile de moins de 3 mois</Text>
+                </Flex>
               </ListItem>
               <ListItem>
-                <FcPhone size={20} style={{ marginRight: '8px' }} /> Facture de téléphone mobile
+                <Flex alignItems="center">
+                  <FcPhone size={20} style={{ marginRight: '8px' }} />
+                  <Text>Facture de téléphone mobile</Text>
+                </Flex>
               </ListItem>
             </List>
           </AccordionPanel>
