@@ -26,13 +26,18 @@ const accordionData = [
     {
       title: 'Versements libres programmés',
       details: [
-        // Add the respective details for programmable free payments here...
+        { label: 'Fréquence', value: 'Mensuel' },
+        { label: 'Montant', value: 'Variable' },
+        { label: 'Plafond', value: 'Aucun' },
+        // Add other details as needed...
       ],
     },
     {
       title: 'Arbitrages',
       details: [
-        // Add the respective details for arbitrages here...
+        { label: 'Frais', value: '0.5% du montant arbitré, minimum 5 €' },
+        { label: 'Délai', value: 'J+3 jours ouvrés' },
+        // Add other details as needed...
       ],
     },
     // Add other sections as needed...
@@ -45,7 +50,7 @@ function CustomAccordion() {
       {accordionData.map((section, index) => (
         <AccordionItem key={index}>
           <h2>
-            <AccordionButton _hover={{ color: 'blue' }}> {/* Add hover effect */}
+            <AccordionButton _hover={{ color: '#3182ce' }}> {/* Add hover effect */}
               <Box flex="1" textAlign="left">
                 <Text fontSize="lg" fontWeight="bold">
                   {section.title}
