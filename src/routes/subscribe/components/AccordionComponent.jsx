@@ -4,7 +4,6 @@ import {
   AccordionItem,
   AccordionButton,
   AccordionPanel,
-  AccordionIcon,
   Box,
   Button,
   Link,
@@ -13,7 +12,7 @@ import {
   ListItem,
   Text
 } from '@chakra-ui/react';
-import { ChevronDownIcon } from '@chakra-ui/icons';
+import { DownloadIcon } from '@chakra-ui/icons';
 
 const AccordionComponent = () => {
   return (
@@ -35,16 +34,15 @@ const AccordionComponent = () => {
         display="flex"
         alignItems="center" // Aligning the icon vertically with text
       >
-        <ChevronDownIcon w={6} h={6} mr={2} /> Notre document d'entrée en relation
+        <DownloadIcon w={6} h={6} mr={2} /> Notre document d'entrée en relation
       </Link>
-      <Accordion defaultIndex={[0]} allowMultiple>
+      <Accordion allowMultiple>
         <AccordionItem>
           <h2>
             <AccordionButton>
               <Box flex="1" textAlign="left" fontWeight="bold"> {/* Making the question bold for clarity */}
                 Quels sont les documents nécessaires pour souscrire?
               </Box>
-              <AccordionIcon />
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
@@ -62,7 +60,6 @@ const AccordionComponent = () => {
               <Box flex="1" textAlign="left" fontWeight="bold"> {/* Making the question bold for clarity */}
                 Quelles sont les conditions d’éligibilité?
               </Box>
-              <AccordionIcon />
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
