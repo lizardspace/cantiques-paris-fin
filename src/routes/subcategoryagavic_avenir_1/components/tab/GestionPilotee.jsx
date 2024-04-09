@@ -1,12 +1,13 @@
-import { Tab, Tabs, TabList, TabPanel, TabPanels, Box, Flex } from '@chakra-ui/react';
-import { FaShieldAlt, FaBalanceScale, FaTachometerAlt } from 'react-icons/fa';
+import { Tab, Tabs, TabList, TabPanel, TabPanels, Box, Grid } from '@chakra-ui/react';
+import { FaShieldAlt, FaBalanceScale, FaTachometerAlt, FaFire } from 'react-icons/fa';
 
 const GestionPilotee = () => {
   // Define tab styles
   const tabStyles = {
-    _selected: { bg: 'green.100', color: 'green.700', fontWeight: 'bold' },
+    _selected: { bg: 'green.100', color: 'green.700', fontWeight: 'bold', height: '3rem' }, // Hauteur de 3rem pour l'onglet sélectionné
     _hover: { bg: 'green.50', cursor: 'pointer' },
-    p: 3,
+    px: 4,
+    py: 2,
   };
 
   // Define icon styles
@@ -14,22 +15,21 @@ const GestionPilotee = () => {
 
   return (
     <Tabs variant="soft-rounded" colorScheme="green">
-      <TabList bg="green.200" borderRadius="md" p={2} mb={4}>
-        <Tab {...tabStyles}>
-          <Flex align="center">
+      <TabList bg="green.200" borderRadius="md" mb={4}> {/* Hauteur de 4rem pour la TabList */}
+        <Grid templateColumns="repeat(4, 1fr)" gap={4}>
+          <Tab {...tabStyles}>
             <FaShieldAlt color="green" style={iconStyles} /> Défensif
-          </Flex>
-        </Tab>
-        <Tab {...tabStyles}>
-          <Flex align="center">
+          </Tab>
+          <Tab {...tabStyles}>
             <FaBalanceScale color="blue" style={iconStyles} /> Équilibré
-          </Flex>
-        </Tab>
-        <Tab {...tabStyles}>
-          <Flex align="center">
+          </Tab>
+          <Tab {...tabStyles}>
             <FaTachometerAlt color="orange" style={iconStyles} /> Dynamique
-          </Flex>
-        </Tab>
+          </Tab>
+          <Tab {...tabStyles}>
+            <FaFire color="red" style={iconStyles} /> Agressif
+          </Tab>
+        </Grid>
       </TabList>
 
       <TabPanels>
@@ -47,6 +47,11 @@ const GestionPilotee = () => {
         <TabPanel>
           <Box p={4} borderWidth="1px" borderRadius="md" boxShadow="md">
             <p>Information sur la stratégie 'Dynamique'</p>
+          </Box>
+        </TabPanel>
+        <TabPanel>
+          <Box p={4} borderWidth="1px" borderRadius="md" boxShadow="md">
+            <p>Information sur la stratégie 'Agressif'</p>
           </Box>
         </TabPanel>
       </TabPanels>
