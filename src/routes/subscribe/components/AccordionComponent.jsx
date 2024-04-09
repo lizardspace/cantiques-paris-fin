@@ -1,8 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import { Accordion, AccordionItem, AccordionButton, AccordionPanel, Box, Button, Link, VStack, List, ListItem, Flex, Text } from '@chakra-ui/react';
-import { FcDownload, FcDocument, FcHome, FcPhone } from 'react-icons/fc'; // Importer les icônes spécifiques nécessaires depuis 'react-icons/fc'
+import { FcDownload, FcDocument, FcHome, FcPhone } from 'react-icons/fc'; // Import specific icons from 'react-icons/fc'
 
 const AccordionComponent = () => {
+  const navigate = useNavigate(); // Use useNavigate for navigation
+
+  const handleButtonClick = () => {
+    navigate('/projetobjectif'); // Navigate to the "/projetobjectif" route when the button is clicked
+  };
+
   return (
     <VStack
       spacing={6}
@@ -14,7 +21,7 @@ const AccordionComponent = () => {
       borderRadius="md"
       boxShadow="lg" // Adding a subtle shadow for depth
     >
-      <Button colorScheme="orange">C'est parti!</Button>
+      <Button colorScheme="orange" onClick={handleButtonClick}>C'est parti!</Button> {/* Use onClick to define the action */}
       <Link
         color="blue.500"
         textAlign="center"
