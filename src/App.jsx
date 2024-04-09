@@ -10,6 +10,7 @@ import Footer from "./components/Footer/Footer";
 import FooterBottom from "./components/Footer/FooterBottom";
 import FooterComponent from "./components/Footer/FooterComponent";
 import AdviceComponent from "./components/Footer/AdviceComponent";
+import AccordionComponent from "./routes/subscribe/components/AccordionComponent";
 
 
 const App = () => {

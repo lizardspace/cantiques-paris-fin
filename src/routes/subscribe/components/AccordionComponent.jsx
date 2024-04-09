@@ -1,18 +1,6 @@
 import React from 'react';
-import {
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  Box,
-  Button,
-  Link,
-  VStack,
-  List,
-  ListItem,
-  Text
-} from '@chakra-ui/react';
-import { DownloadIcon } from '@chakra-ui/icons';
+import { Accordion, AccordionItem, AccordionButton, AccordionPanel, Box, Button, Link, VStack, List, ListItem, Text } from '@chakra-ui/react';
+import { FcDownload, FcDocument, FcHome, FcPhone } from 'react-icons/fc'; // Importer les icônes spécifiques nécessaires depuis 'react-icons/fc'
 
 const AccordionComponent = () => {
   return (
@@ -34,7 +22,7 @@ const AccordionComponent = () => {
         display="flex"
         alignItems="center" // Aligning the icon vertically with text
       >
-        <DownloadIcon w={6} h={6} mr={2} /> Notre document d'entrée en relation
+        <FcDownload size={24} style={{ marginRight: '8px' }} /> Notre document d'entrée en relation
       </Link>
       <Accordion allowMultiple>
         <AccordionItem>
@@ -47,10 +35,18 @@ const AccordionComponent = () => {
           </h2>
           <AccordionPanel pb={4}>
             <List spacing={3}>
-              <ListItem>Pièce d'identité française à jour</ListItem>
-              <ListItem>RIB</ListItem>
-              <ListItem>Justificatif de domicile de moins de 3 mois</ListItem>
-              <ListItem>Facture de téléphone mobile</ListItem>
+              <ListItem>
+                <FcDocument size={20} style={{ marginRight: '8px' }} /> Pièce d'identité française à jour
+              </ListItem>
+              <ListItem>
+                <FcDocument size={20} style={{ marginRight: '8px' }} /> RIB
+              </ListItem>
+              <ListItem>
+                <FcHome size={20} style={{ marginRight: '8px' }} /> Justificatif de domicile de moins de 3 mois
+              </ListItem>
+              <ListItem>
+                <FcPhone size={20} style={{ marginRight: '8px' }} /> Facture de téléphone mobile
+              </ListItem>
             </List>
           </AccordionPanel>
         </AccordionItem>
