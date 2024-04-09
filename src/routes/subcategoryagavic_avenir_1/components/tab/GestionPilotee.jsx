@@ -15,7 +15,7 @@ const GestionPilotee = () => {
 
   return (
     <Tabs variant="soft-rounded" colorScheme="green">
-      <TabList bg="green.200" borderRadius="md" mb={4}> {/* Hauteur de 4rem pour la TabList */}
+      <TabList bg="green.200" borderRadius="md" mb={4} px={10} p={5}> {/* Ajout de padding horizontal */}
         <Grid templateColumns="repeat(4, 1fr)" gap={4}>
           <Tab {...tabStyles}>
             <FaShieldAlt color="green" style={iconStyles} /> Défensif
