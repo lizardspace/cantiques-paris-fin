@@ -1,5 +1,5 @@
-import { Tab, Tabs, TabList, TabPanel, TabPanels, Box } from '@chakra-ui/react';
-import { Shield, Balance, Speed } from '@chakra-ui/icons';
+import { Tab, Tabs, TabList, TabPanel, TabPanels, Box, Flex } from '@chakra-ui/react';
+import { FaShieldAlt, FaBalanceScale, FaTachometerAlt } from 'react-icons/fa';
 
 const GestionPilotee = () => {
   // Define tab styles
@@ -9,17 +9,26 @@ const GestionPilotee = () => {
     p: 3,
   };
 
+  // Define icon styles
+  const iconStyles = { marginRight: '0.5rem', fontSize: '1.2rem' };
+
   return (
     <Tabs variant="soft-rounded" colorScheme="green">
       <TabList bg="green.200" borderRadius="md" p={2} mb={4}>
         <Tab {...tabStyles}>
-          <Shield /> Défensif
+          <Flex align="center">
+            <FaShieldAlt color="green" style={iconStyles} /> Défensif
+          </Flex>
         </Tab>
         <Tab {...tabStyles}>
-          <Balance /> Équilibré
+          <Flex align="center">
+            <FaBalanceScale color="blue" style={iconStyles} /> Équilibré
+          </Flex>
         </Tab>
         <Tab {...tabStyles}>
-          <Speed /> Dynamique
+          <Flex align="center">
+            <FaTachometerAlt color="orange" style={iconStyles} /> Dynamique
+          </Flex>
         </Tab>
       </TabList>
 
@@ -32,12 +41,12 @@ const GestionPilotee = () => {
         </TabPanel>
         <TabPanel>
           <Box p={4} borderWidth="1px" borderRadius="md" boxShadow="md">
-            <p>Information on 'Équilibré' strategy</p>
+            <p>Information sur la stratégie 'Équilibré'</p>
           </Box>
         </TabPanel>
         <TabPanel>
           <Box p={4} borderWidth="1px" borderRadius="md" boxShadow="md">
-            <p>Information on 'Dynamique' strategy</p>
+            <p>Information sur la stratégie 'Dynamique'</p>
           </Box>
         </TabPanel>
       </TabPanels>
