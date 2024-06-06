@@ -1,7 +1,7 @@
-import React, { Suspense, lazy, useEffect, useState } from "react";
+import React, { Suspense } from "react";
 import { ChakraProvider, Box, Flex, IconButton, useDisclosure, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import FullWidthBanner from "./components/header/FullWidthBanner";
 import Headerb from "./components/Headerb";
@@ -10,8 +10,7 @@ import Footer from "./components/Footer/Footer";
 import FooterBottom from "./components/Footer/FooterBottom";
 import FooterComponent from "./components/Footer/FooterComponent";
 import AdviceComponent from "./components/Footer/AdviceComponent";
-import AccordionComponent from "./routes/subscribe/components/AccordionComponent";
-
+import routes from './routes'; // Importer le fichier de routes
 
 const App = () => {
   return (
@@ -25,32 +24,6 @@ const App = () => {
 
 const InnerApp = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const location = useLocation();
-  const [loadError, setLoadError] = useState(false);
-
-  const currentPath = location.pathname;
-  const componentName = currentPath.split('/').filter(Boolean).map(part => part.replace(/%20/g, '_')).join('');
-  const componentFilePath = `./routes/${componentName}/index.jsx`;
-
-  const ComponentToRender = lazy(() =>
-  import(/* @vite-ignore */ componentFilePath)
-    .catch(() => {
-      return new Promise((resolve) => setTimeout(resolve, 10000))
-        .then(() => import(/* @vite-ignore */ componentFilePath))
-        .catch(() => {
-          setLoadError(true);
-          return import('./NotFound.jsx');
-        });
-    })
-);
-
-
-  useEffect(() => {
-    setLoadError(false); // Réinitialiser l'état d'erreur lors du changement de route
-    console.log("Location pathname:", currentPath);
-    console.log("Component name:", componentName);
-    console.log("Component file path:", componentFilePath);
-  }, [currentPath, componentName, componentFilePath]);
 
   return (
     <>
@@ -75,15 +48,17 @@ const InnerApp = () => {
         <Box flex="1" p={5}>
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
-              <Route path="*" element={<ComponentToRender />} />
+              {routes.map((route, index) => (
+                <Route key={index} path={route.path} element={route.component} />
+              ))}
             </Routes>
           </Suspense>
         </Box>
       </Flex>
-      <AdviceComponent/>
-      <Footer/>
-      <FooterBottom/>
-      <FooterComponent/>
+      <AdviceComponent />
+      <Footer />
+      <FooterBottom />
+      <FooterComponent />
     </>
   );
 };
