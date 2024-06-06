@@ -35,7 +35,7 @@ const routes = [
     path: '/projet/objectif',
     name: 'Projet Objectif',
     component: <ProjetObjectif />,
-    parent: 'Projects'
+    parent: 'Projet'
   },
   {
     path: '*',
