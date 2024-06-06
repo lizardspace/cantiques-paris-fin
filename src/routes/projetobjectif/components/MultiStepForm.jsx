@@ -61,14 +61,6 @@ const MultiStepForm = () => {
       <Box mb={6}>
         <CurrentComponent prevStep={prevStep} nextStep={nextStep} chooseDifferentContract={chooseDifferentContract} />
       </Box>
-      <Flex justifyContent="space-between">
-        <Button onClick={prevStep} isDisabled={currentStep === 0}>
-          Précédent
-        </Button>
-        <Button onClick={nextStep} isDisabled={currentStep === steps.length - 1}>
-          Continuer
-        </Button>
-      </Flex>
     </Box>
   );
 };
