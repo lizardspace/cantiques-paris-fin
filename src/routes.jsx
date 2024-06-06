@@ -11,23 +11,25 @@ const routes = [
     path: '/',
     name: 'Home',
     component: <Subscribe />,
+    hidden: true, // Cette route ne sera pas affichée dans le Navbar
   },
   {
     path: '/subscribe',
     name: 'Subscribe',
     component: <Subscribe />,
+    hidden: true,
   },
   {
-    path: '/subcategory/assurance_vie',
+    path: '/assurance_vie',
     name: 'Assurance Vie',
     component: <AssuranceVie />,
-    parent: 'Subcategories'
+    parent: 'Assurances Vie'
   },
   {
-    path: '/subcategory/agavic_avenir_1',
+    path: '/agavic_avenir_1',
     name: 'Agavic Avenir 1',
     component: <AgavicAvenir1 />,
-    parent: 'Subcategories'
+    parent: 'Assurances Vie'
   },
   {
     path: '/projet/objectif',
@@ -39,6 +41,7 @@ const routes = [
     path: '*',
     name: 'NotFound',
     component: <NotFound />,
+    hidden: true, // Cette route ne sera pas affichée dans le Navbar
   },
 ];
 

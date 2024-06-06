@@ -23,8 +23,11 @@ const Navbar = ({ isDrawer }) => {
     navigate(path);
   };
 
+  // Filtrer les routes pour exclure celles qui sont marquées comme 'hidden'
+  const visibleRoutes = routes.filter(route => !route.hidden);
+
   // Regrouper les routes par catégories principales et sous-catégories
-  const groupedRoutes = routes.reduce((acc, route) => {
+  const groupedRoutes = visibleRoutes.reduce((acc, route) => {
     if (route.parent) {
       if (!acc[route.parent]) {
         acc[route.parent] = [];
