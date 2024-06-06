@@ -12,6 +12,7 @@ import Step9 from './etapes/Step9';
 import Step10 from './etapes/Step10';
 import Step11 from './etapes/Step11';
 import Step12 from './etapes/Step12';
+import Step13 from './etapes/Step13'; // Import Step13
 
 const steps = [
   { component: Step1, label: 'Projet' },
@@ -26,6 +27,7 @@ const steps = [
   { component: Step10, label: 'Gestion de l\'Épargne' },
   { component: Step11, label: 'Type d\'Investisseur' },
   { component: Step12, label: 'Conclusion' },
+  { component: Step13, label: 'Choix du Contrat' }, // Add Step13
 ];
 
 const MultiStepForm = () => {
@@ -48,18 +50,25 @@ const MultiStepForm = () => {
   return (
     <Box p={5}>
       <Progress
-        value={(currentStep + 1) / steps.length * 100}
+        value={Math.min((currentStep + 1), 12) / 12 * 100}
         mb={6}
         colorScheme="orange"
       />
       <Flex justifyContent="space-between" mb={6}>
         <Text>{steps[currentStep].label}</Text>
-        <Text>Étape {currentStep + 1}/{steps.length}</Text>
+        <Text>Étape {Math.min((currentStep + 1), 12)}/12</Text>
       </Flex>
       <Box mb={6}>
         <CurrentComponent prevStep={prevStep} nextStep={nextStep} chooseDifferentContract={chooseDifferentContract} />
       </Box>
-      
+      <Flex justifyContent="space-between">
+        <Button onClick={prevStep} isDisabled={currentStep === 0}>
+          Précédent
+        </Button>
+        <Button onClick={nextStep} isDisabled={currentStep === steps.length - 1}>
+          Continuer
+        </Button>
+      </Flex>
     </Box>
   );
 };
