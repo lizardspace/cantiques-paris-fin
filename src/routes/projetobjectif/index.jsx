@@ -1,14 +1,14 @@
 // src/routes/assurance_vie/AssuranceViePage.jsx
 import React from 'react';
 import { Box, Stack } from '@chakra-ui/react';
-import ProgressBar from './components/ProgressBarBis';
+import MultiStepForm from './components/MultiStepForm';
 
 
 const ProjetObjectif = () => {
   return (
     <Box>
       <Stack spacing={8} m={10}>
-        <ProgressBar/>
+        <MultiStepForm/>
       </Stack>
     </Box>
   );
