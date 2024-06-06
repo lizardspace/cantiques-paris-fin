@@ -20,7 +20,7 @@ const Step12 = ({ prevStep, nextStep, chooseDifferentContract }) => {
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel pb={4}>
-            <!-- Add the content for "Avantages de l'assurance vie" here -->
+            
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem>
@@ -31,7 +31,7 @@ const Step12 = ({ prevStep, nextStep, chooseDifferentContract }) => {
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel pb={4}>
-            <!-- Add the content for "Avantages du Contrat Linxea Spirit 2" here -->
+
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
