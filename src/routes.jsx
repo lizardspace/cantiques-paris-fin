@@ -32,7 +32,7 @@ const routes = [
     parent: 'Assurances Vie'
   },
   {
-    path: '/projet/objectif',
+    path: '/projetobjectif',
     name: 'Projet Objectif',
     component: <ProjetObjectif />,
     parent: 'Projet'
