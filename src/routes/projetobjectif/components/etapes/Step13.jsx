@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Box, Heading, Button, VStack, Text, Flex } from '@chakra-ui/react';
+import { Box, Heading, Button, VStack, Text, Flex, Link } from '@chakra-ui/react';
 
 const Step13 = ({ prevStep, nextStep }) => {
   const [selectedContract, setSelectedContract] = useState('');
-  const [view, setView] = useState('contract'); // View state: contract, placement, per
+  const [view, setView] = useState('contract'); // View state: contract, placement, per, unavailable
 
   const contracts = [
     'Linxea Avenir 2',
@@ -33,8 +33,10 @@ const Step13 = ({ prevStep, nextStep }) => {
   const handlePlacementClick = (placement) => {
     if (placement === 'PER') {
       setView('per');
+    } else if (placement === 'Assurance vie') {
+      setView('contract');
     } else {
-      setSelectedContract(placement);
+      setView('unavailable');
     }
   };
 
@@ -86,7 +88,7 @@ const Step13 = ({ prevStep, nextStep }) => {
             </Button>
           </Flex>
         </>
-      ) : (
+      ) : view === 'per' ? (
         <>
           <Heading as="h2" size="lg" mb={6}>
             Choisissez un contrat
@@ -109,15 +111,49 @@ const Step13 = ({ prevStep, nextStep }) => {
             </Button>
           </Flex>
         </>
+      ) : (
+        <>
+          <Heading as="h2" size="lg" mb={4} color="red.500">
+            Aïe !
+          </Heading>
+          <Text mb={6}>
+            La souscription en ligne n'est pas ouverte aux PEA (mais on y travaille...).
+            <br />
+            Vous pouvez cependant souscrire à un contrat PEA en téléchargeant un kit de souscription papier.
+          </Text>
+          <Button colorScheme="orange" mb={6}>
+            Contactez-nous
+          </Button>
+          <Box bg="gray.100" p={4} borderRadius="md">
+            <Text fontWeight="bold" mb={2}>
+              Besoin d'aide ?
+            </Text>
+            <Link color="orange.500" href="#">
+              Contactez-nous en ligne
+            </Link>
+            <Text>
+              ou par téléphone : 01 45 67 34 22
+              <br />
+              du lundi au vendredi de 9h à 18h sans interruption.
+            </Text>
+          </Box>
+          <Flex justifyContent="space-between" mt={6}>
+            <Button onClick={() => setView('placement')} variant="outline" colorScheme="orange">
+              Précédent
+            </Button>
+          </Flex>
+        </>
       )}
-      <Flex justifyContent="space-between">
-        <Button onClick={prevStep} variant="outline" colorScheme="orange">
-          Précédent
-        </Button>
-        <Button colorScheme="orange" onClick={nextStep} isDisabled={!selectedContract}>
-          Continuer
-        </Button>
-      </Flex>
+      {view !== 'unavailable' && (
+        <Flex justifyContent="space-between">
+          <Button onClick={prevStep} variant="outline" colorScheme="orange">
+            Précédent
+          </Button>
+          <Button colorScheme="orange" onClick={nextStep} isDisabled={!selectedContract}>
+            Continuer
+          </Button>
+        </Flex>
+      )}
     </Box>
   );
 };
