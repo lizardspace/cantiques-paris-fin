@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Input, Select, Switch, Button, HStack, VStack, Text, Image, Grid, IconButton, Table, Thead, Tbody, Tr, Th, Td } from '@chakra-ui/react';
+import { Box, Input, Select, Switch, Button, HStack, VStack, Text, Image, Grid, IconButton, Table, Thead, Tbody, Tr, Th, Td, Tooltip } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import { FaThList, FaTh } from 'react-icons/fa';
 
@@ -101,7 +101,9 @@ const SCPIList = () => {
               <Tr>
                 <Th>SCPI</Th>
                 <Th>Société de gestion</Th>
-                <Th>Taux de distribution</Th>
+                <Tooltip label="Le Taux de Distribution mesure le rendement financier annuel d'une SCPI. C'est le dividende brut annuel, avant fiscalité et prélèvement libératoire (y compris les acomptes exceptionnels et quote-part de plus-values) divisé par le prix de souscription au 1er janvier de la même année. Les performances passées ne préjugent pas des performances futures." fontSize="md" placement="top">
+                  <Th>Taux de distribution</Th>
+                </Tooltip>
                 <Th>Catégorie</Th>
                 <Th>Capitalisation</Th>
                 <Th>Label ISR</Th>
