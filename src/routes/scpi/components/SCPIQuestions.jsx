@@ -47,7 +47,32 @@ const questionsAndAnswers = [
   },
   {
     question: "Comment ça marche les SCPI ?",
-    answer: <Text>Pour comprendre le fonctionnement des SCPI, il faut d'abord...</Text>, // Add more detailed answer here
+    answer: (
+      <>
+        <Text mb={2}>
+          Les SCPI constituent un moyen simple et accessible d'investir dans l’immobilier et de profiter de ses nombreux avantages.
+        </Text>
+        <Text mb={2}>
+          Investir en SCPI, c'est avant tout devenir associé d'une société qui possède un patrimoine immobilier locatif. Mais comment ça se passe concrètement ?
+        </Text>
+        <Text mb={2} fontWeight="bold">Acquisition et gestion du patrimoine :</Text>
+        <Text mb={2}>
+          La SCPI, via sa société de gestion, achète des biens immobiliers (bureaux, commerces, hôtels, etc.) et les met en location. La société de gestion s'occupe de toutes les tâches liées à la gestion locative :
+        </Text>
+        <Text mb={2} pl={4}>
+          - Recherche de locataires<br/>
+          - Signature des baux<br/>
+          - Collecte des loyers<br/>
+          - Paiement des charges<br/>
+          - Entretien des biens<br/>
+          - Travaux éventuels
+        </Text>
+        <Text mb={2} fontWeight="bold">Détention de parts et droit aux revenus :</Text>
+        <Text>
+          En tant qu'associé, vous détenez des parts de SCPI proportionnelles à votre investissement. Vous percevez ensuite des revenus locatifs (loyers ou dividendes) au prorata des parts détenues, distribués mensuellement ou trimestriellement.
+        </Text>
+      </>
+    ),
   },
   {
     question: "Immobilier : comment investir en SCPI ?",
@@ -68,6 +93,14 @@ const questionsAndAnswers = [
   {
     question: "Quelle SCPI choisir en 2024 ?",
     answer: <Text>Le choix de la SCPI dépend de plusieurs critères, notamment de vos objectifs et de votre profil d'investisseur...</Text>, // Add more detailed answer here
+  },
+  {
+    question: "Quelles sont les meilleures SCPI en 2024 ?",
+    answer: <Text>Les meilleures SCPI en 2024 varient en fonction de différents critères tels que les rendements passés, la gestion et la diversification...</Text>, // Add more detailed answer here
+  },
+  {
+    question: "SCPI : Capital fixe ou variable, quelle différence ?",
+    answer: <Text>Le capital fixe et le capital variable sont deux modes de fonctionnement des SCPI qui influencent la liquidité et la flexibilité de votre investissement...</Text>, // Add more detailed answer here
   },
 ];
 
