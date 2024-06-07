@@ -12,6 +12,7 @@ import TrustSection from './components/TrustSection';
 import SCPINews from './components/SCPINews';
 import SCPResources from './components/SCPResources';
 import SCPIQuestions from './components/SCPIQuestions';
+import SupportSection from './components/SupportSection';
 
 
 
@@ -31,6 +32,7 @@ const SCPI = () => {
         <SCPINews/>
         <SCPResources/>
         <SCPIQuestions/>
+        <SupportSection/>
       </Stack>
     </Box>
   );
