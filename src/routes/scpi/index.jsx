@@ -6,6 +6,12 @@ import SCPIDescription from './components/SCPIDescription';
 import ForestAndViticultureComponent from './components/ForestAndViticultureComponent';
 import InvestmentOptions from './components/InvestmentOptions';
 import SCPIList from './components/SCPIList';
+import SCPIAdvantages from './components/SCPIAdvantages';
+import SCPIRisks from './components/SCPIRisks';
+import TrustSection from './components/TrustSection';
+import SCPINews from './components/SCPINews';
+import SCPResources from './components/SCPResources';
+import SCPIQuestions from './components/SCPIQuestions';
 
 
 
@@ -19,6 +25,12 @@ const SCPI = () => {
         <ForestAndViticultureComponent/>
         <InvestmentOptions/>
         <SCPIList/>
+        <SCPIAdvantages/>
+        <SCPIRisks/>
+        <TrustSection/>
+        <SCPINews/>
+        <SCPResources/>
+        <SCPIQuestions/>
       </Stack>
     </Box>
   );
