@@ -1,7 +1,6 @@
 // src/routes/assurance_vie/AssuranceViePage.jsx
 import React from 'react';
 import { Box, Stack } from '@chakra-ui/react';
-import SCPIRendement from './components/SCPIRendement';
 import SCPIList from './components/SCPIList';
 
 

@@ -1,7 +1,14 @@
 import React from 'react';
 import { Box, Button, Image, Text, VStack, HStack, Link, Badge } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 const SCPIComponent = () => {
+  const navigate = useNavigate();
+
+  const handleSubscribeClick = () => {
+    navigate('/scpi/souscrire');
+  };
+
   return (
     <Box
       bgGradient="linear(to-r, blue.50, blue.100)"
@@ -29,7 +36,7 @@ const SCPIComponent = () => {
               Percevez des revenus réguliers grâce aux SCPI. Accédez aux meilleurs produits du marché.
             </Text>
             <HStack spacing={4} mt={6}>
-              <Button colorScheme="orange" size="lg">
+              <Button colorScheme="orange" size="lg" onClick={handleSubscribeClick}>
                 Souscrire en ligne
               </Button>
               <Button variant="outline" size="lg">
