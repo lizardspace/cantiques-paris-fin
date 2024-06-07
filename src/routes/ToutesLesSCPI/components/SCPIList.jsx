@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Input, Select, Switch, Button, HStack, VStack, Text, Image, Grid, IconButton, Table, Thead, Tbody, Tr, Th, Td, Tooltip, Spacer } from '@chakra-ui/react';
+import { Box, Input, Select, Switch, Button, HStack, VStack, Text, Image, Grid, IconButton, Table, Thead, Tbody, Tr, Th, Td, Tooltip, Spacer, SimpleGrid, Checkbox } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import { FaThList, FaTh } from 'react-icons/fa';
 import { MdKeyboardArrowRight } from "react-icons/md";
@@ -43,7 +43,48 @@ const SCPIList = () => {
 
   return (
     <Box bg="white" py={10} px={6} borderRadius="lg" boxShadow="md" mx={4}>
-      <VStack spacing={6} maxW="1200px" mx="auto" align="start">
+      <VStack spacing={8} maxW="1200px" mx="auto" align="start">
+        <Text fontSize={{ base: '2xl', md: '3xl' }} fontWeight="bold" color="blue.900">
+          SCPI de rendement
+        </Text>
+        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10} w="100%">
+          <Box>
+            <Text fontSize="lg" fontWeight="bold" color="gray.700" mb={4}>
+              Catégories
+            </Text>
+            <VStack align="start" spacing={2}>
+              <Checkbox>Bureau</Checkbox>
+              <Checkbox>Commerce</Checkbox>
+              <Checkbox>Diversifiée</Checkbox>
+              <Checkbox>Hôtellerie</Checkbox>
+              <Checkbox>Logistique</Checkbox>
+              <Checkbox>Résidentiel</Checkbox>
+              <Checkbox>Santé</Checkbox>
+            </VStack>
+          </Box>
+          <Box>
+            <Text fontSize="lg" fontWeight="bold" color="gray.700" mb={4}>
+              Zones d'investissement
+            </Text>
+            <VStack align="start" spacing={2}>
+              <Checkbox>Étranger</Checkbox>
+              <Checkbox>France</Checkbox>
+              <Checkbox>Paris / Île-de-France</Checkbox>
+              <Checkbox>Régions</Checkbox>
+            </VStack>
+          </Box>
+          <Box>
+            <Text fontSize="lg" fontWeight="bold" color="gray.700" mb={4}>
+              Capitalisation
+            </Text>
+            <VStack align="start" spacing={2}>
+              <Checkbox>&lt; 100 M €</Checkbox>
+              <Checkbox>entre 100 M € et 500 M €</Checkbox>
+              <Checkbox>entre 500 M et 1 Md €</Checkbox>
+              <Checkbox>&gt; 1 Md €</Checkbox>
+            </VStack>
+          </Box>
+        </SimpleGrid>
         <HStack spacing={4} w="100%" justify="space-between">
           <HStack spacing={2}>
             <Input placeholder="Rechercher un SCPI" variant="outline" size="md" />

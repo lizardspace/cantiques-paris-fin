@@ -9,7 +9,6 @@ const ToutesLesSCPI = () => {
   return (
     <Box>
       <Stack spacing={8} m={10}>
-        <SCPIRendement/>
         <SCPIList/>
       </Stack>
     </Box>
