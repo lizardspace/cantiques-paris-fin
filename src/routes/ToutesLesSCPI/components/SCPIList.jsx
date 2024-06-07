@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Box, Input, Select, Switch, Button, HStack, VStack, Text, Image, Grid, IconButton, Table, Thead, Tbody, Tr, Th, Td, Tooltip } from '@chakra-ui/react';
+import { Box, Input, Select, Switch, Button, HStack, VStack, Text, Image, Grid, IconButton, Table, Thead, Tbody, Tr, Th, Td, Tooltip, Spacer } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import { FaThList, FaTh } from 'react-icons/fa';
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 const SCPIList = () => {
   const [view, setView] = useState('grid');
@@ -74,7 +75,8 @@ const SCPIList = () => {
               <Text>Disponible en ligne</Text>
               <Switch size="lg" />
             </HStack>
-            <Button colorScheme="orange" variant="link">Comparer les SCPI</Button>
+            <Spacer />
+            <Button pl="20px" rightIcon={<MdKeyboardArrowRight />} colorScheme="orange" variant="link">Comparer les SCPI</Button>
           </HStack>
         </HStack>
         {view === 'grid' ? (
