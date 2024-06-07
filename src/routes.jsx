@@ -6,6 +6,7 @@ import Subscribe from './routes/subscribe/index';
 import NotFound from './routes/NotFound';
 import SCPI from './routes/scpi/index'; // Import the SCPI component
 import ToutesLesSCPI from './routes/ToutesLesSCPI/index'; // Import the ToutesLesSCPI component
+import SouscrireSCPI from './routes/SouscrireSCPI/index'; // Import the SouscrireSCPI component
 
 const routes = [
   {
@@ -48,6 +49,12 @@ const routes = [
     path: '/scpi/toutes_les_scpi',
     name: 'Toutes les SCPI',
     component: <ToutesLesSCPI />,
+    parent: 'SCPI' // Define the parent as 'SCPI'
+  },
+  {
+    path: '/scpi/souscrire',
+    name: 'Souscrire en ligne SCPI',
+    component: <SouscrireSCPI />,
     parent: 'SCPI' // Define the parent as 'SCPI'
   },
   {
