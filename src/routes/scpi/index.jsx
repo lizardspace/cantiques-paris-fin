@@ -3,6 +3,9 @@ import { Box, Stack } from '@chakra-ui/react';
 import SCPIComponent from './components/SCPIComponent';
 import SCPIFeatures from './components/SCPIFeatures';
 import SCPIDescription from './components/SCPIDescription';
+import ForestAndViticultureComponent from './components/ForestAndViticultureComponent';
+import InvestmentOptions from './components/InvestmentOptions';
+import SCPIList from './components/SCPIList';
 
 
 
@@ -13,6 +16,9 @@ const SCPI = () => {
         <SCPIComponent/>
         <SCPIFeatures/>
         <SCPIDescription/>
+        <ForestAndViticultureComponent/>
+        <InvestmentOptions/>
+        <SCPIList/>
       </Stack>
     </Box>
   );
