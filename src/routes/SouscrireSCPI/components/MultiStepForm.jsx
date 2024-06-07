@@ -2,18 +2,19 @@
 import React, { useState } from 'react';
 import { Box, Button, Flex, Progress, Text } from '@chakra-ui/react';
 import Step1 from './etapes/Step1';
-// Import other steps
 import Step2 from './etapes/Step2';
 import Step3 from './etapes/Step3';
 import Step4 from './etapes/Step4';
 import Step5 from './etapes/Step5';
+import Step6 from './etapes/Step6';  // Import Step6
 
 const steps = [
   { component: Step1, label: 'Projet' },
   { component: Step2, label: 'Souscription' },
-  { component: Step3, label: 'Versement Mensuel' },
-  { component: Step4, label: 'Horizon de Placement' },
-  { component: Step5, label: 'Accès aux Fonds' },
+  { component: Step3, label: 'Pour qui' },
+  { component: Step4, label: 'Date de naissance' },
+  { component: Step5, label: 'Nationalité et Résidence Fiscale' },
+  { component: Step6, label: 'Statut Américain' },  // Add Step6
   // Add more steps as needed
 ];
 
@@ -44,12 +45,8 @@ const MultiStepForm = () => {
       <Box mb={6}>
         <CurrentComponent prevStep={prevStep} nextStep={nextStep} />
       </Box>
-      <Flex justifyContent="space-between">
-        {currentStep > 0 && <Button onClick={prevStep}>Précédent</Button>}
-        {currentStep < steps.length - 1 && <Button onClick={nextStep}>Suivant</Button>}
-      </Flex>
     </Box>
   );
 };
 
-export default MultiStepForm
+export default MultiStepForm;
