@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Input, Select, Switch, Button, HStack, VStack, Text, Image, Grid, IconButton, Table, Thead, Tbody, Tr, Th, Td, Tooltip, Spacer, SimpleGrid, Checkbox } from '@chakra-ui/react';
+import { Box, Input, Select, Switch, Button, HStack, VStack, Text, Image, Grid, IconButton, Table, Thead, Tbody, Tr, Th, Td, Tooltip, Spacer, SimpleGrid, Checkbox, Divider } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import { FaThList, FaTh } from 'react-icons/fa';
 import { MdKeyboardArrowRight } from "react-icons/md";
@@ -47,7 +47,7 @@ const SCPIList = () => {
         <Text fontSize={{ base: '2xl', md: '3xl' }} fontWeight="bold" color="blue.900">
           SCPI de rendement
         </Text>
-        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10} w="100%">
+        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10} w="100%" bg="gray.50" p={4} borderRadius="md">
           <Box>
             <Text fontSize="lg" fontWeight="bold" color="gray.700" mb={4}>
               Catégories
@@ -85,6 +85,7 @@ const SCPIList = () => {
             </VStack>
           </Box>
         </SimpleGrid>
+        <Divider />
         <HStack spacing={4} w="100%" justify="space-between">
           <HStack spacing={2}>
             <Input placeholder="Rechercher un SCPI" variant="outline" size="md" />
@@ -123,7 +124,7 @@ const SCPIList = () => {
         {view === 'grid' ? (
           <Grid templateColumns="repeat(auto-fit, minmax(250px, 1fr))" gap={6} w="100%">
             {scpis.map((scpi, index) => (
-              <Box key={index} borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md">
+              <Box key={index} borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md" bg="white" transition="transform 0.2s" _hover={{ transform: 'scale(1.05)' }}>
                 <Image src={scpi.image} alt={`${scpi.name} Image`} />
                 <Box p={4}>
                   <Text fontSize="lg" fontWeight="bold" color="blue.900">{scpi.name}</Text>
@@ -154,7 +155,7 @@ const SCPIList = () => {
             </Thead>
             <Tbody>
               {scpis.map((scpi, index) => (
-                <Tr key={index}>
+                <Tr key={index} _hover={{ bg: "gray.50" }}>
                   <Td>{scpi.name}</Td>
                   <Td>{scpi.manager}</Td>
                   <Td>{scpi.rate}</Td>
